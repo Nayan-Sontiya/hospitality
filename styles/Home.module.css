@@ -1,0 +1,386 @@
+.homeBannerBg {
+  background-image: url("/public/images/home-banner.png");
+  width: 100%;
+  opacity: 1;
+}
+.searchBox {
+  /* height: 80px; */
+  border-radius: 40px;
+  margin-top: -25px;
+  background-color: #ffffff;
+  box-shadow: 3px 5px 7px #00000071;
+}
+.bannerText {
+  text-align: center;
+  color: #fbbc04;
+  margin-top: -150px;
+  font-size: 35px;
+  font-family: Rockwell;
+}
+.aboutBannerText {
+  text-align: center;
+  color: #1b1465;
+  margin-top: -200px;
+  font-size: 40px;
+  font-weight: 500;
+}
+.searchBtn {
+  box-shadow: 0px 3px 6px #1b1465;
+  border-radius: 50px;
+  opacity: 1;
+  background-color: #1b1465;
+  color: #ffffff;
+  height: 40px;
+  margin-top: 20px;
+}
+.slideHeadimg {
+  font-size: 12px;
+  text-align: center;
+  padding-inline: 5px;
+}
+.slideSubHeadimg {
+  font-size: 14px;
+  text-align: center;
+  padding-inline: 5px;
+}
+.slideText {
+  font-size: 14px;
+  padding-top: 15px;
+}
+.worksBtn {
+  border-radius: 100px;
+  opacity: 1;
+  width: 248px;
+  height: 50px;
+  background-color: #fbbc04;
+  font-size: 25px;
+  color: #1b1465;
+  font-family: Rockwell;
+  margin-bottom: 20px;
+}
+.customerHeading {
+  text-align: center;
+  font-size: 35px;
+  padding: 25px;
+  color: #1b1465;
+  font-family: Rockwell;
+}
+.signupHeadeing {
+  text-align: center;
+  font-size: 40px;
+  padding: 25px;
+  color: #fbbc04;
+  font-family: Rockwell;
+}
+
+.profileFieldsStyle {
+  padding-top: 8px;
+  border: 1px solid #929292;
+  border-radius: 10px;
+  height: 40px;
+  width: 100%;
+  padding-left: 20px;
+  margin-top: 20px;
+}
+.InputStyleSelectBox {
+  border: 1px solid #707070;
+  border-radius: 10px;
+  height: 45px;
+  width: 100%;
+  padding-left: 5px;
+}
+
+.radioBtn:checked::before {
+  transform: scale(1);
+}
+.radioBtn::before {
+  background-color: CanvasText;
+}
+/* .radioBtn:focus {
+  outline: max(2px, 0.15em) solid currentColor;
+  outline-offset: max(2px, 0.15em);
+} */
+.contactus {
+  font-size: 60px;
+  font-weight: 400;
+  color: #ffffff;
+  padding-left: 250px;
+  margin-top: -300px;
+}
+.contactusSubHeading {
+  font-size: 30px;
+  font-weight: 200;
+  color: #ffffff;
+  padding-left: 250px;
+}
+.cntctBtn {
+  box-shadow: 0px 3px 6px #a6a0ee;
+  border-radius: 50px;
+  opacity: 1;
+  background-color: #a6a0ee;
+  color: #ffffff;
+  height: 40px;
+  width: 150px;
+  margin-top: 20px;
+  margin-right: 10px;
+}
+.cardMargin {
+  margin-top: -250px;
+}
+.userPageIcon {
+  width: 20px;
+  height: 20px;
+}
+.packageCard {
+  background: #ffffff;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+.userLabelStyle {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 23px;
+  padding-left: 20px;
+  color: #1b1465;
+  text-transform: uppercase;
+}
+.pkgCard {
+  background: #ffffff;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 50px;
+  height: 450px;
+}
+.pkgCardP {
+  background: #ffffff;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 50px;
+  height: 550px;
+}
+.aboutSubHeadingTextStyle {
+  text-shadow: 0px 3px 6px #147abe74;
+}
+.userDetailsContainerHright {
+  height: 540px;
+  overflow-y: scroll;
+}
+.userDetailsContainerHeight {
+  height: 475px;
+  overflow-y: scroll;
+}
+
+.signupContainer {
+  padding-inline: 100px;
+}
+
+@media only screen and (max-width: 2000px) {
+  .signupContainer {
+    padding-inline: 200px;
+  }
+  .InputStyle {
+    border: 1px solid #cacaca;
+    border-radius: 10px;
+    height: 65px;
+    width: 100%;
+    font-size: 24px;
+    padding-left: 20px;
+  }
+
+  .labelStyle {
+    color: #1b1465;
+    font-size: 22px;
+    font-weight: 400;
+    padding: 20px;
+  }
+  .radioBtn {
+    transform: translateY(-0.5em);
+    width: 2em;
+    height: 2em;
+  }
+  .radioBtn::before {
+    content: "";
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: 0px 3px 6px #1b1465;
+  }
+  .labelStyleRadio {
+    color: #1b1465;
+    font-size: 20px;
+    padding-top: 15px;
+    padding-left: 10px;
+  }
+  .signupBtn {
+    border-radius: 10px;
+    opacity: 1;
+    height: 65px;
+    width: 100%;
+    background-color: #f8b705;
+    font-size: 28px;
+    color: #ffffff;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .signupBtn:disabled {
+    background-color: #a8a7af;
+  }
+  .eyeIconStyle {
+    width: 40px;
+    height: 22px;
+    margin-top: 7px;
+  }
+  .eyecloseIconStyle {
+    width: 40px;
+    height: 28px;
+    margin-top: 5px;
+  }
+  .userDetailsContainerHright {
+    height: 800px;
+    overflow-y: scroll;
+  }
+  .userDetailsContainerHeight {
+    height: 740px;
+    overflow-y: scroll;
+  }
+  .userLabelStyle {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 23px;
+    padding-left: 20px;
+    color: #1b1465;
+    text-transform: uppercase;
+  }
+}
+@media only screen and (max-width: 1500px) {
+  .signupContainer {
+    padding-inline: 100px;
+  }
+  .userLabelStyle {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 23px;
+    padding-left: 20px;
+    color: #1b1465;
+    text-transform: uppercase;
+  }
+  .InputStyle {
+    border: 1px solid #cacaca;
+    border-radius: 10px;
+    height: 40px;
+    width: 100%;
+    font-size: 16px;
+    padding-left: 20px;
+  }
+  .userDetailsContainerHright {
+    height: 540px;
+    overflow-y: scroll;
+  }
+  .userDetailsContainerHeight {
+    height: 480px;
+    overflow-y: scroll;
+  }
+  .labelStyle {
+    color: #1b1465;
+    font-size: 14px;
+    padding: 20px;
+  }
+  .radioBtn {
+    border: 1px solid #1b1465;
+
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    appearance: none;
+    /* For iOS < 15 to remove gradient background */
+    background-color: #fff;
+    /* Not removed via appearance */
+    font: inherit;
+    color: currentColor;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    transform: translateY(-0.075em);
+    display: grid;
+    place-content: center;
+  }
+  .radioBtn::before {
+    content: "";
+    width: 0.4em;
+    height: 0.4em;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: 0px 3px 6px #1b1465;
+  }
+  .labelStyleRadio {
+    color: #1b1465;
+    font-size: 14px;
+    padding-top: 15px;
+    padding-left: 10px;
+  }
+
+  .signupBtn {
+    border-radius: 10px;
+    opacity: 1;
+    height: 40px;
+    width: 100%;
+    background-color: #f8b705;
+    font-size: 20px;
+    color: #ffffff;
+    margin-bottom: 20px;
+  }
+  .eyeIconStyle {
+    width: 20px;
+    height: 11px;
+    margin-top: 3px;
+  }
+  .eyecloseIconStyle {
+    width: 20px;
+    height: 14px;
+    margin-top: 2px;
+  }
+}
+
+@media only screen and (max-width: 639px) {
+  .cardMargin {
+    margin-top: -330px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .contactus {
+    font-size: 25px;
+    font-weight: 400;
+    color: #ffffff;
+    padding-left: 25px;
+    margin-top: -200px;
+  }
+  .contactusSubHeading {
+    font-size: 20px;
+    font-weight: 200;
+    color: #ffffff;
+    padding-left: 25px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .userDetailsContainerHright {
+    height: auto !important;
+    overflow-y: scroll;
+  }
+  .searchBox {
+    border-radius: 20px;
+  }
+}
+
+@media only screen and (max-width: 1150px) {
+  .signupContainer {
+    padding-inline: 5px;
+  }
+}

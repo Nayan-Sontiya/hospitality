@@ -1,0 +1,327 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.react-tel-input .form-control {
+  position: relative;
+  font-size: 14px;
+  letter-spacing: 0.01rem;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-left: 65px !important;
+  margin-left: 0;
+  background: #ffffff;
+  border: 1px solid #cacaca;
+  border-radius: 10px !important;
+  line-height: 25px;
+  height: 40px !important;
+  width: 100% !important;
+  outline: none;
+}
+.react-tel-input .selected-flag {
+  outline: none;
+  position: relative;
+  width: 50px !important;
+  height: 100%;
+  padding: 0 0 0 10px;
+  border-radius: 10px 0 0 10px !important;
+}
+.react-tel-input .flag {
+  width: 16px;
+  height: 11px;
+}
+.react-tel-input .selected-flag .arrow {
+  position: relative;
+  top: 50%;
+  margin-top: -2px;
+  left: 28px !important;
+  width: 0;
+  height: 0;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-top: 4px solid #555;
+}
+
+/* checkout style */
+
+#payment-form input {
+  border-radius: 6px;
+  margin-bottom: 6px;
+  padding: 12px;
+  border: 1px solid rgba(50, 50, 93, 0.1);
+  max-height: 44px;
+  font-size: 16px;
+  width: 100%;
+  background: white;
+  box-sizing: border-box;
+}
+
+#payment-form .result-message {
+  line-height: 22px;
+  font-size: 16px;
+}
+
+#payment-form .result-message a {
+  color: rgb(89, 111, 214);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+#payment-form .hidden {
+  display: none;
+}
+
+#payment-form #card-error {
+  color: rgb(105, 115, 134);
+  font-size: 16px;
+  line-height: 20px;
+  margin-top: 12px;
+  text-align: center;
+}
+
+#payment-form #card-element {
+  border-radius: 4px 4px 0 0;
+  padding: 12px;
+  border: 1px solid rgba(50, 50, 93, 0.1);
+  max-height: 44px;
+  width: 100%;
+  background: white;
+  box-sizing: border-box;
+}
+
+#payment-form #payment-request-button {
+  margin-bottom: 32px;
+}
+
+/* Buttons and links */
+#payment-form button {
+  background: #1b1465;
+  font-family: Arial, sans-serif;
+  border-radius: 0 0 4px 4px;
+  border: 0;
+  padding: 12px 16px;
+  font-size: 16px;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+  display: block;
+  transition: all 0.2s ease;
+  box-shadow: 0px 4px 5.5px 0px rgba(0, 0, 0, 0.07);
+  width: 100%;
+}
+
+#payment-form button:hover {
+  filter: contrast(115%);
+}
+
+#payment-form button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* spinner/processing state, errors */
+#payment-form .spinner,
+#payment-form .spinner:before,
+#payment-form .spinner:after {
+  border-radius: 50%;
+}
+
+#payment-form .spinner {
+  color: #ffffff;
+  font-size: 22px;
+  text-indent: -99999px;
+  margin: 0px auto;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  box-shadow: inset 0 0 0 2px;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+#payment-form .spinner:before,
+#payment-form .spinner:after {
+  position: absolute;
+  content: "";
+}
+
+#payment-form .spinner:before {
+  width: 10.4px;
+  height: 20.4px;
+  background: #1b1465;
+  border-radius: 20.4px 0 0 20.4px;
+  top: -0.2px;
+  left: -0.2px;
+  -webkit-transform-origin: 10.4px 10.2px;
+  transform-origin: 10.4px 10.2px;
+  -webkit-animation: loading 2s infinite ease 1.5s;
+  animation: loading 2s infinite ease 1.5s;
+}
+
+#payment-form .spinner:after {
+  width: 10.4px;
+  height: 10.2px;
+  background: #1b1465;
+  border-radius: 0 10.2px 10.2px 0;
+  top: -0.1px;
+  left: 10.2px;
+  -webkit-transform-origin: 0px 10.2px;
+  transform-origin: 0px 10.2px;
+  -webkit-animation: loading 2s infinite ease;
+  animation: loading 2s infinite ease;
+}
+
+@keyframes loading {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.bgImage {
+  background-image: url("../public/images/banner.png");
+  margin: 5px 0;
+  background-size: cover;
+  height: 550px;
+  background-repeat: no-repeat;
+}
+.hireBgImage {
+  background-image: url("../public/images/how-to-hire.jpg");
+  margin: 5px 0;
+  background-size: cover;
+  height: 550px;
+  background-repeat: no-repeat;
+}
+.worksBgImage {
+  background-image: url("../public/images/how-it-works.jpg");
+  margin: 5px 0;
+  background-size: cover;
+  height: 550px;
+  background-repeat: no-repeat;
+}
+.bgCenterImage {
+  background-image: url("../public/images/center-banner-img.png");
+  margin: 5px 0;
+  background-size: cover;
+  width: 100wh;
+  height: 550px;
+  background-repeat: no-repeat;
+}
+.slick-dots li button:before {
+  font-size: 20px !important;
+}
+@media only screen and (max-width: 2000px) {
+  .bgCenterImage {
+    background-image: url("../public/images/center-banner-img.png");
+    margin: 5px 0;
+    background-size: cover;
+    width: 100wh;
+    height: 550px;
+    background-repeat: no-repeat;
+  }
+  .bgImage {
+    background-image: url("../public/images/banner.png");
+    margin: 5px 0;
+    background-size: cover;
+    height: 900px;
+    background-repeat: no-repeat;
+  }
+  .react-tel-input .form-control {
+    position: relative;
+    font-size: 20px !important;
+    letter-spacing: 0.01rem;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-left: 65px !important;
+    margin-left: 0;
+    background: #ffffff;
+    border: 1px solid #cacaca;
+    border-radius: 5px !important;
+    line-height: 25px;
+    height: 62px !important;
+    width: 100% !important;
+    outline: none;
+  }
+}
+@media only screen and (max-width: 1400px) {
+  .react-tel-input .form-control {
+    position: relative;
+    font-size: 14px !important;
+    letter-spacing: 0.01rem;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-left: 65px !important;
+    margin-left: 0;
+    background: #ffffff;
+    border: 1px solid #cacaca;
+    border-radius: 5px !important;
+    line-height: 25px;
+    height: 40px !important;
+    width: 100% !important;
+    outline: none;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .bgCenterImage {
+    background-image: url("../public/images/center-banner-img.png");
+    margin: 5px 0;
+    background-size: cover;
+    height: 450px;
+    background-repeat: no-repeat;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .bgImage {
+    height: 350px;
+  }
+  .hireBgImage {
+    height: 350px;
+  }
+  .worksBgImage {
+    height: 350px;
+  }
+  .bgCenterImage {
+    background-image: none;
+    background-color: #66696a;
+    background-size: cover;
+    height: 450px;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .bgImage {
+    height: 250px;
+  }
+  .hireBgImage {
+    height: 250px;
+  }
+  .worksBgImage {
+    height: 250px;
+  }
+}
+.hr1 {
+  border: none;
+  height: 1px;
+  background: var(--white);
+  margin-top: 3px;
+}
