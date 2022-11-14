@@ -14,6 +14,9 @@ const ViewUser = () => {
   let userData = userDataProvider();
   let router = useRouter();
   function getWords(monthCount) {
+    if(monthCount===0){
+      return "Fresher"
+    }
     function getPlural(number, word) {
       return (number === 1 && word.one) || word.other;
     }

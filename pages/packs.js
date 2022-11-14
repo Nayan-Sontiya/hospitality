@@ -26,10 +26,6 @@ const loadScript = (src) => {
     document.body.appendChild(script);
   });
 };
-// if (typeof window !== 'undefined') {
-//   console.log('You are on the browser')
-// }
-// const __DEV__ = document.domain === "localhost";
 function Packs() {
   let [data, setData] = useState([]);
   let accessToken = accessTokenProvider();

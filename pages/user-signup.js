@@ -172,11 +172,10 @@ function SignupPage() {
       data.append("search_type", searchType);
       data.append("fssai_number", fssaiNumber);
       data.append("gst_number", gstNumber);
-      console.log("menu => ", menu);
       [...menu].forEach((image) => {
         data.append("menu[]", image);
       });
-      console.log("menu get => ", data.get("menu[]"));
+
       const returnValue = await loginPostRequestWithFormControl(
         "userSignup",
         data

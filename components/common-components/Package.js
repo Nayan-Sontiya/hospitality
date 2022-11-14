@@ -54,7 +54,6 @@ function Package() {
       );
       if (result.status === 200) {
         setPackageData(result.data[0]);
-        // console.log("hello");
         // AddPackage(result.data[0]);
         // return;
         createPaymentIntent(result.data, result.data[0]);

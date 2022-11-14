@@ -80,14 +80,17 @@ function Blogs() {
         <>
           <Header PageName="blog" />
           <div className="w-full p-0 m-0">
+            <div>
             <img
               src="/images/blog-banner.jpg"
               alt="How to find good Chef near me"
               className="w-full"
             />
+
             <p className="text-2xl md:text-4xl lg:text-[50px] 3xl:text-5xl text-white -mt-40 sm:-mt-40 md:-mt-80 h-40 sm:h-40 md:h-80 font-bold py-5 text-center">
               Blogs
             </p>
+            </div>
             <div className=" sm:px-10 pt-10">
               <div className="grid grid-cols-12">
                 {BlogContent.map((item, i) => {

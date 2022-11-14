@@ -1,4 +1,5 @@
 import "../styles/globals.css";
+import "../styles/NotFound.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "react-medium-image-zoom/dist/styles.css";

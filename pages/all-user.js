@@ -224,6 +224,9 @@ function AllUser() {
     }
   };
   function getWords(monthCount) {
+    if(monthCount===0){
+      return "Fresher"
+    }
     function getPlural(number, word) {
       return (number === 1 && word.one) || word.other;
     }
@@ -738,7 +741,7 @@ function AllUser() {
                           key={i}
                         >
                           <div className="grid grid-cols-12">
-                            <div className="col-span-12 sm:col-span-12 pt-1 md:col-span-3">
+                            <div className="col-span-12 sm:col-span-12 pt-1 md:col-span-3 mx-auto my-3">
                               {data.photo_of_candidate !== "" ? (
                                 <img
                                   src={
@@ -756,7 +759,7 @@ function AllUser() {
                                 </div>
                               )}
                             </div>
-                            <div className="col-span-6 sm:col-span-6 md:col-span-5">
+                            <div className="col-span-12 sm:col-span-6 md:col-span-5 mb-3">
                               <p className="text-xl 3xl:text-3xl pl-5 text-[#000000] uppercase">
                                 {data.name_of_candidate}
                               </p>
@@ -803,7 +806,7 @@ function AllUser() {
                                 </div>
                               </div>
                             </div>
-                            <div className="col-span-6 sm:col-span-6 md:col-span-4 pt-0 md:pt-8">
+                            <div className="col-span-12 sm:col-span-6 md:col-span-4 pt-0 md:pt-8">
                               <label className={Style.userLabelStyle}>
                                 JOB SECTION
                               </label>

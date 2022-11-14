@@ -540,10 +540,10 @@ function Header({ PageName }) {
                 type="text"
                 placeholder="Enter your email"
                 className={
-                  Style.InputStyle + " placeholder:normal-case	lowercase"
+                  Style.InputStyle + " placeholder:normal-case lowercase"
                 }
                 onBlur={EmailCheck}
-                onChange={(e) => setForgotEmail(e.target.value)}
+                onChange={(e) => setForgotEmail(e.target.value.toLowerCase())}
               />
             </div>
             <div className="text-center pt-10 pb-5">

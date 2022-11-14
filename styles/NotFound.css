@@ -1,0 +1,116 @@
+.not-found-img {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.not-found-desktop {
+  background-image: url("NotFoundDesktop.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+@media only screen and (max-width: 600px) {
+  .not-found-mobile-404 {
+    background: url("NotFoundMobile.svg");
+    background-repeat: no-repeat, no-repeat;
+    background-position: center, center;
+    padding: 80px;
+  }
+}
+.not-found-title {
+  font-family: Saira, sans-serif;
+  font-size: 32px;
+  color: #212529;
+  line-height: 1.5;
+  letter-spacing: normal;
+  font-weight: 800;
+}
+.not-found-mobile-maintenance {
+  margin-top: 56px;
+}
+@media only screen and (max-width: 600px) {
+  .not-found-mobile-maintenance {
+    background-repeat: no-repeat, no-repeat;
+    background-position: center, center;
+    padding: 80px;
+    padding-left: 260px;
+  }
+}
+.not-found-container {
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  padding-top: 50px;
+  margin-bottom: 81px;
+  height: 50vh;
+}
+@media only screen and (max-width: 600px) {
+  .not-found-container {
+    padding-top: 0px;
+    height: auto;
+  }
+}
+
+.not-found-title {
+  max-width: 483px;
+  max-height: 95px;
+  text-align: center;
+  justify-self: center;
+  align-self: center;
+}
+@media screen and (max-width: 350px) {
+  .not-found-title {
+    max-width: 100vw;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .not-found-title {
+    padding-top: 0px;
+    height: auto;
+  }
+}
+
+.not-found-title-align-left {
+  text-align: left;
+  margin-left: 16px;
+}
+
+.not-found-title-align-center {
+  text-align: center;
+}
+
+.not-found-body {
+  max-width: 600px;
+  max-height: 96px;
+  margin-top: 16px;
+  margin-left: 16px;
+}
+@media screen and (max-width: 350px) {
+  .not-found-body {
+    max-width: 100vw;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .not-found-body {
+    max-width: 344px;
+  }
+}
+.not-found-link {
+  text-decoration: none !important;
+}
+
+.not-found-button {
+  min-width: 423px;
+  max-height: 56px;
+  margin-top: 67px;
+}
+@media screen and (max-width: 350px) {
+  .not-found-button {
+    min-width: 95vw;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .not-found-button {
+    min-width: 344px;
+  }
+}

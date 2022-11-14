@@ -70,7 +70,6 @@ function MyProfile() {
   };
   useEffect(() => {
     if (userData !== undefined && userData !== "" && userData !== null) {
-      console.log("userData -> ", userData);
       setSelectedCountryId(userData?.country);
       handleStateHandler(userData.country);
       handleCityProvider(userData.country, userData.state);

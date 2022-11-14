@@ -13,7 +13,7 @@ function resume() {
     let response = await GetRequest(
       "getCandidateInfo/" + "624c2b7e328848fd20dc7d46"
     );
-    console.log(response);
+
     if (response.status === 200) {
       setData(response.data);
     }

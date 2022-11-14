@@ -850,7 +850,7 @@ function Home() {
             </div>
             <div className="col-span-12 sm:col-span-12 lg:col-span-6 pl-5">
               <p className="3xl:text-2xl">
-                hospitality industry in India is booming currently. Every month
+                Hospitality industry in India is booming currently. Every month
                 you hear new outlets being launched in the market. The customers
                 are genuinely spoiled for choice as they have multiple options
                 in one cuisine to choose from.
