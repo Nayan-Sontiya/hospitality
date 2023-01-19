@@ -4,6 +4,7 @@ import Header from "../components/common-components/Header";
 import { GetRequest } from "../components/helpers/ApiHelper";
 import { useRouter } from "next/router";
 import swal from "sweetalert";
+import Head from "next/head";
 
 function TellUs() {
   let [occupationData, setOccupationData] = useState([]);
@@ -52,6 +53,9 @@ function TellUs() {
   }, [occupationName]);
   return (
     <div>
+      <Head>
+      <meta name="google-site-verification" content="CF__90Zfvbb28X_oOxUD5HIzBkNnNtP-SHP3RjPvYOM" />
+      </Head>
       {process.browser ? (<>
         <Header />
         <div>
@@ -115,6 +119,7 @@ function TellUs() {
         </div>
         <Footer />
       </>) : ""}
+      <WhatsAppLogo />
     </div>
   );
 }

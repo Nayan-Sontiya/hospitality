@@ -2,6 +2,7 @@ import React from 'react'
 import Footer from '../../components/common-components/Footer'
 import Header from '../../components/common-components/Header'
 import Head from "next/head"
+import WhatsAppLogo from '../../components/common-components/WhatsApp'
 function StrategiesBlog() {
     return (
         <>
@@ -47,6 +48,7 @@ function StrategiesBlog() {
                  The hospitality industry is very competitive. The need to get the best staff is more now with so many players in the market. Contact HospitalityFinder.in as their database of workers will help you reach the success you want.</p>
             </div>
             <Footer />
+            <WhatsAppLogo />
         </>
     )
 }

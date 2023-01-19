@@ -13,6 +13,7 @@ function staff() {
           name="description"
           content="Welcome to Hospitality Finder, a comprehensive online search service for businesses seeking hospitality professional or staff."
         />
+         <meta name="google-site-verification" content="CF__90Zfvbb28X_oOxUD5HIzBkNnNtP-SHP3RjPvYOM" />
         <meta
           name="Keywords"
           content="best hospitality management staff,
@@ -222,6 +223,7 @@ function staff() {
       </div>
       <Footer />
       </div>
+      <WhatsAppLogo />
       </div>
   );
 }

@@ -17,6 +17,7 @@ import Lottie from "react-lottie";
 import animationData from "../public/images/lottiesFile/search-lottie.json";
 import imageDAta from "../public/images/lottiesFile/image-placeholder.json";
 import { GradesWithCategory } from "./home";
+import Head from "next/head";
 const defaultOptions = {
   loop: true,
   autoplay: true,
@@ -71,16 +72,17 @@ function AllUser() {
   let [buttonLoader, setButtonLoader] = useState(false);
   let userData = userDataProvider();
   let [requirementMessage, setRequirementMessage] = useState("");
-  let accessToken = accessTokenProvider();
-  useEffect(() => {
-    if (
-      accessToken === "" ||
-      accessToken === null ||
-      accessToken === undefined
-    ) {
-      router.push("/");
-    }
-  }, [accessToken]);
+  // let accessToken = accessTokenProvider();
+ 
+  // useEffect(() => {
+  //   if (
+  //     accessToken === "" ||
+  //     accessToken === null ||
+  //     accessToken === undefined
+  //   ) {
+  //     router.push("/");
+  //   }
+  // }, [accessToken]);
 
   useEffect(() => {
     if (Location !== undefined) {
@@ -142,14 +144,47 @@ function AllUser() {
     const token = category.includes(categoryOpt);
     return token;
   };
-  const categoryArr = (categoryArr) => {
-    if (CheckIfCategoryPresent(categoryArr) === false) {
-      setCategory([...category, categoryArr]);
+  // const categoryArr = (categoryArr) => {
+  //   if (CheckIfCategoryPresent(categoryArr) === false) {
+  //     setCategory([...category, categoryArr]);
+  //   } else {
+  //     let updatedSubCatArr = category.filter(
+  //       (subCat) => subCat !== categoryArr
+  //     );
+  //     setCategory(updatedSubCatArr);
+  //   }
+  // };
+
+  const categoryArray = (categoryArr, type, checked, categoryData) => {
+    if (type === "all") {
+      let temp = [];
+      if (checked) {
+        categoryArr.map((categoryVal, i) => {
+          temp.push(categoryVal.category);
+        });
+        setCategory(temp);
+      } else {
+        setCategory(temp);
+      }
     } else {
-      let updatedSubCatArr = category.filter(
-        (subCat) => subCat !== categoryArr
-      );
-      setCategory(updatedSubCatArr);
+      if (!checked) {
+        document.getElementById("all").checked = false;
+      }
+      if (CheckIfCategoryPresent(categoryArr) === false) {
+        setCategory([...category, categoryArr]);
+
+        if ([...category, categoryArr]?.length === categoryData?.length) {
+          document.getElementById("all").checked = true;
+        }
+      } else {
+        let updatedSubCatArr = category.filter(
+          (subCat) => subCat !== categoryArr
+        );
+        setCategory(updatedSubCatArr);
+        if (updatedSubCatArr?.length - 1 === categoryData?.length) {
+          document.getElementById("all").checked = true;
+        }
+      }
     }
   };
   const CheckIfCategoryIdPresent = (categoryOpt) => {
@@ -206,7 +241,12 @@ function AllUser() {
         occupation: occupationName,
         salaryStart: salStart,
         salaryEnd: salEnd,
-        location: locationFirst !== "" ? locationFirst : location,
+        location:
+          locationFirst !== ""
+            ? locationFirst
+            : location !== ""
+            ? location
+            : userData?.city,
         experienceFrom: experienceStart,
         experienceTo: experienceEnd,
         chef_type: "",
@@ -224,8 +264,8 @@ function AllUser() {
     }
   };
   function getWords(monthCount) {
-    if(monthCount===0){
-      return "Fresher"
+    if (monthCount === 0) {
+      return "Fresher";
     }
     function getPlural(number, word) {
       return (number === 1 && word.one) || word.other;
@@ -239,33 +279,13 @@ function AllUser() {
     m && result.push(m + " " + getPlural(m, months));
     return result.join(" , ");
   }
-  const viewCandidateDetails=(candidateId)=>{
+  const viewCandidateDetails = (candidateId) => {
     window.open(
       `${window.location.origin}/view-user?userId=${candidateId}`,
       "_targetBlank"
     );
-  }
-  // const getCandidateResume = async (candidateId) => {
-  //   let resp = await GetRequest(
-  //     "getCandidateResume/" + userData._id + "/" + candidateId
-  //   );
-  //   if (resp.status === 200) {
-  //     window.open(
-  //       `${window.location.origin}/user-details/?id=${candidateId}`,
-  //       "_targetBlank"
-  //     );
-  //   } else {
-  //     swal({
-  //       title: "Info",
-  //       text: resp.message,
-  //       icon: "warning",
-  //     }).then(function (isConfirm) {
-  //       if (isConfirm) {
-  //         router.push("/packs");
-  //       }
-  //     });
-  //   }
-  // };
+  };
+
   const AddRequirement = async () => {
     if (requirementMessage !== "") {
       let item = {
@@ -342,6 +362,12 @@ function AllUser() {
   // const rndInt = randomIntFromInterval(100, 200);
   return (
     <div>
+      <Head>
+        <meta
+          name="google-site-verification"
+          content="CF__90Zfvbb28X_oOxUD5HIzBkNnNtP-SHP3RjPvYOM"
+        />
+      </Head>
       {process.browser ? (
         <>
           <Header PageName="allUser" />
@@ -394,6 +420,20 @@ function AllUser() {
                     <p className="text-md text-[#1B1465] 3xl:text-2xl">
                       Categories
                     </p>
+                    <div className="flex p-1">
+                      <input
+                        type="checkbox"
+                        value={"All"}
+                        className="3xl:h-8 3xl:w-8"
+                        id={"all"}
+                        onChange={(e) => {
+                          categoryArray(categoryData, "all", e.target.checked);
+                        }}
+                      />
+                      <p className="text-[11px] 3xl:text-[18px] pl-1 3xl:pl-3 3xl:pt-1 ">
+                        All
+                      </p>
+                    </div>
                     {categoryData.map((categoryVal, i) => {
                       return (
                         <div>
@@ -404,8 +444,16 @@ function AllUser() {
                               // id="categoryCheckbox"
                               className="3xl:h-6 3xl:w-6"
                               id={categoryVal._id}
+                              checked={category.find(
+                                (c) => c === categoryVal.category
+                              )}
                               onChange={(e) => {
-                                categoryArr(e.target.value);
+                                categoryArray(
+                                  e.target.value,
+                                  "",
+                                  e.target.checked,
+                                  categoryData
+                                );
                                 categoryIdArr(e.target.id);
                               }}
                             />
@@ -451,7 +499,7 @@ function AllUser() {
                   ""
                 )}
 
-                {grades.length !== 0 &&
+                {grades.length !== 0 && (
                   <div className="bg-white w-full rounded mt-3 p-1">
                     <p className="text-md text-[#1B1465] 3xl:text-2xl">Grade</p>
 
@@ -472,7 +520,7 @@ function AllUser() {
                       ))}
                     </select>
                   </div>
-                }
+                )}
 
                 <p className="pt-5 text-md text-[#1B1465] 3xl:text-2xl 3xl:pl-2">
                   {" "}
@@ -761,7 +809,9 @@ function AllUser() {
                             </div>
                             <div className="col-span-12 sm:col-span-6 md:col-span-5 mb-3">
                               <p className="text-xl 3xl:text-3xl pl-5 text-[#000000] uppercase">
-                                {data.name_of_candidate}
+                                {data.name_of_candidate
+                                  ? data.name_of_candidate?.split(" ")[0]
+                                  : "-"}
                               </p>
 
                               <span className="pl-5 text-[18px] text-[#fbbc07] 3xl:text-3xl flex">
@@ -908,6 +958,7 @@ function AllUser() {
       ) : (
         ""
       )}
+      <WhatsAppLogo />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import styles from "./newresume.module.scss";
@@ -11,6 +11,12 @@ import {
 import Modal from "../common-components/Modal";
 
 const NewResume = ({ data }) => {
+  const [showVideo, setShowVideo] = useState(true);
+  useEffect(() => {
+    return () => {
+      setShowVideo(false);
+    };
+  }, []);
   const randomIntFromInterval = (min, max) => {
     // min and max included
     return Math.floor(Math.random() * (max - min + 1) + min);
@@ -67,7 +73,7 @@ const NewResume = ({ data }) => {
         >
           Download
         </button>
-        <button
+        {/* <button
           className="py-2 3xl:py-3 px-5 text-[#ffffff] text-xl 3xl:text-3xl rounded-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300"
           onClick={() => {
             clearCheck();
@@ -77,7 +83,7 @@ const NewResume = ({ data }) => {
           }}
         >
           Report
-        </button>
+        </button> */}
       </div>
       <div class={styles["resume-main"]} id="pdf" ref={ref}>
         <div class={styles["left-box"]}>
@@ -313,9 +319,24 @@ const NewResume = ({ data }) => {
               )})`}</p>
             </span>
           </div>
-          <h1>
-            <span>{data?.contactno1}</span>
-          </h1>
+          <div className="flex items-center	gap-3">
+            <h1>
+              <span>{data?.contactno1}</span>
+            </h1>
+            <button
+              className="cursor-pointer border rounded p-1"
+              onClick={() => {
+                clearCheck();
+                setReportReason("");
+                setReportReasonMessage("");
+                modalOpenShow("reportModal");
+              }}
+            >
+              <i class="fa fa-info-circle" style={{ fontSize: "20px" }}></i>{" "}
+              WRONG CONTACT DETAILS ? REPORT HERE
+            </button>
+          </div>
+
           <p class={styles["p3"]}>{data?.category}</p>
           <br />
           <h2 class={styles["heading"]}>Objective</h2>
@@ -326,24 +347,29 @@ const NewResume = ({ data }) => {
           </div>
           <div class={styles["clearfix"]}></div>
           <br />
-          <h2 class={styles["heading"]}>WORK EXPERIENCE</h2>
-          <hr class="hr2" />
-          <br />
-          <div class="w-100">
-            {data?.length !== 0
-              ? data?.experiences.map((exp, i) => {
-                  return (
-                    <li className="list-disc" key={i}>
-                      Worked in {exp.expOutletName},{exp.expCity} as a{" "}
-                      {exp.expDesignation} from {exp.expStartDate} to{" "}
-                      {exp.expEndDate}.
-                    </li>
-                  );
-                })
-              : ""}
-          </div>
-          <div class={styles["clearfix"]}></div>
-          <br />
+          {data?.length !== 0 && !!data?.experiences?.length && (
+            <>
+              <h2 class={styles["heading"]}>WORK EXPERIENCE</h2>
+              <hr class="hr2" />
+              <br />
+              <div class="w-100">
+                {data?.length !== 0
+                  ? data?.experiences.map((exp, i) => {
+                      return (
+                        <li className="list-disc" key={i}>
+                          Worked in {exp.expOutletName},{exp.expCity} as a{" "}
+                          {exp.expDesignation} from {exp.expStartDate} to{" "}
+                          {exp.expEndDate}.
+                        </li>
+                      );
+                    })
+                  : ""}
+              </div>
+              <div class={styles["clearfix"]}></div>
+              <br />
+            </>
+          )}
+
           {data?.dish && (
             <>
               <h2 class={styles["heading"]}>Dish Images</h2>
@@ -375,7 +401,7 @@ const NewResume = ({ data }) => {
           )}
           <div class={styles["clearfix"]}></div>
           <br />
-          {data?.video_of_candidate && (
+          {data?.video_of_candidate && showVideo && (
             <>
               <h2 class={styles["heading"]}>Candidate Videos:</h2>
               <hr class="hr2" />
@@ -388,11 +414,13 @@ const NewResume = ({ data }) => {
                             <div
                               className="col-span-2 md:col-span-1 px-2"
                               key={i}
+                              style={{ maxHeight: "150px", minHeight: "150px" }}
                             >
                               <video
                                 src={awsUrl + val.media}
-                                className="md: h-35 sm:h-45 md:w-full object-cover rounded"
-                                autoPlay
+                                className="h-100 md:h-100 sm:h-100 md:w-full object-cover rounded"
+                                style={{ height: "100%" }}
+                                controls
                               />
                             </div>
                           );

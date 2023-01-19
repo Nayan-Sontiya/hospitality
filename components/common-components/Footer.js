@@ -163,7 +163,7 @@ function Footer() {
               >
                 <img
                   src="/images/facebook.png"
-                  className="w-8 h-8 3xl:w-10 3xl:h-10 mx-2"
+                  className="w-6 h-6 3xl:w-10 3xl:h-10 mx-2"
                   alt="most talented chefs"
                 />
               </a>
@@ -174,7 +174,7 @@ function Footer() {
               >
                 <img
                   src="/images/instagram.png"
-                  className="w-8 h-8 3xl:w-10 3xl:h-10 ml-2 mx-2"
+                  className="w-6 h-6 3xl:w-10 3xl:h-10 ml-2 mx-2"
                   alt="cooks and kitchen Staff"
                 />
               </a>
@@ -185,11 +185,32 @@ function Footer() {
               >
                 <img
                   src="/images/twitter.png"
-                  className="w-8 h-8 3xl:w-10 3xl:h-10 ml-2 mx-2"
+                  className="w-6 h-6 3xl:w-10 3xl:h-10 ml-2 mx-2"
                   alt="Best Chef to make french dishes"
                 />
               </a>
-              {/* <img src="/images/linkdin.png" className="w-5 h-5 3xl:w-8 3xl:h-8 ml-2" alt="Best Chef to make Thai dishes" /> */}
+              <a
+                href="https://www.linkedin.com/in/hospitality-finder-72520a257/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  src="/images/linkdin.png"
+                  className="w-6 h-6 3xl:w-10 3xl:h-10 ml-2 mx-2"
+                  alt="Best Chef to make Thai dishes"
+                />
+              </a>
+              <a
+                href="https://www.youtube.com/@hospitalityfinder4586/featured"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  src="/images/youtube.png"
+                  className="w-6 h-6 3xl:w-10 3xl:h-10 ml-2 mx-2"
+                  alt="Best Chef to make Thai dishes"
+                />
+              </a>
             </div>
           </div>
         </div>

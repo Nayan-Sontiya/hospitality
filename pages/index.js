@@ -17,6 +17,7 @@ export default function Home() {
           name="description"
           content="Hospitality Finder is the best place to find chefs and kitchen staff for your cooking and hospitality industry needs. It is the largest online professional chef network, connecting hotels and restaurants with qualified and experienced chefs and cooks in India, US and UK."
         />
+         <meta name="google-site-verification" content="CF__90Zfvbb28X_oOxUD5HIzBkNnNtP-SHP3RjPvYOM" />
         <meta
           name="Keywords"
           content="Hire Qualified &#38; Experienced Chefs,

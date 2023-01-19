@@ -13,6 +13,9 @@ import { multipleMediaIdentifier } from "../components/helpers/HelperFunctions";
 import Loader from "../components/common-components/Loader";
 import Resume from "./../components/resume-components/resume";
 import NewResume from "../components/resume-components/newresume";
+import Head from "next/head";
+import ReactWhatsapp from 'react-whatsapp';
+import WhatsAppIcon from '../public/images/wapp.png'
 const ImageLottie = {
   loop: true,
   autoplay: true,
@@ -66,6 +69,7 @@ function UserDetails() {
 
   return (
     <div>
+      <Head> <meta name="google-site-verification" content="CF__90Zfvbb28X_oOxUD5HIzBkNnNtP-SHP3RjPvYOM" /></Head>
       {process.browser ? (
         <>
           <Header PageName="menu" />
@@ -85,6 +89,7 @@ function UserDetails() {
       ) : (
         ""
       )}
+      <WhatsAppLogo />
     </div>
   );
 }

@@ -2,6 +2,8 @@ import React from "react";
 import Footer from "../components/common-components/Footer";
 import Header from "../components/common-components/Header";
 import Head from "next/head";
+import ReactWhatsapp from "react-whatsapp";
+import WhatsAppLogo from "../components/common-components/WhatsApp";
 
 function about() {
   const Profiles = [
@@ -34,6 +36,7 @@ function about() {
           name="description"
           content="Hospitality Finder | If you are looking for qualified and experienced chefs, finding a personal chef, grill masters, line cooks, prep cooks, baker and so many more, choose us."
         />
+        <meta name="google-site-verification" content="CF__90Zfvbb28X_oOxUD5HIzBkNnNtP-SHP3RjPvYOM" />
         <meta
           name="Keywords"
           content="best place to hire chefs,
@@ -137,65 +140,66 @@ function about() {
                 </div>
               </div>
               <div className="px-5">
-              <p className="text-[32px] 3xl:text-[42px] py-5 text-center">Our features</p>
-              <p className="3xl:text-2xl">
-                Before we explain to you the process of working with us, have a
-                look at our features:
-              </p>
-              <ul className="pl-5 3xl:text-2xl">
-                <li className="list-disc">
-                  Extremely high-quality workforce with all the checks done
-                </li>
-                <li className="list-disc">
-                  High-class management solutions to act as a booster for the
-                  success of your business
-                </li>
-                <li className="list-disc">
-                  Match the suitable candidates based on their niche and
-                  strengths
-                </li>
-                <li className="list-disc">
-                  Leverage the best candidates from the existing pool{" "}
-                </li>
-                <li className="list-disc">
-                  Having engaging discussions with both clients and candidates
-                  to understand the needs of each
-                </li>
-                <li className="list-disc">
-                  Procuring employees from other industries and helping them
-                  train with the required expertise
-                </li>
-                <li className="list-disc">
-                  Shifting the staff to areas where such experienced staff are
-                  less
-                </li>
-                <li className="list-disc">
-                  Flexible in meeting the client&apos;s expectations of{" "}
-                  <b>Oriental Chefs</b>
-                </li>
-                <li className="list-disc">
-                  Finding out which job opportunities get maximum takers and
-                  thus arranging candidates as per the demand.
-                </li>
-              </ul>
-              <p className="py-2 3xl:text-2xl">
-                So what are you waiting for? If you have to set your hotel up,
-                you cannot wait. Trust your recruitment work with us and relax
-                as we find the best candidates for you.
-              </p>{" "}
-              <p className="py-2 3xl:text-2xl">
-                You can hire <b>Qualified and experienced Chefs</b> as per the
-                cuisine you want. Just sign up for our service, and we promise
-                we will lift all your recruitment workload from you.
-              </p>
+                <p className="text-[32px] 3xl:text-[42px] py-5 text-center">Our features</p>
+                <p className="3xl:text-2xl">
+                  Before we explain to you the process of working with us, have a
+                  look at our features:
+                </p>
+                <ul className="pl-5 3xl:text-2xl">
+                  <li className="list-disc">
+                    Extremely high-quality workforce with all the checks done
+                  </li>
+                  <li className="list-disc">
+                    High-class management solutions to act as a booster for the
+                    success of your business
+                  </li>
+                  <li className="list-disc">
+                    Match the suitable candidates based on their niche and
+                    strengths
+                  </li>
+                  <li className="list-disc">
+                    Leverage the best candidates from the existing pool{" "}
+                  </li>
+                  <li className="list-disc">
+                    Having engaging discussions with both clients and candidates
+                    to understand the needs of each
+                  </li>
+                  <li className="list-disc">
+                    Procuring employees from other industries and helping them
+                    train with the required expertise
+                  </li>
+                  <li className="list-disc">
+                    Shifting the staff to areas where such experienced staff are
+                    less
+                  </li>
+                  <li className="list-disc">
+                    Flexible in meeting the client&apos;s expectations of{" "}
+                    <b>Oriental Chefs</b>
+                  </li>
+                  <li className="list-disc">
+                    Finding out which job opportunities get maximum takers and
+                    thus arranging candidates as per the demand.
+                  </li>
+                </ul>
+                <p className="py-2 3xl:text-2xl">
+                  So what are you waiting for? If you have to set your hotel up,
+                  you cannot wait. Trust your recruitment work with us and relax
+                  as we find the best candidates for you.
+                </p>{" "}
+                <p className="py-2 3xl:text-2xl">
+                  You can hire <b>Qualified and experienced Chefs</b> as per the
+                  cuisine you want. Just sign up for our service, and we promise
+                  we will lift all your recruitment workload from you.
+                </p>
               </div>
-              </div>
+            </div>
           </>
           <Footer />
         </>
       ) : (
         ""
       )}
+        <WhatsAppLogo />
     </div>
   );
 }

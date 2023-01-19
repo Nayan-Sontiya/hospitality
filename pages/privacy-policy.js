@@ -2,6 +2,7 @@ import React from "react";
 import Footer from "../components/common-components/Footer";
 import Header from "../components/common-components/Header";
 import Head from "next/head"
+import WhatsAppLogo from "../components/common-components/WhatsApp";
 function PrivacyPolicy() {
   return (
     <div>
@@ -13,6 +14,7 @@ function PrivacyPolicy() {
           name="description"
           content=" Whether you’re looking for young talent to hire, or a job place to work in the hospitality industry, Hospitality Finder is the best hospitality management website."
         />
+         <meta name="google-site-verification" content="CF__90Zfvbb28X_oOxUD5HIzBkNnNtP-SHP3RjPvYOM" />
         <meta
           name="Keywords"
           content="Find hospitality staff near me,
@@ -168,6 +170,7 @@ function PrivacyPolicy() {
           </div>
 
           <Footer />
+          <WhatsAppLogo />
         </>
       ) : (
         ""

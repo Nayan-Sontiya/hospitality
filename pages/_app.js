@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import "react-medium-image-zoom/dist/styles.css";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
   useEffect(() => {
@@ -32,7 +33,9 @@ function MyApp({ Component, pageProps }) {
       console.log("Development Mode on");
     }
   }, []);
-  return <Component {...pageProps} />;
+  return (
+      <Component {...pageProps} />
+  );
 }
 
 export default MyApp;

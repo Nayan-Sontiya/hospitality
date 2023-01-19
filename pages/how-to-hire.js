@@ -6,6 +6,7 @@ import animationData from "../public/images/lottiesFile/search-lottie.json";
 import connectFile from "../public/images/lottiesFile/connect.json";
 import Lottie from "react-lottie";
 import Head from 'next/head'
+import WhatsAppLogo from "../components/common-components/WhatsApp";
 const Payment = {
   loop: true,
   autoplay: true,
@@ -41,6 +42,7 @@ function HowToHire() {
           name="description"
           content="Looking for hospitality employers and employees to fill job vacancies? Hospitality Finder is the Best website to meet hospitality employers and employees."
         />
+         <meta name="google-site-verification" content="CF__90Zfvbb28X_oOxUD5HIzBkNnNtP-SHP3RjPvYOM" />
         <meta
           name="Keywords"
           content="Best website to meet hospitality employers and employees,
@@ -149,6 +151,7 @@ function HowToHire() {
         </div>
  
       <Footer />     </>) : ""}
+      <WhatsAppLogo />
     </div>
   );
 }

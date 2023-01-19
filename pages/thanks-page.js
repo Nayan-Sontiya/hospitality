@@ -1,5 +1,8 @@
+import Head from "next/head";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
+import ReactWhatsapp from 'react-whatsapp';
+import WhatsAppIcon from '../public/images/wapp.png'
 import Footer from "../components/common-components/Footer";
 import Header from "../components/common-components/Header";
 import { userDataProvider } from "../components/helpers/ApiHelper";
@@ -13,6 +16,9 @@ function ThanksPage() {
   }, [userData]);
   return (
     <div>
+      <Head>
+        <meta name="google-site-verification" content="CF__90Zfvbb28X_oOxUD5HIzBkNnNtP-SHP3RjPvYOM" />
+      </Head>
       {process.browser ? (
         <>
           <Header />
@@ -45,6 +51,7 @@ function ThanksPage() {
       ) : (
         ""
       )}
+     <WhatsAppLogo />
     </div>
   );
 }

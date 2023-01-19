@@ -54,6 +54,7 @@ function Faq() {
           name="description"
           content="We solve the toughest problems facing the hospitality industry. Hospitality Finder is the best website for hospitality staffing solutions. Easily search through hundreds of hospitality job offers to kick-start your hospitality career."
         />
+        <meta name="google-site-verification" content="CF__90Zfvbb28X_oOxUD5HIzBkNnNtP-SHP3RjPvYOM" />
         <meta
           name="Keywords"
           content="Best website for hospitality job seekers,
@@ -125,6 +126,7 @@ function Faq() {
           </section>
    
         <Footer />     </>) : ""}
+        <WhatsAppLogo />
       </div>
     </>
   );

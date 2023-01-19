@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Style from "../styles/Home.module.css";
 import swal from "sweetalert";
 import { useRouter } from "next/router";
+import Head from "next/head";
+import WhatsAppLogo from "../components/common-components/WhatsApp";
 function ResetPassword() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -41,8 +43,6 @@ function ResetPassword() {
                 title: "Success",
                 text: "Your Password has been changed successfully",
                 icon: "success",
-                buttons: { isConfirm: "Yes", cancel: "No" },
-                dangerMode: true,
               }).then(function (isConfirm) {
                 if (isConfirm) {
                   router.push("/");
@@ -64,6 +64,9 @@ function ResetPassword() {
   }
   return (
     <div className=" w-full bg-[#1B1465] h-screen">
+      <Head>
+      <meta name="google-site-verification" content="CF__90Zfvbb28X_oOxUD5HIzBkNnNtP-SHP3RjPvYOM" />
+      </Head>
       {process.browser ? (
         <div className=" grid justify-items-center pt-20  px-5">
           <div className="block p-6  rounded-lg shadow-lg bg-white w-full ml-2 mr-2 sm:w-2/4 md:w-1/3">
@@ -164,6 +167,7 @@ function ResetPassword() {
           </div>
         </div>
       ) : ""}
+      <WhatsAppLogo />
     </div>
   );
 }

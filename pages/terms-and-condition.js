@@ -2,9 +2,10 @@ import React from "react";
 import Footer from "../components/common-components/Footer";
 import Header from "../components/common-components/Header";
 import Head from "next/head"
+import WhatsAppLogo from "../components/common-components/WhatsApp";
 function TermsAndCondition() {
   return (
-    <div> 
+    <div>
       <Head>
         <title>
           Hospitality Finder | Best solution to find hospitality staff
@@ -13,6 +14,7 @@ function TermsAndCondition() {
           name="description"
           content="If you are looking for professional chefs, looking for waiter, looking for managers, looking for captains, looking for housekeepers, Hospitality finder is the Best solution to find hospitality staff."
         />
+        <meta name="google-site-verification" content="CF__90Zfvbb28X_oOxUD5HIzBkNnNtP-SHP3RjPvYOM" />
         <meta
           name="Keywords"
           content="Best solution to find hospitality staff,
@@ -265,7 +267,9 @@ function TermsAndCondition() {
       ) : (
         ""
       )}
+      <WhatsAppLogo />
     </div>
+
   );
 }
 

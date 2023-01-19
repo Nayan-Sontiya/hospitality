@@ -4,6 +4,7 @@ import Footer from "../components/common-components/Footer";
 import Header from "../components/common-components/Header";
 import Head from "next/head"
 import NotFound from "../components/common-components/NotFound";
+import WhatsAppLogo from "../components/common-components/WhatsApp";
 const  PageNotFound=()=> {
  
   return (
@@ -13,6 +14,7 @@ const  PageNotFound=()=> {
         <title>
         Hospitality Finder | Best website for hospitality staffing solutions
         </title>
+        <meta name="google-site-verification" content="CF__90Zfvbb28X_oOxUD5HIzBkNnNtP-SHP3RjPvYOM" />
         <meta
           name="description"
           content="We solve the toughest problems facing the hospitality industry. Hospitality Finder is the best website for hospitality staffing solutions. Easily search through hundreds of hospitality job offers to kick-start your hospitality career."
@@ -69,6 +71,7 @@ const  PageNotFound=()=> {
           </section>
    
         <Footer />     </>) : ""}
+        <WhatsAppLogo />
       </div>
     </>
   );

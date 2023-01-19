@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { signInWithGoogle } from '../../firebaseConfig'
 import Style from "../../styles/common.module.css";
+import GoogleButton from 'react-google-button'
 import { closeModalProfile, modalOpenShow } from "../helpers/HelperFunctions";
 import Link from "next/link";
 import {
@@ -14,6 +16,8 @@ import ForgotModal from "./Modal";
 import { useRouter } from "next/router";
 import swal from "sweetalert";
 import Loader from "./Loader";
+import { firebase } from '../../firebaseConfig'
+import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 
 function Header({ PageName }) {
   const [email, setEmail] = useState("");
@@ -28,6 +32,7 @@ function Header({ PageName }) {
     setPasswordShown(passwordShown ? false : true);
   };
   let router = useRouter();
+
   let userStatus = userStatusProvider();
   const UserSignup = async () => {
     if (email === "" && password === "") {
@@ -50,6 +55,7 @@ function Header({ PageName }) {
           "hospitalityFinderAccessToken",
           JSON.stringify(returnValue.accessToken)
         );
+        console.log(returnValue.data)
         localStorage.setItem(
           "hospitalityFinderUserData",
           JSON.stringify(returnValue.data)
@@ -58,13 +64,99 @@ function Header({ PageName }) {
         swal("Success", returnValue.message, "success");
         closeModalProfile("loginModal");
         setLoading(false);
-        router.push("/");
+        const {
+          query: { callback },
+        } = router;
+        if (callback) {
+          router.push(`/${callback}`);
+        } else {
+          router.push("/");
+        }
       } else {
         setLoading(false);
         swal("Error", returnValue.message, "error");
       }
     }
   };
+  const signInWithFacebook = async () => {
+    try {
+      const result = await signInWithPopup(firebase.auth, firebase.facebookProvider)
+      if (result) {
+        localStorage.setItem(
+          "hospitalityFinderAccessToken",
+          JSON.stringify(result.user.accessToken)
+        );
+      }
+      console.log(result.user)
+
+      const facebookUserData = {
+        _id: result.user.uid,
+        name: result.user.displayName,
+        email: result.user.email,
+        profile_pic: result.user.photoURL,
+        externalAuth: true
+      }
+      localStorage.setItem(
+        "hospitalityFinderUserData",
+        JSON.stringify(facebookUserData)
+      );
+      localStorage.setItem("hospitalityFinderStatus", true);
+      swal("Success", "Login Successfully", "success");
+      closeModalProfile("loginModal");
+      const {
+        query: { callback },
+      } = router;
+      if (callback) {
+        router.push(`/${callback}`);
+      } else {
+        router.push("/");
+      }
+
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  const signInWithGoogle = async () => {
+
+    try {
+      const result = await signInWithPopup(firebase.auth, firebase.googleProvider)
+      if (result) {
+        localStorage.setItem(
+          "hospitalityFinderAccessToken",
+          JSON.stringify(result.user.accessToken)
+        );
+      }
+
+      const googleUserData = {
+        _id: result.user.uid,
+        name: result.user.displayName,
+        email: result.user.email,
+        profile_pic: result.user.photoURL,
+        externalAuth: true
+      }
+      localStorage.setItem(
+        "hospitalityFinderUserData",
+        JSON.stringify(googleUserData)
+      );
+      localStorage.setItem("hospitalityFinderStatus", true);
+      swal("Success", "Login Successfully", "success");
+      closeModalProfile("loginModal");
+      const {
+        query: { callback },
+      } = router;
+      if (callback) {
+        router.push(`/${callback}`);
+      } else {
+        router.push("/");
+      }
+
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+
   function logout() {
     swal({
       title: "",
@@ -121,6 +213,7 @@ function Header({ PageName }) {
   // const DropdownClose =()=>{
   //   const close = document.getElementById('dropdownButton_header').style.display = "none";
   // }
+
   return (
     <div className="h-24 3xl:h-36 bg-[#ffffff]">
       <div className="grid grid-cols-12 content-center">
@@ -219,110 +312,117 @@ function Header({ PageName }) {
         <div className="col-span-4 sm:col-span-3 md:col-span-3 self-center pt-4">
           <div className={Style.headerResponsive}>
             <div className=" text-center">
-              {accessToken === undefined ||
-              accessToken === null ||
-              accessToken === "" ? (
-                <>
-                  <button
-                    className="w-1/4 h-8 3xl:h-12 3xl:text-xl border border-[#1B1465] text-[#1B1465] uppercase rounded-md shadow-md transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-[#ffffff] duration-300 "
-                    onClick={() => modalOpenShow("loginModal")}
-                  >
-                    Login
-                  </button>
-                  <Link href="/user-signup" passHref>
-                    <button className="w-1/4 h-8 3xl:h-12 3xl:text-xl bg-[#F8B705] text-[#1b1465] uppercase rounded-md ml-6 shadow-md transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-[#F8B705] duration-300 ">
-                      SignUp
-                    </button>
-                  </Link>
-                </>
-              ) : (
-                <>
-                  <div className="dropdown relative ">
+
+              {
+
+                accessToken === undefined ||
+                  accessToken === null ||
+                  accessToken === "" ? (
+                  <>
                     <button
-                      className="relative dropdown:block"
-                      role="navigation"
-                      aria-haspopup="true"
-                      aria-label="Dropdown open"
-                      id={"dropdownMenu_profile"}
+                      className="w-1/4 h-8 3xl:h-12 3xl:text-xl border border-[#1B1465] text-[#1B1465] uppercase rounded-md shadow-md transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-[#ffffff] duration-300 "
+                      onClick={() => modalOpenShow("loginModal")}
                     >
-                      <div className="flex pt-2">
-                        {userData.profile_pic !== "" &&
-                        userData.profile_pic !== null &&
-                        userData.profile_pic !== undefined ? (
-                          <img
-                            src={awsUrl + userData.profile_pic}
-                            className="w-8 h-8 3xl:w-12 3xl:h-12 rounded-full"
-                            alt="Best chef to make japenese food"
-                          />
-                        ) : (
-                          <img
-                            src="/images/avtar.png"
-                            className="w-8 h-8 3xl:w-12 3xl:h-12"
-                            alt="Best chef to make japenese food"
-                          />
-                        )}
-                        <p
-                          className={
-                            "pl-1 pt-1 text-[16px] 3xl:text-[22px] fontsemiBold text-[#707070]"
-                          }
-                        >
-                          {userData.name.split(" ")[0]}
-                        </p>
-                        <img
-                          src="/images/dpdown.png"
-                          alt="Best  Italian Chefs"
-                          className="w-6 h-6 3xl:w-10 3xl:h-10 mt-1 ml-1"
-                        />
-                      </div>
-                      <ul
-                        className={
-                          Style.profileDropdown +
-                          " absolute right-0 hidden w-40 z-50 border border-[#DBDDE0] bg-[#f4f2ff]  rounded  "
-                        }
-                        aria-label="submenu"
+                      Login
+                    </button>
+                    <Link href="/user-signup" passHref>
+                      <button className="w-1/4 h-8 3xl:h-12 3xl:text-xl bg-[#F8B705] text-[#1b1465] uppercase rounded-md ml-6 shadow-md transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-[#F8B705] duration-300 ">
+                        SignUp
+                      </button>
+                    </Link>
+                  </>
+                ) : (
+                  <>
+                    <div className="dropdown relative ">
+                      <button
+                        className="relative dropdown:block"
+                        role="navigation"
+                        aria-haspopup="true"
+                        aria-label="Dropdown open"
                         id={"dropdownMenu_profile"}
                       >
-                        <Link href="/my-profile" passHref>
-                          <li
+
+                        <div className="flex pt-2">
+                          {userData.profile_pic !== "" &&
+                            userData.profile_pic !== null &&
+                            userData.profile_pic !== undefined ? (
+                            <img
+                              src={userData?.externalAuth ? userData.profile_pic : awsUrl + userData.profile_pic}
+                              //src={userData.profile_pic}
+                              className="w-8 h-8 3xl:w-12 3xl:h-12 rounded-full"
+                              alt="Best chef to make japenese food"
+                            />
+
+
+                          ) : (
+                            <img
+                              src="/images/avtar.png"
+                              className="w-8 h-8 3xl:w-12 3xl:h-12"
+                              alt="Best chef to make japenese food"
+                            />
+                          )}
+                          <p
                             className={
-                              Style.headerText +
-                              "  text-left hover:bg-[#1b1465] 3xl:text-2xl hover:text-[#ffffff] pl-4 pt-2 pb-1 "
+                              "pl-1 pt-1 text-[16px] 3xl:text-[22px] fontsemiBold text-[#707070]"
                             }
                           >
-                            My Profile
-                          </li>
-                        </Link>
-                        <Link href="/my-plan" passHref>
-                          <li
-                            className={
-                              Style.headerText +
-                              "  text-left hover:bg-[#1b1465] 3xl:text-2xl hover:text-[#ffffff] pl-4 pt-2 pb-1 "
-                            }
-                          >
-                            My Plan
-                          </li>
-                        </Link>
-                        <li
+                            {userData.name.split(" ")[0]}
+                          </p>
+                          <img
+                            src="/images/dpdown.png"
+                            alt="Best  Italian Chefs"
+                            className="w-6 h-6 3xl:w-10 3xl:h-10 mt-1 ml-1"
+                          />
+                        </div>
+                        <ul
                           className={
-                            Style.headerText +
-                            "  text-left hover:bg-[#1b1465] 3xl:text-2xl hover:text-[#ffffff] pl-4 pt-2 pb-1 "
+                            Style.profileDropdown +
+                            " absolute right-0 hidden w-40 z-50 border border-[#DBDDE0] bg-[#f4f2ff]  rounded  "
                           }
-                          onClick={() => logout()}
+                          aria-label="submenu"
+                          id={"dropdownMenu_profile"}
                         >
-                          Log out
-                        </li>
-                      </ul>
-                    </button>
-                  </div>
-                </>
-              )}
+                          <Link href="/my-profile" passHref>
+                            <li
+                              className={
+                                Style.headerText +
+                                "  text-left hover:bg-[#1b1465] 3xl:text-2xl hover:text-[#ffffff] pl-4 pt-2 pb-1 "
+                              }
+                            >
+                              My Profile
+                            </li>
+                          </Link>
+                          <Link href="/my-plan" passHref>
+                            <li
+                              className={
+                                Style.headerText +
+                                "  text-left hover:bg-[#1b1465] 3xl:text-2xl hover:text-[#ffffff] pl-4 pt-2 pb-1 "
+                              }
+                            >
+                              My Plan
+                            </li>
+                          </Link>
+                          <li
+                            className={
+                              Style.headerText +
+                              "  text-left hover:bg-[#1b1465] 3xl:text-2xl hover:text-[#ffffff] pl-4 pt-2 pb-1 "
+                            }
+                            onClick={() => logout()}
+                          >
+                            Log out
+                          </li>
+                        </ul>
+                      </button>
+                    </div>
+                  </>
+                )}
             </div>
           </div>
           <div className={Style.headerMobileResponsive}>
             <div className="float-right flex">
               {accessToken === undefined ||
-              accessToken === null ||
-              accessToken === "" ? (
+                accessToken === null ||
+                accessToken === "" ? (
                 ""
               ) : (
                 <div className="dropdown relative ">
@@ -335,10 +435,11 @@ function Header({ PageName }) {
                   >
                     <div className="flex pt-1 pr-2">
                       {userData.profile_pic !== "" &&
-                      userData.profile_pic !== null &&
-                      userData.profile_pic !== undefined ? (
+                        userData.profile_pic !== null &&
+                        userData.profile_pic !== undefined ? (
                         <img
-                          src={awsUrl + userData.profile_pic}
+                          src={userData?.externalAuth ? userData.profile_pic : awsUrl + userData.profile_pic}
+                          //src={userData.profile_pic}
                           className="w-8 h-8 rounded-full"
                           alt="Best chef to make japenese food"
                         />
@@ -485,8 +586,8 @@ function Header({ PageName }) {
                       </li>
                     </Link>
                     {accessToken === undefined ||
-                    accessToken === null ||
-                    accessToken === "" ? (
+                      accessToken === null ||
+                      accessToken === "" ? (
                       <li
                         className={
                           Style.headerText + "  text-center pl-4 pt-2 pb-3 "
@@ -496,10 +597,6 @@ function Header({ PageName }) {
                           className="w-1/3 h-8 border border-[#1B1465] text-[#1B1465] uppercase rounded-md shadow-md"
                           onClick={() => {
                             modalOpenShow("loginModal");
-
-                            // ||
-
-                            // DropdownClose()
                           }}
                         >
                           Login
@@ -704,6 +801,19 @@ function Header({ PageName }) {
                       Sign Up
                     </Link>
                   </p>
+
+                  <div className="mt-5 flex flex-col items-center justify-center gap-3">
+                    <GoogleButton
+                      onClick={signInWithGoogle}
+                    />
+                    <div>
+                      <button onClick={signInWithFacebook} class="flex items-center justify-center  px-5 py-3 mt-2 space-x-3 text-sm text-center bg-blue-500 text-white transition-colors duration-200 transform border rounded-lg dark:text-gray-300 dark:border-gray-300 hover:bg-gray-600 dark:hover:bg-gray-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="26" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                          <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
+                        </svg>
+                        <span class="text-sm text-white dark:text-gray-200">Sign in with Facebook</span></button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

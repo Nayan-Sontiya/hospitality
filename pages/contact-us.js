@@ -8,6 +8,7 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { useRouter } from "next/router";
 import Head from 'next/head'
+import ReactWhatsapp from 'react-whatsapp';
 function ContactUs() {
   let [data, setData] = useState("");
   let [name, setName] = useState("");
@@ -42,7 +43,7 @@ function ContactUs() {
       setValidEmail(true);
     }
   }
-  
+
   const GetInTouch = async () => {
     if (name === "") {
       swal("Info", "Please enter your name", "info");
@@ -84,14 +85,17 @@ function ContactUs() {
   };
   return (
     <div>
-       <Head>
+      <Head>
         <title>
-        Hospitality Finder | Best website for hospitality management.
+          Hospitality Finder | Best website for hospitality management.
         </title>
+
         <meta
           name="description"
           content="Hospitality Finder is the best website for hospitality management. We provides best hospitality jobs online in the hospitality industry. Search hospitality jobs and contact employers directly."
         />
+        <meta name="google-site-verification" content="CF__90Zfvbb28X_oOxUD5HIzBkNnNtP-SHP3RjPvYOM" />
+
         <meta
           name="Keywords"
           content="Best website for hospitality staff,
@@ -169,7 +173,7 @@ function ContactUs() {
                   }
                 >
                   Name should contains alphabets only
-              </span>
+                </span>
               </div>
               <div className="col-span-12 md:col-span-6 md:ml-2 md:mr-4 pt-5 md:pt-0">
                 <PhoneInput country={"in"} onChange={(e) => setMobile(e)} />
@@ -190,7 +194,7 @@ function ContactUs() {
                   }
                 >
                   Please enter valid Email.
-              </span>
+                </span>
               </div>
               <div className="col-span-12 md:col-span-6 md:ml-2 md:mr-4 pt-5 md:pt-0">
                 <input
@@ -220,14 +224,14 @@ function ContactUs() {
                   Submit
                 </button>
               ) : (
-                  <button
-                    className="bg-[#F8B705] py-2 px-10 rounded text-[#1b1465] 3xl:text-3xl  transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-[#F8B705] duration-300 "
-                    type="button"
-                    onClick={() => GetInTouch()}
-                  >
-                    Submit
-                  </button>
-                )}
+                <button
+                  className="bg-[#F8B705] py-2 px-10 rounded text-[#1b1465] 3xl:text-3xl  transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-[#F8B705] duration-300 "
+                  type="button"
+                  onClick={() => GetInTouch()}
+                >
+                  Submit
+                </button>
+              )}
             </div>
           </div>
           <div className="col-span-12 md:col-span-6">
@@ -241,7 +245,7 @@ function ContactUs() {
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               ></iframe>
-      
+
             </div>
           </div>
         </div>
@@ -289,8 +293,9 @@ function ContactUs() {
             </div>
           </div>
         </div>
-     
-      <Footer /> </>) : ""}
+
+        <Footer /> </>) : ""}
+        <WhatsAppLogo />
     </div>
   );
 }

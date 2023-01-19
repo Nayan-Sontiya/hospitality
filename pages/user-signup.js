@@ -6,6 +6,7 @@ import {
   GetRequest,
   accessTokenProvider,
 } from "../components/helpers/ApiHelper";
+import { useGoogleLogin } from "@react-oauth/google";
 import Style from "../styles/Home.module.css";
 import swal from "sweetalert";
 import PhoneInput from "react-phone-input-2";
@@ -14,8 +15,14 @@ import { modalOpenShow } from "../components/helpers/HelperFunctions";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Loader from "../components/common-components/Loader";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import ReactWhatsapp from 'react-whatsapp';
+import WhatsAppIcon from '../public/images/wapp.png'
+import { gapi } from "gapi-script";
 
 function SignupPage() {
+  const clientId =
+    "410257383474-ffjmg61h1hu1bk8bmtubj0uanvrd4c17.apps.googleusercontent.com";
   const [name, setName] = useState("");
   const [contact1, setContact1] = useState("");
 
@@ -61,6 +68,14 @@ function SignupPage() {
     AllCountries();
   }, []);
 
+  const responseGoogle = (response) => {
+    console.log("response => ", response);
+  };
+
+  const responseGoogle1 = (response) => {
+    console.log("response1 => ", response);
+  };
+
   const AllCountries = async () => {
     let returnValue = await GetRequest("getcountry/all");
     if (returnValue) {
@@ -99,6 +114,17 @@ function SignupPage() {
       setCity(newArray);
     }
   };
+
+  useEffect(() => {
+    const initClient = () => {
+      gapi.client.init({
+        clientId: clientId,
+        scope: "",
+      });
+    };
+    gapi.load("client:auth2", initClient);
+  });
+
 
   useEffect(() => {
     if (question === "New Outlet") {
@@ -198,7 +224,14 @@ function SignupPage() {
       }
     }
   };
-
+  useEffect(() => {
+    const {
+      query: { callback },
+    } = router;
+    if (callback) {
+      modalOpenShow("loginModal");
+    }
+  }, [router.query]);
   function EmailCheck() {
     if (email != "") {
       let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
@@ -211,6 +244,7 @@ function SignupPage() {
       setValidEmail(true);
     }
   }
+
   return (
     <div>
       <Head>
@@ -220,6 +254,10 @@ function SignupPage() {
         <meta
           name="description"
           content="Hospitality Finder is a Leading website for hospitality employers and hospitality job seekers. Find Hospitality staff to fulfil your hospitality job requirements easily."
+        />
+        <meta
+          name="google-site-verification"
+          content="CF__90Zfvbb28X_oOxUD5HIzBkNnNtP-SHP3RjPvYOM"
         />
         <meta
           name="Keywords"
@@ -256,6 +294,7 @@ function SignupPage() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <GoogleOAuthProvider>
       {process.browser ? (
         <>
           <Header />
@@ -457,6 +496,7 @@ function SignupPage() {
                           type="file"
                           multiple="multiple"
                           className={Style.InputStyle + " pt-1"}
+                          // accept="image/*"
                           onChange={(e) => setMenu(e.target.files)}
                         />
                         <span className="text-blue-500 text-xs">
@@ -554,6 +594,10 @@ function SignupPage() {
                         Login
                       </button>
                     </label>
+                    <button onClick={() => login()}>
+                      Sign in with Google 🚀{" "}
+                    </button>
+                    ;
                   </div>
                 </div>
               </div>
@@ -564,6 +608,8 @@ function SignupPage() {
       ) : (
         ""
       )}
+      </GoogleOAuthProvider>
+      <WhatsAppLogo />
     </div>
   );
 }

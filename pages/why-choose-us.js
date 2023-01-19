@@ -3,6 +3,9 @@ import Footer from "../components/common-components/Footer";
 import Header from "../components/common-components/Header";
 // import Style from "../styles/globals.css";
 import Head from "next/head";
+import ReactWhatsapp from 'react-whatsapp';
+import WhatsAppIcon from '../public/images/wapp.png'
+import WhatsAppLogo from "../components/common-components/WhatsApp";
 
 function WhyChooseUS() {
   return (
@@ -15,6 +18,7 @@ function WhyChooseUS() {
           name="description"
           content="Hospitality Finder is the best website to find hospitality staff, search and hire best continental chef, best Chinese chef, best north Indian chef, top Spanish chefs, best oriental chefs, best Japanese chef, best Italian chef, best French chef, etc."
         />
+         <meta name="google-site-verification" content="CF__90Zfvbb28X_oOxUD5HIzBkNnNtP-SHP3RjPvYOM" />
         <meta
           name="Keywords"
           content="Best website to find hospitality staff,
@@ -225,6 +229,7 @@ function WhyChooseUS() {
         </div>
         <Footer />
       </>) : ""}
+      <WhatsAppLogo />
     </div>
   );
 }

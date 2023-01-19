@@ -6,6 +6,7 @@ import Link from "next/link";
 import Loader from "../components/common-components/Loader";
 import Head from 'next/head'
 import { useRouter } from 'next/router'
+import ReactWhatsapp from "react-whatsapp";
 function MyPlan() {
   let [data, setData] = useState([]);
   let [dayLeft, setDayLeft] = useState("")
@@ -42,6 +43,7 @@ function MyPlan() {
           name="description"
           content="We all know that the hospitality industry is tough. We are the Gurus and provide the support and guidelines for hiring and managing hospitality staff."
         />
+        <meta name="google-site-verification" content="CF__90Zfvbb28X_oOxUD5HIzBkNnNtP-SHP3RjPvYOM" />
         <meta
           name="Keywords"
           content="guidelines for hiring and managing hospitality staff,
@@ -89,7 +91,7 @@ function MyPlan() {
                     <div className="w-80 bg-[#1b1465] p-3 rounded">
                       <p className="grid justify-items-center text-[#ffffff] text-2xl font-semibold border-b border-[#ffffff] tracking-widest">
                         My Plan
-                  </p>
+                      </p>
                       <div className="grid justify-items-center">
                         <div className="flex pt-3">
                           <label className="text-[#ffffff]">
@@ -113,7 +115,7 @@ function MyPlan() {
                   <div className="p-2 sm:p-5 md:p-10">
                     <p className="text-2xl text-[#1b1465] font-semibold border-[#1b1465] border-b-[2px] tracking-widest ">
                       Your Candidate
-                </p>
+                    </p>
                     <div className="grid grid-cols-12 pt-10">
                       {data.length > 0
                         ? data[0].canditateResume.map((val, i) => {
@@ -126,13 +128,13 @@ function MyPlan() {
                                 <div className="flex pt-3">
                                   <label className="">
                                     Candidate Name : &nbsp;
-                              </label>
+                                  </label>
                                   <p className="">{val.candidateName}</p>
                                 </div>
                                 <div className="flex pt-3">
                                   <label className="">
                                     Employment Type : &nbsp;
-                              </label>
+                                  </label>
                                   <p className="">{val.occupation}</p>
                                 </div>
                                 <div className="grid justify-items-center pt-3">
@@ -144,7 +146,7 @@ function MyPlan() {
                                   >
                                     <button className="border border-[#1b1465] px-5 py-2 text-[1b1465] rounded bg-[#ffffff]">
                                       View all details
-                                </button>
+                                    </button>
                                   </Link>
                                 </div>
                               </div>
@@ -155,20 +157,21 @@ function MyPlan() {
                     </div>
 
                   </div>
-                </> : 
+                </> :
                 <div className="text-center">
                   <Link href="/packs" passHref>
-                <button className="bg-[#1b1465] px-10 py-3 text-white rounded"
+                    <button className="bg-[#1b1465] px-10 py-3 text-white rounded"
                     >Please Purchase Plan</button>
-                    </Link>
-                  </div>
-                      }
+                  </Link>
+                </div>
+              }
             </div>}
           <Footer />
         </>
       ) : (
-          ""
-        )}
+        ""
+      )}
+      <WhatsAppLogo />
     </>
   );
 }

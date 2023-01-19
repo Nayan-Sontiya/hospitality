@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import Footer from "../components/common-components/Footer";
 import Header from "../components/common-components/Header";
 import Style from "../styles/Home.module.css";
+import ReactWhatsapp from 'react-whatsapp';
+
 import {
   GetRequest,
   PutRequest,
@@ -194,6 +196,7 @@ function MyProfile() {
           name="description"
           content="Welcome to Hospitality Finder, a comprehensive online search service for businesses seeking hospitality professional or staff."
         />
+        <meta name="google-site-verification" content="CF__90Zfvbb28X_oOxUD5HIzBkNnNtP-SHP3RjPvYOM" />
         <meta
           name="Keywords"
           content="best hospitality management staff,
@@ -247,11 +250,11 @@ function MyProfile() {
                   <div className="w-11/12 sm:w-9/12 md:w-4/12">
                     <div className="grid justify-items-center">
                       {userData.profile_pic !== "" &&
-                      userData.profile_pic !== null &&
-                      userData.profile_pic !== undefined ? (
+                        userData.profile_pic !== null &&
+                        userData.profile_pic !== undefined ? (
                         <div className="">
                           <img
-                            src={awsUrl + userData.profile_pic}
+                            src={userData?.externalAuth ? userData.profile_pic : awsUrl + userData.profile_pic}
                             alt="Looking Chef for my restaurant"
                             className="h-20 w-20 rounded-full object-cover"
                           />
@@ -298,32 +301,20 @@ function MyProfile() {
                     <p className={Style.profileFieldsStyle}>
                       + {userData.contactno2}
                     </p>
-
                     <div className="flex">
-                      <select
-                        className={Style.profileFieldsStyle + " mr-2"}
-                        value={userData.country}
-                      >
-                        <option>Select Country</option>
-                        {country?.map((item, index) => (
-                          <option value={item.value} key={index} selected>
-                            {item.name}
-                          </option>
-                        ))}
-                      </select>
-                      <select
+                      <p className={Style.profileFieldsStyle + " mr-2"}>
+                        {
+                          country?.find((c) => c.value === userData.country)
+                            ?.name
+                        }
+                      </p>
+                      <p
                         className={
                           Style.profileFieldsStyle + " ml-2 xs:ml-auto"
                         }
-                        value={userData.state}
                       >
-                        <option>Select State</option>
-                        {state?.map((item, index) => (
-                          <option value={item.value} key={index} selected>
-                            {item.name}
-                          </option>
-                        ))}
-                      </select>
+                        {state?.find((c) => c.value === userData.state)?.name}
+                      </p>
                     </div>
                     <div className="flex">
                       <p className={Style.profileFieldsStyle + " mr-2"}>
@@ -432,9 +423,9 @@ function MyProfile() {
                           maxLength="10"
                           className={Style.InputStyle}
                           onInput={(e) =>
-                            (e.target.value = e.target.value
-                              .replace(/[^0-9]/g, "")
-                              .replace(/(\..*?)\..*/g, "$1"))
+                          (e.target.value = e.target.value
+                            .replace(/[^0-9]/g, "")
+                            .replace(/(\..*?)\..*/g, "$1"))
                           }
                           onChange={(e) => setZipCode(e.target.value)}
                         />
@@ -462,6 +453,7 @@ function MyProfile() {
       ) : (
         ""
       )}
+      <WhatsAppLogo />
     </div>
   );
 }

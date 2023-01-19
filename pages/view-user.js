@@ -4,9 +4,12 @@ import { useEffect, useState } from "react";
 import Style from "../styles/Home.module.css";
 import Footer from "../components/common-components/Footer";
 import Header from "../components/common-components/Header";
-import { awsUrl, GetRequest ,userDataProvider} from "../components/helpers/ApiHelper";
+import { accessTokenProvider, awsUrl, GetRequest ,userDataProvider} from "../components/helpers/ApiHelper";
 import { multipleMediaIdentifier } from "../components/helpers/HelperFunctions";
 import Loader from "../components/common-components/Loader";
+import ReactWhatsapp from 'react-whatsapp';
+import WhatsAppLogo from "../components/common-components/WhatsApp";
+
 const ViewUser = () => {
   let [searchData, setSearchData] = useState([]);
   let [buttonLoader, setButtonLoader] = useState(false);
@@ -30,6 +33,7 @@ const ViewUser = () => {
     return result.join(" , ");
   }
   const { userId } = router.query;
+  
   const {
     photo_of_candidate,
     name_of_candidate,
@@ -46,11 +50,22 @@ const ViewUser = () => {
     dob,
     dish,
   } = searchData || {};
+  let accessToken = accessTokenProvider();
+ 
+  // useEffect(() => {
+  //   if (
+  //     accessToken === "" ||
+  //     accessToken === null ||
+  //     accessToken === undefined
+  //   ) {
+  //     router.push("/");
+  //   }
+  // }, [accessToken]);
   const getCandidateResume = async (candidateId) => {
     let resp = await GetRequest(
       "getCandidateResume/" + userData._id + "/" + candidateId
     );
-    if (resp.status === 200) {
+    if (resp.status === 200) { 
       window.open(
         `${window.location.origin}/user-details/?id=${candidateId}`,
         "_targetBlank"
@@ -70,7 +85,7 @@ const ViewUser = () => {
   const getUser = async () => {
     if (userId) {
       setButtonLoader(true);
-      let response = await GetRequest("getCandidateInfo/" + userId);
+      let response = await GetRequest("getCandidateInfoWithoutAuth/" + userId);
       if (response.status === 200) {
         setSearchData(response.data);
         setButtonLoader(false);
@@ -91,7 +106,12 @@ const ViewUser = () => {
   useEffect(() => {
     getUser();
   }, [userId]);
-
+const redirect=()=>{
+  if(accessToken){
+    getCandidateResume(userId)
+  }
+  router.push(`/user-signup/?callback=/user-details/?id=${userId}`)
+}
   useEffect(() => {
     setHasCandidateData(searchData && !!Object.values(searchData)?.length);
   }, [searchData]);
@@ -105,10 +125,11 @@ const ViewUser = () => {
           name="description"
           content="Welcome to Hospitality Finder, a comprehensive online search service for businesses seeking hospitality professional or staff."
         />
+         <meta name="google-site-verification" content="CF__90Zfvbb28X_oOxUD5HIzBkNnNtP-SHP3RjPvYOM" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>
-        <Header PageName="resume" />
+        <Header PageName="home" />
         <div
           className="col-span-12 md:col-span-12"
         >
@@ -119,7 +140,7 @@ const ViewUser = () => {
               {hasCandidateData && (
                 <div className=" p-3 border border-[#7f7f7f] rounded-xl mt-2">
                   <div className="grid grid-cols-12">
-                    <div className="col-span-12 sm:col-span-12 pt-1 md:col-span-3">
+                    <div className="col-span-12 sm:col-span-12 pt-1 md:col-span-3 m-auto">
                       {photo_of_candidate !== "" ? (
                         <img
                           src={
@@ -136,9 +157,11 @@ const ViewUser = () => {
                         />
                       )}
                     </div>
-                    <div className="col-span-6 sm:col-span-6 md:col-span-5">
+                    <div className="col-span-12 sm:col-span-6 md:col-span-5">
                       <p className="text-xl 3xl:text-3xl pl-5 text-[#000000] uppercase">
-                        {name_of_candidate}
+                      {name_of_candidate
+                                  ? name_of_candidate?.split(" ")[0]
+                                  : "-"}
                       </p>
 
                       <span className="pl-5 text-[18px] text-[#fbbc07] 3xl:text-3xl flex">
@@ -186,7 +209,7 @@ const ViewUser = () => {
                         <div className="flex p-0 m-0 pl-5 ">{religion}</div>
                       </div>
                     </div>
-                    <div className="col-span-6 sm:col-span-6 md:col-span-4 pt-0 md:pt-8">
+                    <div className="col-span-12 sm:col-span-6 md:col-span-4 pt-0 md:pt-8">
                       <label className={Style.userLabelStyle}>
                         JOB SECTION
                       </label>
@@ -307,7 +330,7 @@ const ViewUser = () => {
                   <div className="grid justify-items-center">
                     <button
                       className="bg-[#F8B705] text-white px-5 py-1 mb-2 mt-8 rounded"
-                      onClick={() => getCandidateResume(userId)}
+                      onClick={redirect}
                     >
                       Connect
                     </button>
@@ -319,6 +342,7 @@ const ViewUser = () => {
         </div>
       </div>
       <Footer />
+      <WhatsAppLogo />
     </div>
   );
 };

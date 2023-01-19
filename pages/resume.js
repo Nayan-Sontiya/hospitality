@@ -4,14 +4,18 @@ import { useEffect, useState } from "react";
 import { GetRequest } from "../components/helpers/ApiHelper";
 import Head from "next/head";
 import NewResume from "../components/resume-components/newresume";
+import { useRouter } from "next/router";
+import WhatsAppLogo from "../components/common-components/WhatsApp";
 function resume() {
   const [data, setData] = useState([]);
+  const router = useRouter();
+  const {userId} = router.query || {};
   useEffect(() => {
     GetPlan();
-  }, []);
+  }, [userId]);
   const GetPlan = async () => {
     let response = await GetRequest(
-      "getCandidateInfo/" + "624c2b7e328848fd20dc7d46"
+      "getCandidateInfo/" + userId
     );
 
     if (response.status === 200) {
@@ -27,6 +31,10 @@ function resume() {
         <meta
           name="description"
           content="Welcome to Hospitality Finder, a comprehensive online search service for businesses seeking hospitality professional or staff."
+        />
+        <meta
+          name="google-site-verification"
+          content="CF__90Zfvbb28X_oOxUD5HIzBkNnNtP-SHP3RjPvYOM"
         />
         <meta
           name="Keywords"
@@ -62,12 +70,17 @@ function resume() {
           experienced F&#38;B managers list"
         />
         <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        ></link>
       </Head>
       <div>
         <Header PageName="resume" />
         <NewResume data={data} />
       </div>
       <Footer />
+      <WhatsAppLogo />
     </div>
   );
 }

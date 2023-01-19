@@ -3,6 +3,8 @@ import Footer from "../../components/common-components/Footer";
 import Header from "../../components/common-components/Header";
 import Head from "next/head";
 import Link from "next/link";
+import ReactWhatsapp from "react-whatsapp";
+import WhatsAppLogo from "../../components/common-components/WhatsApp";
 function Blogs() {
   const BlogContent = [
     {
@@ -28,6 +30,13 @@ function Blogs() {
       subHeading:
         "Strategies to use to find experienced hospitality staff for hire",
       link: "strategies-to-use-to-find-experienced-hospitality-staff-for-hire",
+    },
+    {
+      id: 4,
+      img: "/images/hotel-staff.jpg",
+      subHeading:
+        "Best place to find Chinese Chef",
+      link: "best-place-to-find-chinese-chef",
     },
   ];
   return (
@@ -79,18 +88,21 @@ function Blogs() {
       {process.browser ? (
         <>
           <Header PageName="blog" />
-          <div className="w-full p-0 m-0">
-            <div>
-            <img
-              src="/images/blog-banner.jpg"
-              alt="How to find good Chef near me"
-              className="w-full"
-            />
+          <div>
+            <div className="relative">
+              <img
+                src="/images/blog-banner.jpg"
+                alt="How to find good Chef near me"
+                className="w-full"
+              />
 
-            <p className="text-2xl md:text-4xl lg:text-[50px] 3xl:text-5xl text-white -mt-40 sm:-mt-40 md:-mt-80 h-40 sm:h-40 md:h-80 font-bold py-5 text-center">
-              Blogs
-            </p>
+              <p className="text-2xl md:text-4xl lg:text-[50px] 3xl:text-5xl text-white font-bold py-5 text-center verticle-center">
+                Blogs
+              </p>
             </div>
+          </div>
+          <div className="w-full p-0 m-0">
+
             <div className=" sm:px-10 pt-10">
               <div className="grid grid-cols-12">
                 {BlogContent.map((item, i) => {
@@ -129,6 +141,7 @@ function Blogs() {
       ) : (
         ""
       )}
+     <WhatsAppLogo />
     </div>
   );
 }
