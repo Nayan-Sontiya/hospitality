@@ -507,6 +507,16 @@ function Home() {
                     Add Requirement
                   </div>
                 )}
+                <div className="p-5 flex justify-center lg:justify-end ">
+                <button
+                  type="button"
+                  disabled={requirements.length == 0}
+                  onClick={GetSearchData}
+                  className={`focus:outline-none w-60 3xl:w-96 3xl:h-14 3xl:text-2xl bg-[#1B1465] text-md text-[#ffffff] py-2 px-2 rounded-lg`}
+                >
+                  Proceed To Search
+                </button>
+              </div>
               </div>
               <div
                 className={`mt-2 grid ${
@@ -829,16 +839,7 @@ function Home() {
                   </button>
                 </div>
               )}
-              <div className="p-5 flex justify-center lg:justify-end ">
-                <button
-                  type="button"
-                  disabled={requirements.length == 0}
-                  onClick={GetSearchData}
-                  className={`focus:outline-none w-60 3xl:w-96 3xl:h-14 3xl:text-2xl bg-[#1B1465] text-md text-[#ffffff] py-2 px-2 rounded-lg`}
-                >
-                  Proceed To Search
-                </button>
-              </div>
+              
             </div>
             {/* )} */}
           </div>
