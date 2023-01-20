@@ -2,6 +2,7 @@ import React from "react";
 import Footer from "../components/common-components/Footer";
 import Header from "../components/common-components/Header";
 import Head from "next/head"
+import WhatsAppLogo from "../components/common-components/WhatsApp";
 function Faq() {
   const Questions = [
     {

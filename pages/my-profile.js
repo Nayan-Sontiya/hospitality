@@ -22,6 +22,7 @@ import "react-phone-input-2/lib/style.css";
 import swal from "sweetalert";
 import { useRouter } from "next/router";
 import Head from "next/head";
+import WhatsAppLogo from "../components/common-components/WhatsApp";
 function MyProfile() {
   let userData = userDataProvider();
   let userStatus = userStatusProvider();

@@ -286,7 +286,7 @@ function Packs() {
       ) : (
         ""
       )}
-      <WhatsAppLogo/>
+      <WhatsAppLogo />
     </div>
   );
 }

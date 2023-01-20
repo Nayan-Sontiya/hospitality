@@ -16,6 +16,7 @@ import NewResume from "../components/resume-components/newresume";
 import Head from "next/head";
 import ReactWhatsapp from 'react-whatsapp';
 import WhatsAppIcon from '../public/images/wapp.png'
+import WhatsAppLogo from "../components/common-components/WhatsApp";
 const ImageLottie = {
   loop: true,
   autoplay: true,

@@ -6,7 +6,7 @@ import {
   GetRequest,
   accessTokenProvider,
 } from "../components/helpers/ApiHelper";
-import { useGoogleLogin } from "@react-oauth/google";
+// import { useGoogleLogin } from "@react-oauth/google";
 import Style from "../styles/Home.module.css";
 import swal from "sweetalert";
 import PhoneInput from "react-phone-input-2";
@@ -15,10 +15,11 @@ import { modalOpenShow } from "../components/helpers/HelperFunctions";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Loader from "../components/common-components/Loader";
-import { GoogleOAuthProvider } from "@react-oauth/google";
+// import { GoogleOAuthProvider } from "@react-oauth/google";
 import ReactWhatsapp from 'react-whatsapp';
-import WhatsAppIcon from '../public/images/wapp.png'
-import { gapi } from "gapi-script";
+import WhatsAppLogo from "../components/common-components/WhatsApp";
+// import WhatsAppIcon from '../public/images/wapp.png'
+// import { gapi } from "gapi-script";
 
 function SignupPage() {
   const clientId =
@@ -115,15 +116,15 @@ function SignupPage() {
     }
   };
 
-  useEffect(() => {
-    const initClient = () => {
-      gapi.client.init({
-        clientId: clientId,
-        scope: "",
-      });
-    };
-    gapi.load("client:auth2", initClient);
-  });
+  // useEffect(() => {
+  //   const initClient = () => {
+  //     gapi.client.init({
+  //       clientId: clientId,
+  //       scope: "",
+  //     });
+  //   };
+  //   gapi.load("client:auth2", initClient);
+  // });
 
 
   useEffect(() => {
@@ -294,7 +295,7 @@ function SignupPage() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <GoogleOAuthProvider>
+      {/* <GoogleOAuthProvider> */}
       {process.browser ? (
         <>
           <Header />
@@ -594,10 +595,10 @@ function SignupPage() {
                         Login
                       </button>
                     </label>
-                    <button onClick={() => login()}>
+                    {/* <button onClick={() => login()}>
                       Sign in with Google 🚀{" "}
-                    </button>
-                    ;
+                    </button> */}
+                    
                   </div>
                 </div>
               </div>
@@ -608,7 +609,7 @@ function SignupPage() {
       ) : (
         ""
       )}
-      </GoogleOAuthProvider>
+      {/* </GoogleOAuthProvider> */}
       <WhatsAppLogo />
     </div>
   );

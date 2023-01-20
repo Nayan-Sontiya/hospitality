@@ -6,6 +6,7 @@ import WhatsAppIcon from '../public/images/wapp.png'
 import Footer from "../components/common-components/Footer";
 import Header from "../components/common-components/Header";
 import { userDataProvider } from "../components/helpers/ApiHelper";
+import WhatsAppLogo from "../components/common-components/WhatsApp";
 function ThanksPage() {
   let [name, setName] = useState("");
   let userData = userDataProvider();

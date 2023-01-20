@@ -21,7 +21,7 @@ function StrategiesBlog() {
             </Head>
             <Header PageName="" />
             <img
-                src="/images/service-restaurant.jpg"
+                src="/images/hotel-staff.jpg"
                 className="w-full lg:h-[750px] 3xl:h-[900px] object-cover"
                 alt="looking for qualifies and experienced chefs"
             />

@@ -18,6 +18,7 @@ import animationData from "../public/images/lottiesFile/search-lottie.json";
 import imageDAta from "../public/images/lottiesFile/image-placeholder.json";
 import { GradesWithCategory } from "./home";
 import Head from "next/head";
+import WhatsAppLogo from "../components/common-components/WhatsApp";
 const defaultOptions = {
   loop: true,
   autoplay: true,

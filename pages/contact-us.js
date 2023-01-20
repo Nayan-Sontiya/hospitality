@@ -9,6 +9,7 @@ import "react-phone-input-2/lib/style.css";
 import { useRouter } from "next/router";
 import Head from 'next/head'
 import ReactWhatsapp from 'react-whatsapp';
+import WhatsAppLogo from "../components/common-components/WhatsApp";
 function ContactUs() {
   let [data, setData] = useState("");
   let [name, setName] = useState("");

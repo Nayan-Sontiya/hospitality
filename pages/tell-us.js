@@ -5,6 +5,7 @@ import { GetRequest } from "../components/helpers/ApiHelper";
 import { useRouter } from "next/router";
 import swal from "sweetalert";
 import Head from "next/head";
+import WhatsAppLogo from "../components/common-components/WhatsApp";
 
 function TellUs() {
   let [occupationData, setOccupationData] = useState([]);

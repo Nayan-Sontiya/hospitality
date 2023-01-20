@@ -1,6 +1,7 @@
 import Head from "next/head";
 import HomePage from "./home";
 import Script from "next/script";
+import WhatsAppLogo from "../components/common-components/WhatsApp";
 
 export default function Home() {
   return (
@@ -82,6 +83,7 @@ export default function Home() {
           `}
       </Script>
       <HomePage />
+      <WhatsAppLogo/>
     </>
   );
 }

@@ -33,7 +33,7 @@ function Blogs() {
     },
     {
       id: 4,
-      img: "/images/hotel-staff.jpg",
+      img: "/images/chinesfood.jpg",
       subHeading:
         "Best place to find Chinese Chef",
       link: "best-place-to-find-chinese-chef",

@@ -7,6 +7,7 @@ import Loader from "../components/common-components/Loader";
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import ReactWhatsapp from "react-whatsapp";
+import WhatsAppLogo from "../components/common-components/WhatsApp";
 function MyPlan() {
   let [data, setData] = useState([]);
   let [dayLeft, setDayLeft] = useState("")

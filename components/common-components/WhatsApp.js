@@ -3,16 +3,16 @@ import ReactWhatsapp from "react-whatsapp";
 const WhatsAppLogo = () => {
     return (
         <>
-            <ReactWhatsapp number="0000000000" message="Hello World!!!">
+            <ReactWhatsapp number="9981333039" message="Hi">
                 <img
                     style={{
                         position: 'fixed',
-                        right: '40px',
-                        bottom: '40px'
+                        right: '20px',
+                        bottom: '20px'
                     }}
                     src='/images/wapp.png' alt="whatsappIcon"
-                    height={80}
-                    width={80}
+                    height={60}
+                    width={60}
                 />
             </ReactWhatsapp>
         </>
