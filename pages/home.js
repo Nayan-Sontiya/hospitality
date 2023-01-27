@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Header from "../components/common-components/Header";
 import Footer from "../components/common-components/Footer";
 import WhatsAppIcon from "../components/common-components/WhatsApp";
+import WhatsAppLogo from "../components/common-components/WhatsApp";
 import {
   GetRequest,
   accessTokenProvider,
@@ -20,9 +21,51 @@ import ConnectFile from "../public/images/lottiesFile/contact-animation.json";
 import TrustedLogos from "../components/home-components/TrustedLogos";
 import Testimonials from "../components/home-components/Testimonials";
 import ProfileOfTheWeek from "../components/home-components/ProfileOfTheWeek";
-
 import Head from "next/head";
-import WhatsAppLogo from "../components/common-components/WhatsApp";
+
+const profiles = [
+  {
+    category: "COOKS/CHEF",
+    imgPath: "/images/HomePage/chef.png"
+  },
+  {
+    category: "WAITERS / CAPTAINS",
+    imgPath: "/images/HomePage/waiter.png"
+  },
+  {
+    category: "MANAGERS",
+    imgPath: "/images/HomePage/avatar.png"
+  },
+  {
+    category: "BARTENDERS",
+    imgPath: "/images/HomePage/bartender.png"
+  },
+  {
+    category: "RECEPTIONIST",
+    imgPath: "/images/HomePage/reception.png"
+  },
+  {
+    category: "HOSTESS",
+    imgPath: "/images/HomePage/host.png"
+  },
+  {
+    category: "DJ",
+    imgPath : "/images/HomePage/dj.jpg"
+  },
+  {
+    category: "OFFICE BOY",
+    imgPath: "/images/HomePage/officeboy.png"
+  },
+  {
+    category: "HOUSEKEEPING / UTILITY",
+    imgPath: "/images/HomePage/maid.png"
+  },
+  {
+    category: "CASHIER",
+    imgPath:  "/images/HomePage/cashier.jpg"
+  },
+
+]
 const Payment = {
   loop: true,
   autoplay: true,
@@ -452,94 +495,33 @@ function Home() {
               </>
             ) : ( */}
             <div className="3xl:h-[640px] ">
-            <p className="text-center text-xl 3xl:text-3xl font-bold py-5 md:py-10">
-              Search by categories
+            <p className="text-center text-4xl 3xl:text-xl font-bold py-5 md:py-10">
+              BROWSE PROFILES OF
             </p>
 
-            <div className="grid grid-cols-12 ">
-              <div className="col-span-12 sm:col-span-6 md:col-span-4 3xl:w-full mt-5 mx-2 grid justify-items-center">
-                <img
-                  src="/images/HomePage/chef.png"
-                  alt="Hire qualified Chefs"
-                  fetchPriority="high"
-                  style={{
-                    width:'50%'
-                  }}
-                />
-                <p className="font-semibold text-center text-lg 3xl:text-2xl pt-3">
-                  Cooks/Chefs
-                </p>
-              </div>
-              <div className="col-span-12 sm:col-span-6 md:col-span-4 3xl:w-full mt-5 mx-2 grid justify-items-center">
-                <img
-                  src="/images/HomePage/waiter.png"
-                  alt="Best place to find chefs 	&#38; kitchen staff"
-                  fetchPriority="high"
-                  style={{
-                    width:'50%'
-                  }}
-                />
-                <p className="font-semibold text-center 3xl:text-2xl text-lg pt-3">
-                  Waiters/ Captains
-                </p>
-              </div>{" "}
-              <div className="col-span-12 sm:col-span-6 md:col-span-4 3xl:w-full mt-5 mx-2 grid justify-items-center">
-                <img
-                  src="/images/HomePage/avatar.png"
-                  alt="Hire Cooks and Chefs"
-                  className="rounded-[10px]"
-                  fetchPriority="high"
-                  style={{
-                    width:'50%'
-                  }}
-                />
-                <p className="font-semibold text-center text-lg 3xl:text-2xl pt-3 ">
-                  Manager
-                </p>
-              </div>{" "}
-              <div className="col-span-12 sm:col-span-6 md:col-span-4 3xl:w-full mt-5 mx-2 grid justify-items-center">
-                <img
-                  src="/images/HomePage/bartender.png"
-                  alt="Hire a perosnal Chef"
-                  fetchPriority="high"
-                  style={{
-                    width:'50%',
-                    borderRadius:'50%',
-                    backgroundColor:'greenyellow'
-                  }}
-                />
-                <p className="font-semibold text-center text-lg 3xl:text-2xl pt-3">
-                  Bartender
-                </p>
-              </div>{" "}
-              <div className="col-span-12 sm:col-span-6 md:col-span-4 3xl:w-full mt-5 mx-2 grid justify-items-center">
-                <img
-                  src="/images/HomePage/reception.png"
-                  alt="How to find cooks for my restaurant"
-                  fetchPriority="high"
-                  style={{
-                    width:'50%',
-                    borderRadius:'50%'
-                  }}
-                />
-                <p className="font-semibold text-center text-lg 3xl:text-2xl pt-3">
-                  Receptionist
-                </p>
-              </div>{" "}
-              <div className="col-span-12 sm:col-span-6 md:col-span-4 3xl:w-full mt-5 mx-2 grid justify-items-center">
-                <img
-                  src="/images/HomePage/maid.png"
-                  alt="Chef for Hire"
-                  fetchPriority="high"
-                  style={{
-                    width:'50%',
-                    borderRadius:'50%'
-                  }}
-                />
-                <p className="font-semibold text-center text-lg 3xl:text-2xl pt-3">
-                  Housekeeping
-                </p>
-              </div>
+            <div className="grid grid-cols-10 ">
+              
+                {
+                  profiles && profiles.map((profile)=>{
+                    return (
+                      <div key={profile.category} className="col-span-12 sm:col-span-3 md:col-span-2 3xl:w-full mt-5 mx-2 grid justify-items-center">
+                      <img
+                        src= {profile.imgPath}
+                        alt="Hire qualified Chefs"
+                        fetchPriority="high"
+                        style={{
+                          width:'50%',
+                          borderRadius : '50%'
+                        }}
+                      />
+                      <p className="font-semibold text-center text-lg 3xl:text-2xl pt-3">
+                        {profile.category}
+                      </p>
+                    </div>
+                    )
+                  })
+                }
+            
             </div>
               <p className="pt-1 mb-3 text-[black] font-medium text-center text-3xl 3xl:text-4xl">
                 Tell us your requirements
