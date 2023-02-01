@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Header from "../components/common-components/Header";
 import Footer from "../components/common-components/Footer";
-import WhatsAppIcon from "../components/common-components/WhatsApp";
 import WhatsAppLogo from "../components/common-components/WhatsApp";
 import {
   GetRequest,
@@ -10,7 +9,6 @@ import {
   userDataProvider,
 } from "../components/helpers/ApiHelper";
 import { useRouter } from "next/router";
-import Link from "next/link";
 import swal from "sweetalert";
 import Lottie from "react-lottie";
 import paymentFile from "../public/images/lottiesFile/make-payment.json";
@@ -25,47 +23,46 @@ import Head from "next/head";
 
 const profiles = [
   {
-    category: "COOKS/CHEF",
-    imgPath: "/images/HomePage/chef.png"
+    category: "COOKS / CHEFS",
+    imgPath: "/images/HomePage/chef.png",
   },
   {
     category: "WAITERS / CAPTAINS",
-    imgPath: "/images/HomePage/waiter.png"
+    imgPath: "/images/HomePage/waiter.png",
   },
   {
     category: "MANAGERS",
-    imgPath: "/images/HomePage/avatar.png"
+    imgPath: "/images/HomePage/manager.png",
   },
   {
     category: "BARTENDERS",
-    imgPath: "/images/HomePage/bartender.png"
+    imgPath: "/images/HomePage/bartender.png",
   },
   {
     category: "RECEPTIONIST",
-    imgPath: "/images/HomePage/reception.png"
+    imgPath: "/images/HomePage/recepcionist.png",
   },
   {
     category: "HOSTESS",
-    imgPath: "/images/HomePage/host.png"
+    imgPath: "/images/HomePage/air-hostess.png",
   },
   {
     category: "DJ",
-    imgPath : "/images/HomePage/dj.jpg"
+    imgPath: "/images/HomePage/dj.jpg",
   },
   {
     category: "OFFICE BOY",
-    imgPath: "/images/HomePage/officeboy.png"
+    imgPath: "/images/HomePage/officeboy.png",
   },
   {
     category: "HOUSEKEEPING / UTILITY",
-    imgPath: "/images/HomePage/maid.png"
+    imgPath: "/images/HomePage/housekeeping.png",
   },
   {
     category: "CASHIER",
-    imgPath:  "/images/HomePage/cashier.jpg"
+    imgPath: "/images/HomePage/cashier.png",
   },
-
-]
+];
 const Payment = {
   loop: true,
   autoplay: true,
@@ -463,6 +460,15 @@ function Home() {
     }
   };
 
+  const getCandidatesByOccupation = (occupation) => {
+    router.push({
+      pathname: "/all-user",
+      query: {
+        occupation,
+      },
+    });
+  };
+
   return (
     <div>
       <Head>
@@ -495,35 +501,38 @@ function Home() {
               </>
             ) : ( */}
             <div className="3xl:h-[640px] ">
-            <p className="text-center text-4xl 3xl:text-xl font-bold py-5 md:py-10">
-              BROWSE PROFILES OF
-            </p>
+              <p className="text-center text-4xl 3xl:text-xl font-bold py-5 md:py-10">
+                BROWSE PROFILES OF
+              </p>
 
-            <div className="grid grid-cols-10 ">
-              
-                {
-                  profiles && profiles.map((profile)=>{
+              <div className="grid grid-cols-10 mb-5 py-5">
+                {profiles &&
+                  profiles.map((profile) => {
                     return (
-                      <div key={profile.category} className="col-span-12 sm:col-span-3 md:col-span-2 3xl:w-full mt-5 mx-2 grid justify-items-center">
-                      <img
-                        src= {profile.imgPath}
-                        alt="Hire qualified Chefs"
-                        fetchPriority="high"
-                        style={{
-                          width:'50%',
-                          borderRadius : '50%'
-                        }}
-                      />
-                      <p className="font-semibold text-center text-lg 3xl:text-2xl pt-3">
-                        {profile.category}
-                      </p>
-                    </div>
-                    )
-                  })
-                }
-            
-            </div>
-              <p className="pt-1 mb-3 text-[black] font-medium text-center text-3xl 3xl:text-4xl">
+                      <div
+                        key={profile.category}
+                        onClick={() =>
+                          getCandidatesByOccupation(profile.category)
+                        }
+                        className="cursor-pointer col-span-12 sm:col-span-3 md:col-span-2 3xl:w-full mt-5 mx-2 grid justify-items-center"
+                      >
+                        <img
+                          src={profile.imgPath}
+                          alt="Hire qualified Chefs"
+                          fetchPriority="high"
+                          style={{
+                            width: "50%",
+                            borderRadius: "50%",
+                          }}
+                        />
+                        <p className="font-semibold text-center text-lg 3xl:text-2xl pt-3">
+                          {profile.category}
+                        </p>
+                      </div>
+                    );
+                  })}
+              </div>
+              <p className="pt-1 mt-5 mb-3 py-5 text-[black] font-medium text-center text-3xl 3xl:text-4xl">
                 Tell us your requirements
               </p>
               <div class="m-1 overflow-x-auto req-box relative">
@@ -578,7 +587,6 @@ function Home() {
                     Add Requirement
                   </div>
                 )}
-            
               </div>
               <div
                 className={`mt-2 grid ${
@@ -911,7 +919,6 @@ function Home() {
                   </button>
                 </div>
               )}
-              
             </div>
             {/* )} */}
           </div>
@@ -1034,8 +1041,6 @@ function Home() {
               </div>
               <div className="col-span-12 lg:col-span-2 mt-5 mx-2"></div>
             </div>
-
-
           </div>
           <div className="p-0 md:p-10">
             <Testimonials />
@@ -1046,7 +1051,7 @@ function Home() {
       ) : (
         ""
       )}
-     <WhatsAppLogo />
+      <WhatsAppLogo />
     </div>
   );
 }

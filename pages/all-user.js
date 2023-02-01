@@ -43,6 +43,7 @@ const ImageLottie = {
 function AllUser() {
   const router = useRouter();
   const salaryStart = router.query.salaryStart;
+  const occupation = router.query.occupation;
   const salaryEnd = router.query.salaryEnd;
   const Location = router.query.location;
   const Occupation = router.query.occupationName;
@@ -90,6 +91,12 @@ function AllUser() {
       GetSearchData(Location);
     }
   }, [Location]);
+
+  useEffect(() => {
+    if (occupation) {
+      GetSearchData("");
+    }
+  }, [occupation]);
 
   useEffect(() => {
     GetOccupation();
@@ -218,6 +225,22 @@ function AllUser() {
   };
 
   const GetSearchData = async (locationFirst) => {
+   if(occupation){
+    setButtonLoader(true);
+    let item = {
+      occupation,
+    }
+    let response = await PostRequest("getFilteredCandidatesByOccupation", item);
+      if (response.message === "Success") {
+        setSearchData(response.data);
+      } else {
+        swal("Info", response.message, "info");
+        setSearchData([]);
+      }
+      setButtonLoader(false);
+    return
+   }
+   
     if (occupationName === "" || occupationName === undefined) {
       swal("Info", "Please select occupation", "info");
     } else if (salStart === "" || salStart === undefined) {
