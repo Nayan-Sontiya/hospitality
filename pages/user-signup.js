@@ -18,6 +18,9 @@ import Loader from "../components/common-components/Loader";
 // import { GoogleOAuthProvider } from "@react-oauth/google";
 import ReactWhatsapp from 'react-whatsapp';
 import WhatsAppLogo from "../components/common-components/WhatsApp";
+import GoogleButton from "react-google-button";
+import { firebase } from '../firebaseConfig'
+import {  signInWithPopup } from 'firebase/auth'
 // import WhatsAppIcon from '../public/images/wapp.png'
 // import { gapi } from "gapi-script";
 
@@ -115,6 +118,84 @@ function SignupPage() {
       setCity(newArray);
     }
   };
+
+  const signInWithFacebook = async () => {
+    try {
+      const result = await signInWithPopup(firebase.auth, firebase.facebookProvider)
+      if (result) {
+        localStorage.setItem(
+          "hospitalityFinderAccessToken",
+          JSON.stringify(result.user.accessToken)
+        );
+      }
+      console.log(result.user)
+
+      const facebookUserData = {
+        _id: result.user.uid,
+        name: result.user.displayName,
+        email: result.user.email,
+        profile_pic: result.user.photoURL,
+        externalAuth: true
+      }
+      localStorage.setItem(
+        "hospitalityFinderUserData",
+        JSON.stringify(facebookUserData)
+      );
+      localStorage.setItem("hospitalityFinderStatus", true);
+      swal("Success", "Login Successfully", "success");
+      closeModalProfile("loginModal");
+      const {
+        query: { callback },
+      } = router;
+      if (callback) {
+        router.push(`/${callback}`);
+      } else {
+        router.push("/");
+      }
+
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  const signInWithGoogle = async () => {
+
+    try {
+      const result = await signInWithPopup(firebase.auth, firebase.googleProvider)
+      if (result) {
+        localStorage.setItem(
+          "hospitalityFinderAccessToken",
+          JSON.stringify(result.user.accessToken)
+        );
+      }
+
+      const googleUserData = {
+        _id: result.user.uid,
+        name: result.user.displayName,
+        email: result.user.email,
+        profile_pic: result.user.photoURL,
+        externalAuth: true
+      }
+      localStorage.setItem(
+        "hospitalityFinderUserData",
+        JSON.stringify(googleUserData)
+      );
+      localStorage.setItem("hospitalityFinderStatus", true);
+      swal("Success", "Login Successfully", "success");
+      closeModalProfile("loginModal");
+      const {
+        query: { callback },
+      } = router;
+      if (callback) {
+        router.push(`/${callback}`);
+      } else {
+        router.push("/");
+      }
+
+    } catch (e) {
+      console.log(e)
+    }
+  }
 
   // useEffect(() => {
   //   const initClient = () => {
@@ -308,6 +389,29 @@ function SignupPage() {
                   className="w-full"
                   alt="I want to hire A Chef "
                 />
+                <div className="mt-5 flex flex-row items-center justify-center gap-3">
+                    <GoogleButton
+                      style={{
+                        width: '220px',
+                        height: '50px'
+                      }}
+                      onClick={signInWithGoogle}
+                    />
+                    <div>
+                      <button
+                        style={{
+                          width: '220px',
+                          height: '50px',
+                          borderRadius : '0',
+                          
+                        }}
+                        onClick={signInWithFacebook} class="flex items-center justify-center    space-x-3 text-sm text-center bg-blue-500 text-white transition-colors duration-200 transform ">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                          <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
+                        </svg>
+                        <span class="text-base text-white dark:text-gray-200">Sign in with Facebook</span></button>
+                    </div>
+                  </div>
               </div>
               <div className="col-span-12 sm:col-span-12 md:col-span-6">
                 <p className="text-3xl pl-10">Create Account</p>
