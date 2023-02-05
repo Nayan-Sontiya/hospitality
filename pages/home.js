@@ -20,7 +20,7 @@ import TrustedLogos from "../components/home-components/TrustedLogos";
 import Testimonials from "../components/home-components/Testimonials";
 import ProfileOfTheWeek from "../components/home-components/ProfileOfTheWeek";
 import Head from "next/head";
-import CandidateRegistration from "../components/home-components/candidateRegistration";
+// import CandidateRegistration from "../components/home-components/candidateRegistration";
 
 const profiles = [
   {
