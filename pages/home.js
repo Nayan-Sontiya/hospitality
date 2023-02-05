@@ -20,6 +20,7 @@ import TrustedLogos from "../components/home-components/TrustedLogos";
 import Testimonials from "../components/home-components/Testimonials";
 import ProfileOfTheWeek from "../components/home-components/ProfileOfTheWeek";
 import Head from "next/head";
+import CandidateRegistration from "../components/home-components/candidateRegistration";
 
 const profiles = [
   {
@@ -532,7 +533,7 @@ function Home() {
                     );
                   })}
               </div>
-              <p className="pt-1 mt-5 mb-3 py-5 text-[black] font-medium text-center text-3xl 3xl:text-4xl">
+              {/* <p className="pt-1 mt-5 mb-3 py-5 text-[black] font-medium text-center text-3xl 3xl:text-4xl">
                 Tell us your requirements
               </p>
               <div class="m-1 overflow-x-auto req-box relative">
@@ -865,7 +866,7 @@ function Home() {
                       className="focus:outline-none w-60 3xl:w-96 3xl:h-14 3xl:text-2xl text-sm border border-[#C4C4C4] text-[#000000] py-2 px-2 rounded-lg"
                     />
                   </div> */}
-                <div className="px-2">
+                {/* <div className="px-2">
                   <p className="text-md 3xl:text-2xl text-center text-xl mb-5">
                     No of Candidates
                   </p>
@@ -886,8 +887,8 @@ function Home() {
                     </select>
                   </div>
                 </div>
-              </div>
-              <div className="p-5 flex justify-center">
+              </div> */}
+              {/* <div className="p-5 flex justify-center">
                 <button
                   type="button"
                   onClick={addCandidate}
@@ -905,9 +906,9 @@ function Home() {
                 >
                   Proceed To Search
                 </button>
-              </div>
+              </div>  */}
 
-              {accessToken && (
+              {/* {accessToken && (
                 <div className="p-5 flex justify-center">
                   <button
                     type="button"
@@ -918,8 +919,16 @@ function Home() {
                     Save Your Requirements
                   </button>
                 </div>
-              )}
+              )} */}
             </div>
+            {/* <div className="3xl:h-[640px] ">
+              <p className="text-center text-4xl 3xl:text-xl font-bold py-5 md:py-10">
+                Candidate's Registration
+              </p>
+
+              <CandidateRegistration/>
+             
+            </div> */}
             {/* )} */}
           </div>
 
