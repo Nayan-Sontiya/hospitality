@@ -936,7 +936,7 @@ function Home() {
               <button
                 className="w-28 h-8 rounded text-white 3xl:text-2xl 3xl:h-12 3xl:w-40 bg-[#1b1465] mb-5"
                 type="button"
-                
+
               >
                 Click Here
               </button>
@@ -1006,7 +1006,7 @@ function Home() {
                   Step 1
                 </h3>
                 <h4 className="text-center 3xl:text-2xl px-5">
-                  Purchase a package from here
+                  CHOOSE CATEGORY YOU WANT . (EG COOKS/CHEFS  OR MANAGER OR BARTENDER )
                 </h4>
               </div>
               <div className="col-span-12 sm:col-span-6 lg:col-span-4 mt-5 mx-2">
@@ -1017,8 +1017,7 @@ function Home() {
                   Step 2
                 </h3>
                 <h4 className="text-center 3xl:text-2xl px-5">
-                  Search for the job profiles you are looking for, e.g., Chef,
-                  housekeeping staff, bartender, receptionist, etc.
+                  BROWSE PROFILES. APPLY FILTERS IF NEED BE BASED ON SALARY / LOCATION / CUISINE TYPE
                 </h4>
               </div>
               <div className="col-span-12 sm:col-span-6 lg:col-span-4 mt-5 mx-2">
@@ -1029,7 +1028,7 @@ function Home() {
                   Step 3
                 </h3>
                 <h4 className="text-center 3xl:text-2xl px-5">
-                  From among the candidates, pick the ones that suit your need.
+                  TO CONNECT WITH CANDIDATE BUY PACKAGE FROM SILVER/ GOLD OR PLATINUM
                 </h4>
               </div>
               <div className="col-span-12 hidden lg:block lg:col-span-2 mt-5 mx-2"></div>
@@ -1039,7 +1038,7 @@ function Home() {
                   Step 4
                 </h3>
                 <h4 className="text-center 3xl:text-2xl px-5">
-                  Contact the candidates and finalize your deal
+                  CALL THE CANDIDATE AND OFFER HIM YOUR JOB PROFILE WITH A GOOD SALARY
                 </h4>
               </div>
               <div className="col-span-12 sm:col-span-6 lg:col-span-4 mt-5 mx-2">
@@ -1048,8 +1047,7 @@ function Home() {
                   Step 5
                 </h3>
                 <h4 className="text-center 3xl:text-2xl px-5">
-                  Establish your business with experienced and qualified staff
-                </h4>
+                  CANDIDATE ACCEPTS JOB. IN CASE OF COOK / CHEF CALL THEM FOR FOOD TRIALS. IF CANDIDATE DENIES TO JOIN BROWSE MORE PROFILES FROM 4 LAC + DATABASE                </h4>
               </div>
               <div className="col-span-12 lg:col-span-2 mt-5 mx-2"></div>
             </div>
