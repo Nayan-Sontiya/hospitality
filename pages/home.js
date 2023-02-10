@@ -20,7 +20,7 @@ import TrustedLogos from "../components/home-components/TrustedLogos";
 import Testimonials from "../components/home-components/Testimonials";
 import ProfileOfTheWeek from "../components/home-components/ProfileOfTheWeek";
 import Head from "next/head";
-// import CandidateRegistration from "../components/home-components/candidateRegistration";
+//import CandidateRegistration from "../components/home-components/candidateRegistration";
 
 const profiles = [
   {
@@ -859,14 +859,14 @@ function Home() {
                           <option value="600">50 years</option>
                         </select>
                       </div> */}
-                {/* <div className="pt-5">
+              {/* <div className="pt-5">
                     <input
                       placeholder="Location"
                       onChange={(e) => setLocation(e.target.value)}
                       className="focus:outline-none w-60 3xl:w-96 3xl:h-14 3xl:text-2xl text-sm border border-[#C4C4C4] text-[#000000] py-2 px-2 rounded-lg"
                     />
                   </div> */}
-                {/* <div className="px-2">
+              {/* <div className="px-2">
                   <p className="text-md 3xl:text-2xl text-center text-xl mb-5">
                     No of Candidates
                   </p>
@@ -921,25 +921,28 @@ function Home() {
                 </div>
               )} */}
             </div>
-            {/* <div className="3xl:h-[640px] ">
-              <p className="text-center text-4xl 3xl:text-xl font-bold py-5 md:py-10">
-                Candidate's Registration
-              </p>
 
-              <CandidateRegistration/>
-             
-            </div> */}
+
             {/* )} */}
+
           </div>
 
-          {/* <div className="col-span-12 sm:col-span-12 lg:col-span-6">
-              <img
-                src="/images/HomePage/home-banner.webp"
-                className="w-full"
-                alt="Hire Qualified 	&#38; Experienced Chefs"
-                fetchPriority="high"
-              />
-            </div> */}
+          <div className="3xl:h-[640px] ">
+            <p className="text-center text-4xl 3xl:text-xl font-bold py-5 md:py-10">
+              Candidate's Registration
+            </p>
+            <p className="text-center font-semibold text-xl pb-5"> If you are looking out for good opportunities</p>
+            <div className="text-center pt-10">
+              <button
+                className="w-28 h-8 rounded text-white 3xl:text-2xl 3xl:h-12 3xl:w-40 bg-[#1b1465] mb-5"
+                type="button"
+                
+              >
+                Click Here
+              </button>
+            </div>
+
+          </div>
           {/* </div> */}
           <div className="px-5 sm:px-5 md:px-10 py-2 sm:py-5 md:py-5">
             <ProfileOfTheWeek settings={settings} />
