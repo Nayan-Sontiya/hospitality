@@ -60,6 +60,7 @@ const Profile = ({ data }) => {
       </p>
       <p className="text-center text-black text-lg 3xl:text-3xl mb-2">
         <b> Salary: </b> {salary_expectation}
+        <p>(Negotiable)</p>
       </p>
     </div>
     </Link>
