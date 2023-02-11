@@ -18,6 +18,8 @@ const resume = ({ data }) => {
             </p>
                     <p className=" font-semibold font-inter">
                         {data.salary_expectation}/month
+                        <br />
+                    (negotiable)
             </p>
 
                     <p className="pt-2 text-[#1B1465] font-semibold font-inter">

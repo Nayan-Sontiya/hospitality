@@ -381,7 +381,7 @@ function SignupPage() {
                   className="w-full"
                   alt="I want to hire A Chef "
                 />
-                <div className="mt-5 flex flex-row items-center justify-center gap-3">
+                {/* <div className="mt-5 flex flex-row items-center justify-center gap-3">
                   <GoogleButton
                     style={{
                       width: '220px',
@@ -403,7 +403,7 @@ function SignupPage() {
                       </svg>
                       <span class="text-base text-white dark:text-gray-200">Sign in with Facebook</span></button>
                   </div>
-                </div>
+                </div> */}
               </div>
               <div className="col-span-12 sm:col-span-12 md:col-span-6">
                 <p className="text-3xl pl-10">Create Account</p>

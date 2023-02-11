@@ -1037,7 +1037,7 @@ function Home() {
               <div className="col-span-12 lg:col-span-2 mt-5 mx-2"></div>
             </div>
           </div>
-          <div className="3xl:h-[640px] ">
+          {/* <div className="3xl:h-[640px] ">
             <p className="text-center text-4xl 3xl:text-xl font-bold py-5 md:py-10">
               Candidate's Registration
             </p>
@@ -1052,7 +1052,7 @@ function Home() {
               </button>
             </div>
 
-          </div>
+          </div> */}
           <div className="p-0 md:p-10">
             <Testimonials />
           </div>

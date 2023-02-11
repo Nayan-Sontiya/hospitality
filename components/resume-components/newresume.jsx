@@ -126,6 +126,8 @@ const NewResume = ({ data }) => {
                     }}
                   >
                     {data?.salary_expectation}/month
+                    <br />
+                    (negotiable)
                   </p>
                 </div>
               </div>
