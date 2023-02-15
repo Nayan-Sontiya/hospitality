@@ -177,6 +177,8 @@ const redirect=()=>{
                         </label>
                         <p className="text-sm text-[#000000] pt-1 pl-5 break-all">
                           &#8377; {salary_expectation}/month
+                          <br/>
+                          (negotiable)
                         </p>
                       </div>
                       <div className="pt-2">

@@ -20,7 +20,7 @@ import ReactWhatsapp from 'react-whatsapp';
 import WhatsAppLogo from "../components/common-components/WhatsApp";
 import GoogleButton from "react-google-button";
 import { firebase } from '../firebaseConfig'
-import {  signInWithPopup } from 'firebase/auth'
+import { signInWithPopup } from 'firebase/auth'
 // import WhatsAppIcon from '../public/images/wapp.png'
 // import { gapi } from "gapi-script";
 
@@ -37,29 +37,29 @@ function SignupPage() {
   // let [countryCode, setCountryCode] = useState("IN");
   // const [country, setCountry] = useState("India");
   // const [state, setState] = useState("");
-  // const [city, setCity] = useState("");
+  //const [city, setCity] = useState("");
   const [loading, setLoading] = useState(false);
-  const [zipCode, setZipCode] = useState("");
+  //const [zipCode, setZipCode] = useState("");
   const [outletName, setOutletName] = useState("");
   const [outletAddress, setOutletAddress] = useState("");
   const [characterCheck, setCharacterCheck] = useState("na");
   let [checkBox, setCheckBox] = useState(false);
   const [validEmail, setValidEmail] = useState("na");
   const [passwordShown, setPasswordShown] = useState(false);
-  const [country, setCountry] = useState([]);
-  const [selectedCountry, setSelectedCountry] = useState("");
-  const [selectedCountryId, setSelectedCountryId] = useState("");
-  const [state, setState] = useState([]);
-  const [selectedState, setSelectedState] = useState("");
+  //const [country, setCountry] = useState([]);
+  //const [selectedCountry, setSelectedCountry] = useState("");
+  //const [selectedCountryId, setSelectedCountryId] = useState("");
+  //const [state, setState] = useState([]);
+  //const [selectedState, setSelectedState] = useState("");
   const [city, setCity] = useState([]);
-  const [selectedCity, setSelectedCity] = useState("");
+  //const [selectedCity, setSelectedCity] = useState("");
   const [searchType, setSearchType] = useState("");
   const [menu, setMenu] = useState("");
   const [fssaiNumber, setFssaiNumber] = useState("");
   const [gstNumber, setGstNumber] = useState("");
   let router = useRouter();
   let accessToken = accessTokenProvider();
-  useEffect(() => {}, [zipCode]);
+  //useEffect(() => {}, [zipCode]);
   useEffect(() => {
     if (accessToken !== null && accessToken !== "") {
       router.push("/");
@@ -68,9 +68,7 @@ function SignupPage() {
   const togglePasswordVisiblity = () => {
     setPasswordShown(passwordShown ? false : true);
   };
-  useEffect(() => {
-    AllCountries();
-  }, []);
+
 
   const responseGoogle = (response) => {
     console.log("response => ", response);
@@ -80,44 +78,44 @@ function SignupPage() {
     console.log("response1 => ", response);
   };
 
-  const AllCountries = async () => {
-    let returnValue = await GetRequest("getcountry/all");
-    if (returnValue) {
-      var newArray = [];
-      var countryArray = returnValue.map((item) =>
-        newArray.push({ name: item.name, value: item.isoCode })
-      );
-      setCountry(newArray);
-    }
-  };
-  const handleState = async (e) => {
-    var value = e.target.value;
-    setSelectedCountryId(value);
-    setSelectedCountry(value);
-    let returnValue = await GetRequest("getstates/countryid_" + value);
-    if (returnValue.length !== undefined && returnValue.length > 0) {
-      var newArray = [];
-      var stateArray = returnValue.map((item) =>
-        newArray.push({ name: item.name, value: item.isoCode })
-      );
-      setState(newArray);
-    }
-  };
+  // const AllCountries = async () => {
+  //   let returnValue = await GetRequest("getcountry/all");
+  //   if (returnValue) {
+  //     var newArray = [];
+  //     var countryArray = returnValue.map((item) =>
+  //       newArray.push({ name: item.name, value: item.isoCode })
+  //     );
+  //     setCountry(newArray);
+  //   }
+  // };
+  // const handleState = async (e) => {
+  //   var value = e.target.value;
+  //   setSelectedCountryId(value);
+  //   setSelectedCountry(value);
+  //   let returnValue = await GetRequest("getstates/countryid_" + value);
+  //   if (returnValue.length !== undefined && returnValue.length > 0) {
+  //     var newArray = [];
+  //     var stateArray = returnValue.map((item) =>
+  //       newArray.push({ name: item.name, value: item.isoCode })
+  //     );
+  //     setState(newArray);
+  //   }
+  // };
 
-  const handleCity = async (e) => {
-    var value = e.target.value;
-    setSelectedState(value);
-    let returnValue = await GetRequest(
-      "getcities/contstid_" + selectedCountryId + "_stateid_" + value
-    );
-    if (returnValue.length !== undefined && returnValue.length > 0) {
-      var newArray = [];
-      var cityArray = returnValue.map((item) =>
-        newArray.push({ name: item.name, value: item.isoCode })
-      );
-      setCity(newArray);
-    }
-  };
+  // const handleCity = async (e) => {
+  //   var value = e.target.value;
+  //   setSelectedState(value);
+  //   let returnValue = await GetRequest(
+  //     "getcities/contstid_" + selectedCountryId + "_stateid_" + value
+  //   );
+  //   if (returnValue.length !== undefined && returnValue.length > 0) {
+  //     var newArray = [];
+  //     var cityArray = returnValue.map((item) =>
+  //       newArray.push({ name: item.name, value: item.isoCode })
+  //     );
+  //     setCity(newArray);
+  //   }
+  // };
 
   const signInWithFacebook = async () => {
     try {
@@ -252,14 +250,8 @@ function SignupPage() {
       swal("Info", "Please enter password", "warning");
     } else if (contact1 === "") {
       swal("Info", "Please enter your mobile number", "warning");
-    } else if (selectedCountry === "") {
-      swal("Info", "Please select country", "warning");
-    } else if (selectedState === "") {
-      swal("Info", "Please select state", "warning");
     } else if (city === "") {
-      swal("Info", "Please select city", "warning");
-    } else if (zipCode === "") {
-      swal("Info", "Please enter zipcode", "warning");
+      swal("Info", "Please enter your city name", "warning");
     } else if (outletName === "") {
       swal("Info", "Please enter your outlet name", "warning");
     } else if (checkBox === false) {
@@ -272,10 +264,10 @@ function SignupPage() {
       data.append("email", email);
       data.append("password", password);
       data.append("question", question);
-      data.append("country", selectedCountry);
-      data.append("state", selectedState);
-      data.append("city", selectedCity);
-      data.append("zipcode", zipCode);
+      data.append("country", 'selectedCountry');
+      data.append("state", 'selectedState');
+      data.append("city", city);
+      data.append("zipcode", 111111);
       data.append("outlet_name", outletName);
       data.append("search_type", searchType);
       data.append("fssai_number", fssaiNumber);
@@ -389,29 +381,29 @@ function SignupPage() {
                   className="w-full"
                   alt="I want to hire A Chef "
                 />
-                <div className="mt-5 flex flex-row items-center justify-center gap-3">
-                    <GoogleButton
+                {/* <div className="mt-5 flex flex-row items-center justify-center gap-3">
+                  <GoogleButton
+                    style={{
+                      width: '220px',
+                      height: '50px'
+                    }}
+                    onClick={signInWithGoogle}
+                  />
+                  <div>
+                    <button
                       style={{
                         width: '220px',
-                        height: '50px'
+                        height: '50px',
+                        borderRadius: '0',
+
                       }}
-                      onClick={signInWithGoogle}
-                    />
-                    <div>
-                      <button
-                        style={{
-                          width: '220px',
-                          height: '50px',
-                          borderRadius : '0',
-                          
-                        }}
-                        onClick={signInWithFacebook} class="flex items-center justify-center    space-x-3 text-sm text-center bg-blue-500 text-white transition-colors duration-200 transform ">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
-                          <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
-                        </svg>
-                        <span class="text-base text-white dark:text-gray-200">Sign in with Facebook</span></button>
-                    </div>
+                      onClick={signInWithFacebook} class="flex items-center justify-center    space-x-3 text-sm text-center bg-blue-500 text-white transition-colors duration-200 transform ">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                        <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
+                      </svg>
+                      <span class="text-base text-white dark:text-gray-200">Sign in with Facebook</span></button>
                   </div>
+                </div> */}
               </div>
               <div className="col-span-12 sm:col-span-12 md:col-span-6">
                 <p className="text-3xl pl-10">Create Account</p>
@@ -526,73 +518,29 @@ function SignupPage() {
                       placeholder="Enter Contact Number"
                     />
                   </div>
-
-                  <div className="">
-                    <div className="w-full mt-3">
-                      <input
-                        type="text"
-                        placeholder="Zipcode"
-                        value={zipCode}
-                        maxLength="10"
-                        className={Style.InputStyle}
-                        onInput={(e) =>
-                          (e.target.value = e.target.value
-                            .replace(/[^0-9]/g, "")
-                            .replace(/(\..*?)\..*/g, "$1"))
-                        }
-                        onChange={(e) => setZipCode(e.target.value)}
-                      />
-                    </div>
-                    <div className="w-full mt-3">
-                      <select
-                        className={Style.InputStyle}
-                        onChange={(e) => {
-                          handleState(e);
-                        }}
-                      >
-                        <option disabled selected>
-                          Select Country
-                        </option>
-                        {country?.map((item, index) => (
-                          <option value={item.value} key={index}>
-                            {item.name}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
+                  <div className="w-full mt-3">
+                    <span
+                      className={
+                        characterCheck === false
+                          ? "text-red-500 pl-5"
+                          : " hidden"
+                      }
+                    >
+                      Please enter valid name
+                    </span>
+                    <input
+                      type="text"
+                      maxLength="30"
+                      placeholder="Enter City"
+                      className={Style.InputStyle}
+                      value={city}
+                      onChange={(e) => setCity(e.target.value)}
+                    />
                   </div>
 
-                  <div className="">
-                    <div className="w-full mt-3">
-                      <select
-                        className={Style.InputStyle}
-                        onChange={(e) => {
-                          handleCity(e);
-                        }}
-                      >
-                        <option>Select State</option>
-                        {state?.map((item, index) => (
-                          <option value={item.value} key={index}>
-                            {item.name}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                    <div className="w-full mt-3">
-                      <select
-                        className={Style.InputStyle}
-                        onChange={(e) => setSelectedCity(e.target.value)}
-                        value={selectedCity}
-                      >
-                        <option>Select City</option>
-                        {city?.map((item, index) => (
-                          <option value={item.value} key={index}>
-                            {item.name}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                  </div>
+
+
+
                   {searchType === "Restaurant" || searchType === "Both" ? (
                     <>
                       <div className="w-full mt-3">
@@ -702,7 +650,7 @@ function SignupPage() {
                     {/* <button onClick={() => login()}>
                       Sign in with Google 🚀{" "}
                     </button> */}
-                    
+
                   </div>
                 </div>
               </div>

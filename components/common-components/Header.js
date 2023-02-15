@@ -802,7 +802,7 @@ function Header({ PageName }) {
                     </Link>
                   </p>
 
-                  <div className="mt-5 flex flex-col items-center justify-center gap-3">
+                  {/* <div className="mt-5 flex flex-col items-center justify-center gap-3">
                     <GoogleButton
                       style={{
                         width: '220px',
@@ -824,7 +824,7 @@ function Header({ PageName }) {
                         </svg>
                         <span class="text-base text-white dark:text-gray-200">Sign in with Facebook</span></button>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

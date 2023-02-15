@@ -20,7 +20,7 @@ import TrustedLogos from "../components/home-components/TrustedLogos";
 import Testimonials from "../components/home-components/Testimonials";
 import ProfileOfTheWeek from "../components/home-components/ProfileOfTheWeek";
 import Head from "next/head";
-// import CandidateRegistration from "../components/home-components/candidateRegistration";
+//import CandidateRegistration from "../components/home-components/candidateRegistration";
 
 const profiles = [
   {
@@ -859,14 +859,14 @@ function Home() {
                           <option value="600">50 years</option>
                         </select>
                       </div> */}
-                {/* <div className="pt-5">
+              {/* <div className="pt-5">
                     <input
                       placeholder="Location"
                       onChange={(e) => setLocation(e.target.value)}
                       className="focus:outline-none w-60 3xl:w-96 3xl:h-14 3xl:text-2xl text-sm border border-[#C4C4C4] text-[#000000] py-2 px-2 rounded-lg"
                     />
                   </div> */}
-                {/* <div className="px-2">
+              {/* <div className="px-2">
                   <p className="text-md 3xl:text-2xl text-center text-xl mb-5">
                     No of Candidates
                   </p>
@@ -921,25 +921,13 @@ function Home() {
                 </div>
               )} */}
             </div>
-            {/* <div className="3xl:h-[640px] ">
-              <p className="text-center text-4xl 3xl:text-xl font-bold py-5 md:py-10">
-                Candidate's Registration
-              </p>
 
-              <CandidateRegistration/>
-             
-            </div> */}
+
             {/* )} */}
+
           </div>
 
-          {/* <div className="col-span-12 sm:col-span-12 lg:col-span-6">
-              <img
-                src="/images/HomePage/home-banner.webp"
-                className="w-full"
-                alt="Hire Qualified 	&#38; Experienced Chefs"
-                fetchPriority="high"
-              />
-            </div> */}
+    
           {/* </div> */}
           <div className="px-5 sm:px-5 md:px-10 py-2 sm:py-5 md:py-5">
             <ProfileOfTheWeek settings={settings} />
@@ -1003,7 +991,7 @@ function Home() {
                   Step 1
                 </h3>
                 <h4 className="text-center 3xl:text-2xl px-5">
-                  Purchase a package from here
+                  CHOOSE CATEGORY YOU WANT . (EG COOKS/CHEFS  OR MANAGER OR BARTENDER )
                 </h4>
               </div>
               <div className="col-span-12 sm:col-span-6 lg:col-span-4 mt-5 mx-2">
@@ -1014,8 +1002,7 @@ function Home() {
                   Step 2
                 </h3>
                 <h4 className="text-center 3xl:text-2xl px-5">
-                  Search for the job profiles you are looking for, e.g., Chef,
-                  housekeeping staff, bartender, receptionist, etc.
+                  BROWSE PROFILES. APPLY FILTERS IF NEED BE BASED ON SALARY / LOCATION / CUISINE TYPE
                 </h4>
               </div>
               <div className="col-span-12 sm:col-span-6 lg:col-span-4 mt-5 mx-2">
@@ -1026,7 +1013,7 @@ function Home() {
                   Step 3
                 </h3>
                 <h4 className="text-center 3xl:text-2xl px-5">
-                  From among the candidates, pick the ones that suit your need.
+                  TO CONNECT WITH CANDIDATE BUY PACKAGE FROM SILVER/ GOLD OR PLATINUM
                 </h4>
               </div>
               <div className="col-span-12 hidden lg:block lg:col-span-2 mt-5 mx-2"></div>
@@ -1036,7 +1023,7 @@ function Home() {
                   Step 4
                 </h3>
                 <h4 className="text-center 3xl:text-2xl px-5">
-                  Contact the candidates and finalize your deal
+                  CALL THE CANDIDATE AND OFFER HIM YOUR JOB PROFILE WITH A GOOD SALARY
                 </h4>
               </div>
               <div className="col-span-12 sm:col-span-6 lg:col-span-4 mt-5 mx-2">
@@ -1045,12 +1032,27 @@ function Home() {
                   Step 5
                 </h3>
                 <h4 className="text-center 3xl:text-2xl px-5">
-                  Establish your business with experienced and qualified staff
-                </h4>
+                  CANDIDATE ACCEPTS JOB. IN CASE OF COOK / CHEF CALL THEM FOR FOOD TRIALS. IF CANDIDATE DENIES TO JOIN BROWSE MORE PROFILES FROM 4 LAC + DATABASE                </h4>
               </div>
               <div className="col-span-12 lg:col-span-2 mt-5 mx-2"></div>
             </div>
           </div>
+          {/* <div className="3xl:h-[640px] ">
+            <p className="text-center text-4xl 3xl:text-xl font-bold py-5 md:py-10">
+              Candidate's Registration
+            </p>
+            <p className="text-center font-semibold text-xl pb-5"> If you are looking out for good opportunities</p>
+            <div className="text-center pt-10">
+              <button
+                className="w-28 h-8 rounded text-white 3xl:text-2xl 3xl:h-12 3xl:w-40 bg-[#1b1465] mb-5"
+                type="button"
+
+              >
+                Click Here
+              </button>
+            </div>
+
+          </div> */}
           <div className="p-0 md:p-10">
             <Testimonials />
           </div>

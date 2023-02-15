@@ -33,8 +33,10 @@ function MyApp({ Component, pageProps }) {
       console.log("Development Mode on");
     }
   }, []);
+  
   return (
       <Component {...pageProps} />
+      
   );
 }
 
