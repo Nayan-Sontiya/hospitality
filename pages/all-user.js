@@ -3,6 +3,7 @@ import Footer from "../components/common-components/Footer";
 import Header from "../components/common-components/Header";
 import Style from "../styles/Home.module.css";
 import { useRouter } from "next/router";
+import { AiFillCaretDown } from 'react-icons/ai'
 import {
   GetRequest,
   PostRequest,
@@ -56,6 +57,7 @@ function AllUser() {
   let [occupationName, setOccupationName] = useState(Occupation);
   const [grades, setGrades] = useState([]);
   let [grade, setGrade] = useState("");
+  const [isFilterHidden, setIsFilterHidden] = useState(false)
   let [location, setLocation] = useState("");
   let [salStart, setSalStart] = useState(salaryStart);
   let [salEnd, setSalEnd] = useState(salaryEnd);
@@ -75,7 +77,7 @@ function AllUser() {
   let userData = userDataProvider();
   let [requirementMessage, setRequirementMessage] = useState("");
   // let accessToken = accessTokenProvider();
- 
+
   // useEffect(() => {
   //   if (
   //     accessToken === "" ||
@@ -225,12 +227,12 @@ function AllUser() {
   };
 
   const GetSearchData = async (locationFirst) => {
-   if(occupation){
-    setButtonLoader(true);
-    let item = {
-      occupation,
-    }
-    let response = await PostRequest("getFilteredCandidatesByOccupation", item);
+    if (occupation) {
+      setButtonLoader(true);
+      let item = {
+        occupation,
+      }
+      let response = await PostRequest("getFilteredCandidatesByOccupation", item);
       if (response.message === "Success") {
         setSearchData(response.data);
       } else {
@@ -238,9 +240,9 @@ function AllUser() {
         setSearchData([]);
       }
       setButtonLoader(false);
-    return
-   }
-   
+      return
+    }
+
     if (occupationName === "" || occupationName === undefined) {
       swal("Info", "Please select occupation", "info");
     } else if (salStart === "" || salStart === undefined) {
@@ -269,8 +271,8 @@ function AllUser() {
           locationFirst !== ""
             ? locationFirst
             : location !== ""
-            ? location
-            : userData?.city,
+              ? location
+              : userData?.city,
         experienceFrom: experienceStart,
         experienceTo: experienceEnd,
         chef_type: "",
@@ -396,14 +398,20 @@ function AllUser() {
         <>
           <Header PageName="allUser" />
 
-          <div className="grid grid-cols-12">
-            <div className="col-span-12 md:col-span-3 border-r border-[#B7B7B7] px-2 ">
-              <div className="h-16 w-full  flex justify-between pt-4">
-                <p className="text-[#1B1465] text-2xl 3xl:text-4xl font-semiBold pl-5">
-                  Filters
+          <div className="grid grid-cols-12 gap-y-5">
+            <div className={`col-span-12  md:col-span-3 md:block md:border-r border-[#B7B7B7] md:border-y-0 md:border-l-0 border rounded-md px-2 mx-3 md:m-0 md:rounded-none`}>
+              <div className="h-16 w-full   justify-between pt-4 flex ">
+                <div className="flex justify-between items-center w-full md:hidden" onClick={()=>{setIsFilterHidden(!isFilterHidden)}}>
+                  <p className="text-[#1B1465] text-2xl 3xl:text-4xl font-semiBold pl-5">
+                    Filters
+                  </p>
+                  <AiFillCaretDown />
+                </div>
+                <p className="text-[#1B1465] text-2xl 3xl:text-4xl font-semiBold pl-5 hidden md:block">
+                    Filters
                 </p>
               </div>
-              <div className={Style.userDetailsContainerHeight + " px-3"}>
+              <div className={`${Style.userDetailsContainerHeight}px-3 ${isFilterHidden ? 'hidden' : 'block'}`}>
                 <div className="bg-white rounded mt-1 ">
                   <div className=" w-full flex justify-between pt-4">
                     <select
@@ -488,33 +496,33 @@ function AllUser() {
                           {subcategoryData?.find(
                             (d, index) => d?.category === categoryVal.category
                           ) && (
-                            <div
-                              style={{
-                                display: "flex",
-                                flexDirection: "column",
-                                paddingLeft: "16px",
-                              }}
-                            >
-                              {subcategoryData?.map((d, index) => {
-                                return (
-                                  <div className="flex p-1" key={i}>
-                                    <input
-                                      type="checkbox"
-                                      value={d.subcategory}
-                                      className="3xl:h-8 3xl:w-8"
-                                      id={categoryVal._id}
-                                      onChange={(e) =>
-                                        subCategoryArr(e.target.value)
-                                      }
-                                    />
-                                    <p className="text-[11px] 3xl:text-[18px] text-[#1b1465] pl-1 3xl:pl-3 3xl:pt-1 ">
-                                      {d.subcategory}
-                                    </p>
-                                  </div>
-                                );
-                              })}
-                            </div>
-                          )}
+                              <div
+                                style={{
+                                  display: "flex",
+                                  flexDirection: "column",
+                                  paddingLeft: "16px",
+                                }}
+                              >
+                                {subcategoryData?.map((d, index) => {
+                                  return (
+                                    <div className="flex p-1" key={i}>
+                                      <input
+                                        type="checkbox"
+                                        value={d.subcategory}
+                                        className="3xl:h-8 3xl:w-8"
+                                        id={categoryVal._id}
+                                        onChange={(e) =>
+                                          subCategoryArr(e.target.value)
+                                        }
+                                      />
+                                      <p className="text-[11px] 3xl:text-[18px] text-[#1b1465] pl-1 3xl:pl-3 3xl:pt-1 ">
+                                        {d.subcategory}
+                                      </p>
+                                    </div>
+                                  );
+                                })}
+                              </div>
+                            )}
                         </div>
                       );
                     })}
@@ -850,8 +858,8 @@ function AllUser() {
                                   EXPECTED SALARY
                                 </label>
                                 <p className="text-sm text-[#000000] pt-1 pl-5 break-all">
-                                  &#8377; {data.salary_expectation}/month 
-                                  <br/>
+                                  &#8377; {data.salary_expectation}/month
+                                  <br />
                                   (negotiable)
                                 </p>
                               </div>
