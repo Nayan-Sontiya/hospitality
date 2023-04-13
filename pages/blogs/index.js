@@ -3,8 +3,6 @@ import Footer from "../../components/common-components/Footer";
 import Header from "../../components/common-components/Header";
 import Head from "next/head";
 import Link from "next/link";
-import ReactWhatsapp from "react-whatsapp";
-import WhatsAppLogo from "../../components/common-components/WhatsApp";
 function Blogs() {
   const BlogContent = [
     {
@@ -34,8 +32,7 @@ function Blogs() {
     {
       id: 4,
       img: "/images/chinesfood.jpg",
-      subHeading:
-        "Best place to find Chinese Chef",
+      subHeading: "Best place to find Chinese Chef",
       link: "best-place-to-find-chinese-chef",
     },
   ];
@@ -43,45 +40,21 @@ function Blogs() {
     <div>
       <Head>
         <title>
-          Hospitality Finder | Find best hospitality staff for hotel and home
-          parties.
+          Blog - Find best hospitality staff for hotel and home parties.
         </title>
+        <meta
+          name="title"
+          content="Blog - Find best hospitality staff for hotel and home parties."
+        />
+
         <meta
           name="description"
           content="Find best hospitality staff for hotel and home parties with Hospitality Finder hospitality staff selection website. We are a hospitality staffing agency that helps employers to find and hire hospitality employees for hotels in the world."
         />
+
         <meta
-          name="Keywords"
-          content="Find best hospitality staff for hotel and home parties ,
-          hospitality staff selection website,
-          website for hospitality staff selection,
-          online professional chefs for home parties,
-          captains for home parties,
-          housekeepers for home parties,
-          utility staff for home parties,
-          receptionists for home parties,
-          waiters for home parties,
-          stewards for home parties,
-          Bartenders for home parties,
-          security staff for home parties,
-          cooks for home parties,
-          chefs for home parties,
-          managers for home parties,
-          hiring a full time housekeeper,
-          hiring a part time housekeeper,
-          hospitality staffing agency,
-          juggler for home parties,
-          bartending helper for home parties,
-          full time housekeeper for hire,
-          part time housekeeper for hire,
-          hostess for home parties,
-          private bartender for hire,
-          looking for housekeepers,
-          looking for electricians,
-          electrician for home parties,
-          F	&#38; B manager for home parties,
-          legal manager for home parties,
-          event management staff for home parties"
+          name="keywords"
+          content="experienced hospitality staff for hire, experienced accountant for hire, experienced business development manager for hire, experienced hotel security staff for hire, experienced manager for hire, experienced utility staff for hire, experienced hostess for hire, experienced event management staff for hire, experienced waiter for hire, experienced steward for hire, experienced bartender for hire, experienced captain for hire, experienced housekeeper for hire, experienced receptionist for hire, experienced lobby manager for hire, experienced doorman for hire, experienced room attendant for hire, experienced security staff for hire, experienced restaurant manager for hire, experienced residential manager for hire, experienced mixologist for hire, experienced juggler for hire, experienced bartending helper for hire, experienced front office executive for hire, experienced back office executive for hire, experienced front desk agent for hire, experienced sales manager for hire,"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -102,7 +75,6 @@ function Blogs() {
             </div>
           </div>
           <div className="w-full p-0 m-0">
-
             <div className=" sm:px-10 pt-10">
               <div className="grid grid-cols-12">
                 {BlogContent.map((item, i) => {
@@ -141,7 +113,6 @@ function Blogs() {
       ) : (
         ""
       )}
-     <WhatsAppLogo />
     </div>
   );
 }

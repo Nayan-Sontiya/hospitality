@@ -2,20 +2,20 @@
 import Footer from "../components/common-components/Footer";
 import Header from "../components/common-components/Header";
 import Head from "next/head";
-import WhatsAppLogo from "../components/common-components/WhatsApp";
 
 function management() {
   return (
     <div>
       <Head>
-        <title>
-          Hospitality Finder | We provide restaurant staffing solutions
-        </title>
+        <title>Management | We provide restaurant staffing solutions</title>
         <meta
           name="description"
           content="Welcome to Hospitality Finder, a comprehensive online search service for businesses seeking hospitality professional or staff."
         />
-         <meta name="google-site-verification" content="CF__90Zfvbb28X_oOxUD5HIzBkNnNtP-SHP3RjPvYOM" />
+        <meta
+          name="google-site-verification"
+          content="CF__90Zfvbb28X_oOxUD5HIzBkNnNtP-SHP3RjPvYOM"
+        />
         <meta
           name="Keywords"
           content="best hospitality management staff,
@@ -215,7 +215,6 @@ function management() {
         </div>
         <Footer />
       </div>
-      <WhatsAppLogo />
     </div>
   );
 }

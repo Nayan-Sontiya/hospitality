@@ -1,53 +1,29 @@
 import React from "react";
 import Footer from "../components/common-components/Footer";
 import Header from "../components/common-components/Header";
-import Head from "next/head"
-import WhatsAppLogo from "../components/common-components/WhatsApp";
+import Head from "next/head";
 function TermsAndCondition() {
   return (
     <div>
       <Head>
         <title>
-          Hospitality Finder | Best solution to find hospitality staff
+          Terms & Conditions | Best solution to find hospitality staff
         </title>
+        <meta
+          name="title"
+          content="Terms & Conditions | Best solution to find hospitality staff"
+        ></meta>
         <meta
           name="description"
           content="If you are looking for professional chefs, looking for waiter, looking for managers, looking for captains, looking for housekeepers, Hospitality finder is the Best solution to find hospitality staff."
         />
-        <meta name="google-site-verification" content="CF__90Zfvbb28X_oOxUD5HIzBkNnNtP-SHP3RjPvYOM" />
         <meta
-          name="Keywords"
-          content="Best solution to find hospitality staff,
-          looking for professional chefs,
-          looking for waiter,
-          looking for managers,
-          looking for captains,
-          looking for housekeepers,
-          looking for utility staff,
-          looking for receptionists,
-          looking for lobby managers,
-          looking for doorman,
-          looking for room attendant,
-          looking for security staff,
-          looking for cooks,
-          looking for chefs,
-          looking for stewards,
-          looking for restaurant managers,
-          looking for residential managers,
-          looking for mixologist,
-          looking for juggler,
-          looking for bartending helper,
-          looking for front office executive,
-          looking for back office executive,
-          looking for hostess,
-          looking for front desk agent,
-          looking for sales manager,
-          looking for reservation executive,
-          looking for an electrician,
-          looking for account manager,
-          looking for legal manager,
-          looking for bartenders,
-          looking for accountant"
+          name="keywords"
+          content="Best solution to find hospitality staff, looking for professional chefs, looking for waiter, looking for managers, looking for captains, looking for housekeepers, looking for utility staff, looking for receptionists, looking for lobby managers, looking for doorman, looking for room attendant, looking for security staff, looking for cooks, looking for chefs, looking for stewards, looking for restaurant managers, looking for residential managers, looking for mixologist, looking for juggler, looking for bartending helper, looking for front office executive,"
+        />
+        <meta
+          name="google-site-verification"
+          content="CF__90Zfvbb28X_oOxUD5HIzBkNnNtP-SHP3RjPvYOM"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -267,9 +243,7 @@ function TermsAndCondition() {
       ) : (
         ""
       )}
-      <WhatsAppLogo />
     </div>
-
   );
 }
 

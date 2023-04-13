@@ -15,14 +15,8 @@ import { modalOpenShow } from "../components/helpers/HelperFunctions";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Loader from "../components/common-components/Loader";
-// import { GoogleOAuthProvider } from "@react-oauth/google";
-import ReactWhatsapp from 'react-whatsapp';
-import WhatsAppLogo from "../components/common-components/WhatsApp";
-import GoogleButton from "react-google-button";
-import { firebase } from '../firebaseConfig'
-import { signInWithPopup } from 'firebase/auth'
-// import WhatsAppIcon from '../public/images/wapp.png'
-// import { gapi } from "gapi-script";
+import { firebase } from "../firebaseConfig";
+import { signInWithPopup } from "firebase/auth";
 
 function SignupPage() {
   const clientId =
@@ -68,7 +62,6 @@ function SignupPage() {
   const togglePasswordVisiblity = () => {
     setPasswordShown(passwordShown ? false : true);
   };
-
 
   const responseGoogle = (response) => {
     console.log("response => ", response);
@@ -119,22 +112,25 @@ function SignupPage() {
 
   const signInWithFacebook = async () => {
     try {
-      const result = await signInWithPopup(firebase.auth, firebase.facebookProvider)
+      const result = await signInWithPopup(
+        firebase.auth,
+        firebase.facebookProvider
+      );
       if (result) {
         localStorage.setItem(
           "hospitalityFinderAccessToken",
           JSON.stringify(result.user.accessToken)
         );
       }
-      console.log(result.user)
+      console.log(result.user);
 
       const facebookUserData = {
         _id: result.user.uid,
         name: result.user.displayName,
         email: result.user.email,
         profile_pic: result.user.photoURL,
-        externalAuth: true
-      }
+        externalAuth: true,
+      };
       localStorage.setItem(
         "hospitalityFinderUserData",
         JSON.stringify(facebookUserData)
@@ -150,16 +146,17 @@ function SignupPage() {
       } else {
         router.push("/");
       }
-
     } catch (e) {
-      console.log(e)
+      console.log(e);
     }
-  }
+  };
 
   const signInWithGoogle = async () => {
-
     try {
-      const result = await signInWithPopup(firebase.auth, firebase.googleProvider)
+      const result = await signInWithPopup(
+        firebase.auth,
+        firebase.googleProvider
+      );
       if (result) {
         localStorage.setItem(
           "hospitalityFinderAccessToken",
@@ -172,8 +169,8 @@ function SignupPage() {
         name: result.user.displayName,
         email: result.user.email,
         profile_pic: result.user.photoURL,
-        externalAuth: true
-      }
+        externalAuth: true,
+      };
       localStorage.setItem(
         "hospitalityFinderUserData",
         JSON.stringify(googleUserData)
@@ -189,11 +186,10 @@ function SignupPage() {
       } else {
         router.push("/");
       }
-
     } catch (e) {
-      console.log(e)
+      console.log(e);
     }
-  }
+  };
 
   // useEffect(() => {
   //   const initClient = () => {
@@ -204,7 +200,6 @@ function SignupPage() {
   //   };
   //   gapi.load("client:auth2", initClient);
   // });
-
 
   useEffect(() => {
     if (question === "New Outlet") {
@@ -264,8 +259,8 @@ function SignupPage() {
       data.append("email", email);
       data.append("password", password);
       data.append("question", question);
-      data.append("country", 'selectedCountry');
-      data.append("state", 'selectedState');
+      data.append("country", "selectedCountry");
+      data.append("state", "selectedState");
       data.append("city", city);
       data.append("zipcode", 111111);
       data.append("outlet_name", outletName);
@@ -322,9 +317,7 @@ function SignupPage() {
   return (
     <div>
       <Head>
-        <title>
-          Hospitality Finder | Leading website for hospitality employers
-        </title>
+        <title>User Signup | Leading website for hospitality employers</title>
         <meta
           name="description"
           content="Hospitality Finder is a Leading website for hospitality employers and hospitality job seekers. Find Hospitality staff to fulfil your hospitality job requirements easily."
@@ -538,9 +531,6 @@ function SignupPage() {
                     />
                   </div>
 
-
-
-
                   {searchType === "Restaurant" || searchType === "Both" ? (
                     <>
                       <div className="w-full mt-3">
@@ -650,7 +640,6 @@ function SignupPage() {
                     {/* <button onClick={() => login()}>
                       Sign in with Google 🚀{" "}
                     </button> */}
-
                   </div>
                 </div>
               </div>
@@ -661,8 +650,6 @@ function SignupPage() {
       ) : (
         ""
       )}
-      {/* </GoogleOAuthProvider> */}
-      <WhatsAppLogo />
     </div>
   );
 }

@@ -1,6 +1,5 @@
-
 import Link from "next/link";
-import { awsUrl} from "../helpers/ApiHelper";
+import { awsUrl } from "../helpers/ApiHelper";
 
 const Profile = ({ data }) => {
   const getWords = (monthCount) => {
@@ -22,47 +21,55 @@ const Profile = ({ data }) => {
     experience_in_month,
     salary_expectation,
     category,
-    _id
+    _id,
   } = data;
-  
+
   return (
     <Link href={`/view-user?userId=${_id}`}>
-    <div className="bg-[#FFFFFF] mx-2 p-3 rounded cursor-pointer">
-      <div className="grid justify-items-center py-5">
-        {photo ? (
-          <img
-            fetchPriority="high"
-            src={awsUrl + photo?.split(",")[0]}
-            className="h-16 w-16 3xl:h-24 3xl:w-24 rounded-full border"
-          />
-        ) : (
-          <img
-            fetchPriority="high"
-            className="h-16 w-16 3xl:h-24 3xl:w-24 rounded-full border"
-            src={
-              "https://st.depositphotos.com/2101611/3925/v/600/depositphotos_39258143-stock-illustration-businessman-avatar-profile-picture.jpg"
-            }
-          />
-        )}
-      </div>
-      <p
-        className="text-center text-black text-lg 3xl:text-3xl mb-2"
-        style={{ fontWeight: "bold" }}
+      <div
+        className="bg-[#FFFFFF] mx-2 p-3 rounded cursor-pointer"
+        style={{
+          maxHeight: "360px",
+          minHeight: "360px",
+        }}
       >
-        {name}
-      </p>
-      <p className="text-center text-black text-md 3xl:text-3xl mb-5">
-        {category && category?.length ? category.join(",") : "-"}
-      </p>
-      <p className="text-center text-black text-lg 3xl:text-3xl mb-2">
-        <b> Experience: </b>
-        {getWords(experience_in_month)}
-      </p>
-      <p className="text-center text-black text-lg 3xl:text-3xl mb-2">
-        <b> Salary: </b> {salary_expectation}
-        <p>(Negotiable)</p>
-      </p>
-    </div>
+        <div className="grid justify-items-center py-5">
+          {photo ? (
+            <img
+              fetchPriority="high"
+              src={awsUrl + photo?.split(",")[0]}
+              className="h-16 w-16 3xl:h-24 3xl:w-24 rounded-full border"
+            />
+          ) : (
+            <img
+              fetchPriority="high"
+              className="h-16 w-16 3xl:h-24 3xl:w-24 rounded-full border"
+              src={
+                "https://st.depositphotos.com/2101611/3925/v/600/depositphotos_39258143-stock-illustration-businessman-avatar-profile-picture.jpg"
+              }
+            />
+          )}
+        </div>
+        <p
+          className="text-center text-black text-lg 3xl:text-3xl mb-2"
+          style={{ fontWeight: "bold" }}
+        >
+          {name}
+        </p>
+        <div>
+        <p className="text-center text-black text-md text-sm mb-5">
+          {category && category?.length ? category.join(",") : "-"}
+        </p>
+        </div>
+        <p className="text-center text-black text-lg 3xl:text-3xl mb-2">
+          <b> Experience: </b>
+          {getWords(experience_in_month)}
+        </p>
+        <p className="text-center text-black text-lg 3xl:text-3xl mb-2">
+          <b> Salary: </b> {salary_expectation}
+          <p>(Negotiable)</p>
+        </p>
+      </div>
     </Link>
   );
 };

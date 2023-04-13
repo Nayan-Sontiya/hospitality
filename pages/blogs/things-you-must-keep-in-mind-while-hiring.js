@@ -2,7 +2,6 @@ import React from 'react'
 import Footer from '../../components/common-components/Footer'
 import Header from '../../components/common-components/Header'
 import Head from  "next/head"
-import WhatsAppLogo from '../../components/common-components/WhatsApp'
 function BlogOne() {
     return (
         <>
@@ -83,7 +82,6 @@ function BlogOne() {
                     When you set about finding a good chef, you have to keep the above things in mind. Hospitality Finder.in is the<b> best place to find chefs and kitchen staff.</b> Start your search for the top-quality hotel and restaurant staff here. With the experienced staff they have your outlet would be highly successful. Compromising on quality never works in the Hospitality industry. Keep this in mind in case you wish to achieve success.</p>
             </div>
             <Footer />
-            <WhatsAppLogo />
         </>
     )
 }

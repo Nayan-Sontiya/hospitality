@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "../components/common-components/Header";
 import Footer from "../components/common-components/Footer";
-import WhatsAppLogo from "../components/common-components/WhatsApp";
+import Style from "../styles/Home.module.css";
 import {
   GetRequest,
   accessTokenProvider,
@@ -20,48 +20,100 @@ import TrustedLogos from "../components/home-components/TrustedLogos";
 import Testimonials from "../components/home-components/Testimonials";
 import ProfileOfTheWeek from "../components/home-components/ProfileOfTheWeek";
 import Head from "next/head";
+import Modal from "../components/common-components/Modal";
+import { modalOpenShow } from "../components/helpers/HelperFunctions";
 //import CandidateRegistration from "../components/home-components/candidateRegistration";
 
-const profiles = [
+export const profiles = [
   {
     category: "COOKS / CHEFS",
     imgPath: "/images/HomePage/chef.png",
+    description:
+      "Hospitalityfinder is a job portal for House Cooks, Chefs, Party Cooks, and catering. Any one can search Cook or Chef as per their requirements.",
+    keywords:
+      "Full time Cook, Cooks, Cooking Jobs, Cooks for Hotel, South Indian Cooks in Bangalore, Bakery, Pastry, Naan, Tasty food, Healthy Food, Chef. Cook, Jobs",
+    title: "Cook and Chef | Best Find a Cook online",
+    pageTitle: "TOP COOKS / CHEFS",
+    subTitle:
+      "Hire the best cook & Chef in your location with us. We have profiles of cooks who can prepare delicious, mouth-watering dishes. These will make your customers want to visit your restaurant again and again. Your customers would love the quality of food you offer. Sign up as an Employer at the hospitalityfinder.in website. Buy a package and start selecting candidates for the suitable profile you want. We have chefs, cooks, bartending staff, front office executives, and more. If you are setting up your hotel, these profiles will get you suitable candidates for the jobs. Plus, you won't have to go everywhere looking for the proper chefs and cooks. ",
   },
   {
     category: "WAITERS / CAPTAINS",
     imgPath: "/images/HomePage/waiter.png",
+    description:
+      "Hire professional Waiters and Captains for House Party, Barhouse, Restaurants, And Hotels. Waiter and Captains Server in Delhi NCR, Bangalore, Mumbai, Hyderabad, and 15 cities.",
+    keywords:
+      "Hire Qualified & Experienced Waiter and Captains , Online professional Waiter and Captains , Hire qualified Waiter and Captains, Best place to find Captains & kitchen staff, Hire Waiter and Captains, Hire a personal Captains, How to find Waiter for my restaurant, Chef for Hire,",
+    title:
+      "Book a Waiter and Captains Service near you for Events - Hospitalityfinder",
+    pageTitle: "TOP WAITERS / CAPTAINS",
+    subTitle:
+      "Finding a good waiting staff for your hotel seems like a difficult task. Not anymore, as we have a comprehensive collection of candidates who are experts in the same. These people are experienced as waiters and captains and would handle your work perfectly. Our exciting packages allow you to choose the best waiters who can easily match every workload. Join as an employer and select resumes that would suit your job. With the wide range of candidates we have, you will find waiters and captains that can simplify the work of your restaurant. Join us today, and let us make your search easier. Hospitalityfinder.in has only reliable profiles, so you don't worry about landing with the wrong candidates",
   },
   {
     category: "MANAGERS",
     imgPath: "/images/HomePage/manager.png",
+    description:
+      "Discover what it takes to be a Restaurant manager. Find out the expected salary, working hours, qualifications, and more.",
+    keywords:
+      "Hire Qualified & Experienced Manager, Online professional Manager, Hire qualified Managers, Best place to find chefs & kitchen staff, Hire Cooks and Chefs, Hire a personal Chef, How to find Manager for my restaurant",
+    title: "Restaurant manager job profile | Hospitalityfinder.in",
+    pageTitle: "TOP MANAGERS JOB PROFILES",
+    subTitle:
+      "The restaurant manager decides all the work and how it should be conducted. Only a person with a whole idea of the work can handle this task responsibly. At hospitalityfinder.in, we have numerous profiles with restaurant manager credentials. They are respectable candidates who have achieved experience in the field. Buy a package from us and get access to all the suitable profiles for restaurant managers. With the choice of resumes we have, you will be spoilt for choice. There are a lot of candidates, and you can have a look. Contact them personally and select the most suitable profile. Your search for a restaurant manager will end with us surely. ",
   },
   {
     category: "BARTENDERS",
     imgPath: "/images/HomePage/bartender.png",
+    description:
+      "Hire professional Bartenders for House Party, Barhouse, and Clubs. Bartending service in Delhi NCR, Bangalore, Mumbai, Hyderabad, 15 cities.",
+    keywords:
+      "jobs for bartenders, job for bartender, bartender job, bartender salary, bartender salary in India, bartender jobs goa, bartender jobs in Bangalore",
+    title:
+      "Best Bartender Service near you for House Parties - Hospitalityfinder",
+    pageTitle: "TOP BARTENDERS",
+    subTitle:
+      "A bartender makes any bar a happening place. It is his speed and flexibility that make a barhouse popular. With Hospitalityfinder, you can hire professional Bartenders for House Party, Barhouse, and Clubs. We have a wide variety of experienced and dedicated people in the bartending field. With us, you can find a suitable bartender who will handle all the work for your party bar. Our packages are simple to understand and use. Plus,our people are all experienced and diligent in their jobs. You can find Bartending service in Delhi NCR, Bangalore, Mumbai, Hyderabad, 15 cities with us and relax with the best staff around",
   },
-  {
-    category: "RECEPTIONIST",
-    imgPath: "/images/HomePage/recepcionist.png",
-  },
-  {
-    category: "HOSTESS",
-    imgPath: "/images/HomePage/air-hostess.png",
-  },
+  // {
+  //   category: "RECEPTIONIST",
+  //   imgPath: "/images/HomePage/recepcionist.png",
+  // },
+  // {
+  //   category: "HOSTESS",
+  //   imgPath: "/images/HomePage/air-hostess.png",
+  // },
   {
     category: "DJ",
     imgPath: "/images/HomePage/dj.jpg",
+    description:
+      "DJs are required to play musical recordings at parties or events. The roles of these professionals vary depending on the purpose or the setting of the music.",
+    keywords:
+      "DJ, DJs, Pub DJs Jobs, Pub DJs Job Profile, DJs Job, Pub DJs Job Services.",
+    title: "DJ Job Description: Salary, Duties, & More - Hospitalityfinder",
+    pageTitle: "TOP DJ",
+    subTitle:
+      "A DJ makes a party entertaining for all. That is why finding someone who knows how to make the party exciting is very important. If you are looking for a DJ for your party or restaurant, hospitalityfinder.in is there to guide you. They know how to bring life to any party. We have in our collection DJ's who know how to engross the party guests. These profiles are easy to search and you can contact them as per your need. All of them are verified and reliable candidates. Just buy any package and get the candidate you find suitable. Associating with hospitalityfinder.in would give you choices that no one can beat.",
   },
-  {
-    category: "OFFICE BOY",
-    imgPath: "/images/HomePage/officeboy.png",
-  },
-  {
-    category: "HOUSEKEEPING / UTILITY",
-    imgPath: "/images/HomePage/housekeeping.png",
-  },
+  // {
+  //   category: "OFFICE BOY",
+  //   imgPath: "/images/HomePage/officeboy.png",
+  // },
+  // {
+  //   category: "HOUSEKEEPING / UTILITY",
+  //   imgPath: "/images/HomePage/housekeeping.png",
+  // },
   {
     category: "CASHIER",
     imgPath: "/images/HomePage/cashier.png",
+    description:
+      "Cashier requirements and skills. Qualifications to get hired as a Cashier. See examples of Cashier job Profiles from our companies.",
+    keywords:
+      "Cashier Jobs, Cashier Jobs Profile, Cashier Jobs in India, Cashier Job, Cashier",
+    title: "Cashier Job Description | Hospitalityfinder",
+    pageTitle: "TOP Cashier",
+    subTitle:
+      "Cashiers are supposed to be the ones who run the business. Any error they make can totally ruin a new hotelling business. Choosing a cashier is tough, and the choice should be clear. We at hospitalityfinder.in offers a large number of candidates suitable for the cashier job. These people have a lot of experience and can easily manage your financial matters. Searching for the ideal candidate is easy with our simplistic packages. Just buy the package that suits your needs and start your browsing. You can contact the candidates and share your expectations with them. We are sure with us; you will find people who will get your finances on the right track.",
   },
 ];
 const Payment = {
@@ -120,34 +172,100 @@ export const GradesWithCategory = [
       "Senior SOUS Chef",
       "Executive Chef",
     ],
+    description:
+      "Hospitalityfinder is a job portal for House Cooks, Chefs, Party Cooks, and catering. Any one can search Cook or Chef as per their requirements.",
+    keywords:
+      "Full time Cook, Cooks, Cooking Jobs, Cooks for Hotel, South Indian Cooks in Bangalore, Bakery, Pastry, Naan, Tasty food, Healthy Food, Chef. Cook, Jobs",
+    title: "",
+    pageTitle: "TOP Cook/ Chefs",
+    subTitle:
+      "Hire the best cook & Chef in your location who can prepare delicious, mouth watering dishes which will make your customers to visit your property frequently and your customer will become a fan of yours. Sign in as an Employer, post jobs and get the Chef profiles, shortlist the one who meets your expectations.",
   },
   {
     category: "WAITERS / CAPTAINS",
     grades: ["ALL", "CAPTAIN", "WAITER"],
+    description:
+      "Book a Waiter and Captains Service near you for Events - Hospitalityfinder",
+    keywords:
+      "Hire professional Waiters and Captains for House Party,Barhouse, Restaurants, And Hotels. Waiter and Captains Server in Delhi NCR, Bangalore, Mumbai, Hyderabad, and 15 cities.",
+    title: "",
+    pageTitle:
+      "Book a Waiter and Captains Service near you for Events - Hospitalityfinder",
+    subTitle:
+      "Hire professional Waiters and Captains for House Party,Barhouse, Restaurants, And Hotels. Waiter and Captains Server in Delhi NCR, Bangalore, Mumbai, Hyderabad, and 15 cities.",
   },
   {
     category: "MANAGERS",
     grades: [],
+    description: "Restaurant manager job profile | Hospitalityfinder.in",
+    keywords:
+      "Hire professional Waiters and Captains for House Party,Barhouse, Restaurants, And Hotels. Waiter and Captains Server in Delhi NCR, Bangalore, Mumbai, Hyderabad, and 15 cities.",
+    title: "",
+    pageTitle: "Restaurant manager job profile | Hospitalityfinder.in",
+    subTitle:
+      "Discover what it takes to be a Restaurant manager. Find out the expected salary, working hours, qualifications, and more.",
   },
+
   {
     category: "BARTENDERS",
     grades: ["ALL", "BARTENDER"],
+    description:
+      "Hire professional Bartenders for House Party, Barhouse, and Clubs. Bartending service in Delhi NCR, Bangalore, Mumbai, Hyderabad, 15 cities.",
+    keywords:
+      "Hire professional Waiters and Captains for House Party,Barhouse, Restaurants, And Hotels. Waiter and Captains Server in Delhi NCR, Bangalore, Mumbai, Hyderabad, and 15 cities.",
+    title: "",
+    pageTitle:
+      "Best Bartender Service near you for House Parties - Hospitalityfinder",
+    subTitle:
+      "Discover what it takes to be a Restaurant manager. Find out the expected salary, working hours, qualifications, and more.",
   },
   {
     category: "RECEPTIONIST",
     grades: [],
+    description:
+      "Hire professional Bartenders for House Party, Barhouse, and Clubs. Bartending service in Delhi NCR, Bangalore, Mumbai, Hyderabad, 15 cities.",
+    keywords:
+      "Hire professional Waiters and Captains for House Party,Barhouse, Restaurants, And Hotels. Waiter and Captains Server in Delhi NCR, Bangalore, Mumbai, Hyderabad, and 15 cities.",
+    title: "",
+    pageTitle: "Receptionist Job profile  in India |  Hospitalityfinder",
+    subTitle:
+      "Find out the key requirements, duties, responsibilities, and skills that should be in a receptionist job description Profile.",
   },
   {
     category: "HOSTESS",
     grades: [],
+    description:
+      "Hire professional Bartenders for House Party, Barhouse, and Clubs. Bartending service in Delhi NCR, Bangalore, Mumbai, Hyderabad, 15 cities.",
+    keywords:
+      "Hire professional Waiters and Captains for House Party,Barhouse, Restaurants, And Hotels. Waiter and Captains Server in Delhi NCR, Bangalore, Mumbai, Hyderabad, and 15 cities.",
+    title: "",
+    pageTitle: "Restaurant hostess Jobs profile  in India  | Hospitalityfinder",
+    subTitle:
+      "Search Restaurant hostess jobs profile in Mumbai with company ratings & salaries. open jobs for Restaurant hostess in Mumbai.",
   },
   {
     category: "HOUSEKEEPING / UTILITY",
     grades: ["ALL", "UTILITY GUY"],
+    description:
+      "The Housekeeping Utility's primary responsibility is to ensure the overall cleanliness of all assigned Crew and Officer's cabins, Crew, and public areas according to standards implemented by the company.",
+    keywords:
+      "Hire professional Waiters and Captains for House Party,Barhouse, Restaurants, And Hotels. Waiter and Captains Server in Delhi NCR, Bangalore, Mumbai, Hyderabad, and 15 cities.",
+    title: "",
+    pageTitle: "Job Profile Housekeeping Utility - Hospitalityfinder",
+    subTitle:
+      "The Housekeeping Utility's primary responsibility is to ensure the overall cleanliness of all assigned Crew and Officer's cabins, Crew, and public areas according to standards implemented by the company.",
   },
   {
     category: "CASHIER",
     grades: [],
+    description:
+      "Cashier requirements and skills. Qualifications to get hired as a Cashier. See examples of Cashier job Profiles from our companies",
+    keywords:
+      "Cashier requirements and skills. Qualifications to get hired as a Cashier. See examples of Cashier job Profiles from our companies",
+    title: "",
+    pageTitle: "Cashier Job Description | Hospitalityfinder",
+    subTitle:
+      "Cashier requirements and skills. Qualifications to get hired as a Cashier. See examples of Cashier job Profiles from our companies.",
   },
   {
     category: "common",
@@ -223,6 +341,8 @@ const settings = {
 function Home() {
   let [occupationData, setOccupationData] = useState([]);
   let [occupationName, setOccupationName] = useState("");
+  const [email, setEmail] = useState("");
+  const [contact, setContact] = useState("");
   let [salaryStart, setSalaryStart] = useState("5000");
   let [salaryEnd, setSalaryEnd] = useState("200000");
   let [categoryData, setCategoryData] = useState([]);
@@ -313,6 +433,32 @@ function Home() {
     const token = category.includes(categoryOpt);
     return token;
   };
+
+  async function saveRequirnmentsWithoutAuth() {
+    if (!email) {
+      swal("Error", "Email is Required", "error");
+      return;
+    }
+
+    if (!contact) {
+      swal("Error", "Contact is Required", "error");
+      return;
+    }
+
+    let item = {
+      data: requirements,
+      email,
+      contact,
+    };
+
+    let res = await PostRequest(`userRequirementsWithoutAuth`, item);
+    if (res.status === 200) {
+      swal("Saved", "your requirement saved successfully !", "success");
+      modalOpenShow("reportModal");
+    } else {
+      swal("Error", "something went wrong try again later", "error");
+    }
+  }
 
   const categoryArray = (categoryArr, type, checked, categoryData) => {
     if (type === "all") {
@@ -465,7 +611,7 @@ function Home() {
     router.push({
       pathname: "/all-user",
       query: {
-        occupation,
+        occupationName: occupation,
       },
     });
   };
@@ -473,6 +619,7 @@ function Home() {
   return (
     <div>
       <Head>
+        <title>Hospitality Finder</title>
         <meta
           name="google-site-verification"
           content="CF__90Zfvbb28X_oOxUD5HIzBkNnNtP-SHP3RjPvYOM"
@@ -505,8 +652,10 @@ function Home() {
               <p className="text-center text-4xl 3xl:text-xl font-bold py-5 md:py-10">
                 BROWSE PROFILES OF
               </p>
-
-              <div className="grid grid-cols-10 mb-5 py-5">
+              <p className="text-center text-2xl 1xl:text-xl font-bold py-3 md:py-5">
+                CATEGORIES
+              </p>
+              <div className="grid grid-cols-12 mb-5 py-5">
                 {profiles &&
                   profiles.map((profile) => {
                     return (
@@ -515,7 +664,7 @@ function Home() {
                         onClick={() =>
                           getCandidatesByOccupation(profile.category)
                         }
-                        className="cursor-pointer col-span-12 sm:col-span-3 md:col-span-2 3xl:w-full mt-5 mx-2 grid justify-items-center"
+                        className="cursor-pointer col-span-12 sm:col-span-4 md:col-span-2 3xl:w-full mt-5 mx-2 grid justify-items-center"
                       >
                         <img
                           src={profile.imgPath}
@@ -533,7 +682,7 @@ function Home() {
                     );
                   })}
               </div>
-              {/* <p className="pt-1 mt-5 mb-3 py-5 text-[black] font-medium text-center text-3xl 3xl:text-4xl">
+              <p className="pt-1 mt-5 mb-3 py-5 text-[black] font-medium text-center text-3xl 3xl:text-4xl">
                 Tell us your requirements
               </p>
               <div class="m-1 overflow-x-auto req-box relative">
@@ -781,92 +930,92 @@ function Home() {
                 </div>
 
                 {/* <p className="pt-5 text-md 3xl:text-2xl text-[#1B1465]">
-                        Select Experience Range
-                      </p>
+                  Select Experience Range
+                </p>
 
-                      <div className="pt-1 flex">
-                        <select
-                          className="focus:outline-none w-28 3xl:w-44 3xl:h-14 3xl:text-2xl mr-2 3xl:mr-4  text-sm border border-[#C4C4C4] text-[#000000] py-2 px-2 rounded-lg"
-                          onChange={(e) => setExperienceStart(e.target.value)}
-                        >
-                          <option disabled selected>
-                            Min
-                        </option>
-                          <option value="0">0 month</option>
-                          <option value="6">6 months</option>
-                          <option value="12">1 year</option>
-                          <option value="18">1.5 years </option>
-                          <option value="24">2 years</option>
-                          <option value="36">3 years</option>
-                          <option value="48">4 years</option>
-                          <option value="60">5 years</option>
-                          <option value="72">6 years</option>
-                          <option value="84">7 years</option>
-                          <option value="96">8 years</option>
-                          <option value="108">9 years</option>
-                          <option value="120">10 years</option>
-                          <option value="132">11 years</option>
-                          <option value="144">12 years</option>
-                          <option value="156">13 years</option>
-                          <option value="168">14 years</option>
-                          <option value="180">15 years</option>
-                          <option value="192">16 years</option>
-                          <option value="204">17 years</option>
-                          <option value="216">18 years</option>
-                          <option value="228">19 years</option>
-                          <option value="240">20 years</option>
-                          <option value="300">25 years</option>
-                          <option value="360">30 years</option>
-                          <option value="420">35 years</option>
-                          <option value="480">40 years</option>
-                          <option value="540">45 years</option>
-                          <option value="600">50 years</option>
-                        </select>
-                        <select
-                          className="focus:outline-none w-28 3xl:w-44 3xl:h-14 3xl:text-2xl ml-2 3xl:ml-4 text-sm border border-[#C4C4C4] text-[#000000] py-2 px-2 rounded-lg"
-                          onChange={(e) => setExperienceEnd(e.target.value)}
-                        >
-                          <option disabled selected>
-                            Max
-                        </option>
-                          <option value="6">6 months</option>
-                          <option value="12">1 year</option>
-                          <option value="18">1.5 years </option>
-                          <option value="24">2 years</option>
-                          <option value="36">3 years</option>
-                          <option value="48">4 years</option>
-                          <option value="60">5 years</option>
-                          <option value="72">6 years</option>
-                          <option value="84">7 years</option>
-                          <option value="96">8 years</option>
-                          <option value="108">9 years</option>
-                          <option value="120">10 years</option>
-                          <option value="132">11 years</option>
-                          <option value="144">12 years</option>
-                          <option value="156">13 years</option>
-                          <option value="168">14 years</option>
-                          <option value="180">15 years</option>
-                          <option value="192">16 years</option>
-                          <option value="204">17 years</option>
-                          <option value="216">18 years</option>
-                          <option value="228">19 years</option>
-                          <option value="240">20 years</option>
-                          <option value="300">25 years</option>
-                          <option value="360">30 years</option>
-                          <option value="420">35 years</option>
-                          <option value="480">40 years</option>
-                          <option value="540">45 years</option>
-                          <option value="600">50 years</option>
-                        </select>
-                      </div> */}
-              {/* <div className="pt-5">
-                    <input
-                      placeholder="Location"
-                      onChange={(e) => setLocation(e.target.value)}
-                      className="focus:outline-none w-60 3xl:w-96 3xl:h-14 3xl:text-2xl text-sm border border-[#C4C4C4] text-[#000000] py-2 px-2 rounded-lg"
-                    />
-                  </div> */}
-              {/* <div className="px-2">
+                <div className="pt-1 flex">
+                  <select
+                    className="focus:outline-none w-28 3xl:w-44 3xl:h-14 3xl:text-2xl mr-2 3xl:mr-4  text-sm border border-[#C4C4C4] text-[#000000] py-2 px-2 rounded-lg"
+                    onChange={(e) => setExperienceStart(e.target.value)}
+                  >
+                    <option disabled selected>
+                      Min
+                    </option>
+                    <option value="0">0 month</option>
+                    <option value="6">6 months</option>
+                    <option value="12">1 year</option>
+                    <option value="18">1.5 years </option>
+                    <option value="24">2 years</option>
+                    <option value="36">3 years</option>
+                    <option value="48">4 years</option>
+                    <option value="60">5 years</option>
+                    <option value="72">6 years</option>
+                    <option value="84">7 years</option>
+                    <option value="96">8 years</option>
+                    <option value="108">9 years</option>
+                    <option value="120">10 years</option>
+                    <option value="132">11 years</option>
+                    <option value="144">12 years</option>
+                    <option value="156">13 years</option>
+                    <option value="168">14 years</option>
+                    <option value="180">15 years</option>
+                    <option value="192">16 years</option>
+                    <option value="204">17 years</option>
+                    <option value="216">18 years</option>
+                    <option value="228">19 years</option>
+                    <option value="240">20 years</option>
+                    <option value="300">25 years</option>
+                    <option value="360">30 years</option>
+                    <option value="420">35 years</option>
+                    <option value="480">40 years</option>
+                    <option value="540">45 years</option>
+                    <option value="600">50 years</option>
+                  </select>
+                  <select
+                    className="focus:outline-none w-28 3xl:w-44 3xl:h-14 3xl:text-2xl ml-2 3xl:ml-4 text-sm border border-[#C4C4C4] text-[#000000] py-2 px-2 rounded-lg"
+                    onChange={(e) => setExperienceEnd(e.target.value)}
+                  >
+                    <option disabled selected>
+                      Max
+                    </option>
+                    <option value="6">6 months</option>
+                    <option value="12">1 year</option>
+                    <option value="18">1.5 years </option>
+                    <option value="24">2 years</option>
+                    <option value="36">3 years</option>
+                    <option value="48">4 years</option>
+                    <option value="60">5 years</option>
+                    <option value="72">6 years</option>
+                    <option value="84">7 years</option>
+                    <option value="96">8 years</option>
+                    <option value="108">9 years</option>
+                    <option value="120">10 years</option>
+                    <option value="132">11 years</option>
+                    <option value="144">12 years</option>
+                    <option value="156">13 years</option>
+                    <option value="168">14 years</option>
+                    <option value="180">15 years</option>
+                    <option value="192">16 years</option>
+                    <option value="204">17 years</option>
+                    <option value="216">18 years</option>
+                    <option value="228">19 years</option>
+                    <option value="240">20 years</option>
+                    <option value="300">25 years</option>
+                    <option value="360">30 years</option>
+                    <option value="420">35 years</option>
+                    <option value="480">40 years</option>
+                    <option value="540">45 years</option>
+                    <option value="600">50 years</option>
+                  </select>
+                </div>
+                <div className="pt-5">
+                  <input
+                    placeholder="Location"
+                    onChange={(e) => setLocation(e.target.value)}
+                    className="focus:outline-none w-60 3xl:w-96 3xl:h-14 3xl:text-2xl text-sm border border-[#C4C4C4] text-[#000000] py-2 px-2 rounded-lg"
+                  />
+                </div> */}
+                <div className="px-2">
                   <p className="text-md 3xl:text-2xl text-center text-xl mb-5">
                     No of Candidates
                   </p>
@@ -887,8 +1036,8 @@ function Home() {
                     </select>
                   </div>
                 </div>
-              </div> */}
-              {/* <div className="p-5 flex justify-center">
+              </div>
+              <div className="p-5 flex justify-center">
                 <button
                   type="button"
                   onClick={addCandidate}
@@ -897,18 +1046,7 @@ function Home() {
                   Add
                 </button>
               </div>
-              <div className="p-5 flex justify-center lg:justify-end ">
-                <button
-                  type="button"
-                  disabled={requirements.length == 0}
-                  onClick={GetSearchData}
-                  className={`focus:outline-none w-60 3xl:w-96 3xl:h-14 3xl:text-2xl bg-[#1B1465] text-md text-[#ffffff] py-2 px-2 rounded-lg`}
-                >
-                  Proceed To Search
-                </button>
-              </div>  */}
-
-              {/* {accessToken && (
+              {accessToken && !!requirements.length && (
                 <div className="p-5 flex justify-center">
                   <button
                     type="button"
@@ -919,23 +1057,40 @@ function Home() {
                     Save Your Requirements
                   </button>
                 </div>
-              )} */}
+              )}
+              {!accessToken && !!requirements.length && (
+                <div className="p-5 flex justify-center">
+                  <button
+                    type="button"
+                    disabled={requirements.length == 0}
+                    onClick={() => modalOpenShow("reportModal")}
+                    className={`focus:outline-none w-60 3xl:w-96 3xl:h-14 3xl:text-2xl bg-[#F8B705] text-md text-[#ffffff] py-2 px-2 rounded-lg`}
+                  >
+                    Save Your Requirements
+                  </button>
+                </div>
+              )}
+              <div className="p-5 flex justify-center lg:justify-end ">
+                <button
+                  type="button"
+                  disabled={requirements.length == 0}
+                  onClick={GetSearchData}
+                  className={`focus:outline-none w-60 3xl:w-96 3xl:h-14 3xl:text-2xl bg-[#1B1465] text-md text-[#ffffff] py-2 px-2 rounded-lg`}
+                >
+                  Proceed To Search
+                </button>
+              </div>
             </div>
-
-
-            {/* )} */}
-
           </div>
 
-    
           {/* </div> */}
           <div className="px-5 sm:px-5 md:px-10 py-2 sm:py-5 md:py-5">
             <ProfileOfTheWeek settings={settings} />
           </div>
           <div className="px-5 sm:px-5 md:px-10 py-2 sm:py-5 md:py-5">
-            <h2 className="text-xl pb-3 3xl:text-2xl font-semibold">
+            <p className="text-4xl 3xl:text-xl font-bold py-5 md:py-10">
               Trusted by
-            </h2>
+            </p>
             <TrustedLogos settings={settings} />
           </div>
           <div className="grid grid-cols-12 pt-2 sm:pt-5 md:pt-10 px-5 md:px-10">
@@ -977,9 +1132,9 @@ function Home() {
             </div>
           </div>
           <div className="px-5 md:px-10 py-5 md:py-10">
-            <h2 className="text-2xl 3xl:text-5xl font-bold text-center">
+            <p className="text-center text-4xl 3xl:text-xl font-bold py-5 md:py-10">
               How to start
-            </h2>
+            </p>
             <p className="text-center 3xl:text-2xl pt-5">
               It is simple to avail the services we offer:
             </p>
@@ -991,7 +1146,8 @@ function Home() {
                   Step 1
                 </h3>
                 <h4 className="text-center 3xl:text-2xl px-5">
-                  CHOOSE CATEGORY YOU WANT . (EG COOKS/CHEFS  OR MANAGER OR BARTENDER )
+                  CHOOSE CATEGORY YOU WANT . (EG COOKS/CHEFS OR MANAGER OR
+                  BARTENDER )
                 </h4>
               </div>
               <div className="col-span-12 sm:col-span-6 lg:col-span-4 mt-5 mx-2">
@@ -1002,7 +1158,8 @@ function Home() {
                   Step 2
                 </h3>
                 <h4 className="text-center 3xl:text-2xl px-5">
-                  BROWSE PROFILES. APPLY FILTERS IF NEED BE BASED ON SALARY / LOCATION / CUISINE TYPE
+                  BROWSE PROFILES. APPLY FILTERS IF NEED BE BASED ON SALARY /
+                  LOCATION / CUISINE TYPE
                 </h4>
               </div>
               <div className="col-span-12 sm:col-span-6 lg:col-span-4 mt-5 mx-2">
@@ -1013,7 +1170,8 @@ function Home() {
                   Step 3
                 </h3>
                 <h4 className="text-center 3xl:text-2xl px-5">
-                  TO CONNECT WITH CANDIDATE BUY PACKAGE FROM SILVER/ GOLD OR PLATINUM
+                  TO CONNECT WITH CANDIDATE BUY PACKAGE FROM SILVER/ GOLD OR
+                  PLATINUM
                 </h4>
               </div>
               <div className="col-span-12 hidden lg:block lg:col-span-2 mt-5 mx-2"></div>
@@ -1023,7 +1181,8 @@ function Home() {
                   Step 4
                 </h3>
                 <h4 className="text-center 3xl:text-2xl px-5">
-                  CALL THE CANDIDATE AND OFFER HIM YOUR JOB PROFILE WITH A GOOD SALARY
+                  CALL THE CANDIDATE AND OFFER HIM YOUR JOB PROFILE WITH A GOOD
+                  SALARY
                 </h4>
               </div>
               <div className="col-span-12 sm:col-span-6 lg:col-span-4 mt-5 mx-2">
@@ -1032,37 +1191,78 @@ function Home() {
                   Step 5
                 </h3>
                 <h4 className="text-center 3xl:text-2xl px-5">
-                  CANDIDATE ACCEPTS JOB. IN CASE OF COOK / CHEF CALL THEM FOR FOOD TRIALS. IF CANDIDATE DENIES TO JOIN BROWSE MORE PROFILES FROM 4 LAC + DATABASE                </h4>
+                  CANDIDATE ACCEPTS JOB. IN CASE OF COOK / CHEF CALL THEM FOR
+                  FOOD TRIALS. IF CANDIDATE DENIES TO JOIN BROWSE MORE PROFILES
+                  FROM 4 LAC + DATABASE{" "}
+                </h4>
               </div>
               <div className="col-span-12 lg:col-span-2 mt-5 mx-2"></div>
             </div>
           </div>
-          {/* <div className="3xl:h-[640px] ">
+          <div className="3xl:h-[640px] ">
             <p className="text-center text-4xl 3xl:text-xl font-bold py-5 md:py-10">
               Candidate's Registration
             </p>
-            <p className="text-center font-semibold text-xl pb-5"> If you are looking out for good opportunities</p>
+            <p className="text-center font-semibold text-xl pb-5">
+              {" "}
+              If you are looking out for good opportunities
+            </p>
             <div className="text-center pt-10">
               <button
                 className="w-28 h-8 rounded text-white 3xl:text-2xl 3xl:h-12 3xl:w-40 bg-[#1b1465] mb-5"
                 type="button"
-
+                onClick={() => router.push("candidate-registration")}
               >
                 Click Here
               </button>
             </div>
-
-          </div> */}
+          </div>
           <div className="p-0 md:p-10">
             <Testimonials />
           </div>
 
           <Footer />
+          <Modal
+            modalId="reportModal"
+            modalTitle="Add Contact Details"
+            modalBody={
+              <div className="px-5 ">
+                <div className="w-full mt-3">
+                  <input
+                    type="text"
+                    maxLength="30"
+                    placeholder="Enter your email"
+                    className={Style.InputStyle}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </div>
+                <div className="w-full mt-3">
+                  <input
+                    type="text"
+                    maxLength="12"
+                    placeholder="Enter your contact"
+                    className={Style.InputStyle}
+                    value={contact}
+                    onChange={(e) => setContact(e.target.value)}
+                  />
+                </div>
+                <div className="w-full py-6 grid justify-items-center">
+                  <button
+                    className="bg-[#1b1465] hover:bg-[#8f85fd] py-2 text-white px-5 rounded"
+                    onClick={saveRequirnmentsWithoutAuth}
+                  >
+                    Save your Requirements
+                  </button>
+                </div>
+              </div>
+            }
+            modalFooter=""
+          />
         </>
       ) : (
         ""
       )}
-      <WhatsAppLogo />
     </div>
   );
 }

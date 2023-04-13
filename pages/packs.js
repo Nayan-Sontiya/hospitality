@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Footer from "../components/common-components/Footer";
 import Header from "../components/common-components/Header";
-import shortid from "shortid";
 import {
   GetRequest,
   accessTokenProvider,
@@ -12,8 +11,6 @@ import Loader from "../components/common-components/Loader";
 import swal from "sweetalert";
 import { useRouter } from "next/router";
 import Head from "next/head";
-import ReactWhatsapp from "react-whatsapp";
-import WhatsAppLogo from "../components/common-components/WhatsApp";
 
 const loadScript = (src) => {
   return new Promise((resolve) => {
@@ -70,46 +67,20 @@ function Packs() {
   return (
     <div>
       <Head>
-        <title>
-          Hospitality Finder | Experienced hospitality staff for hire
-        </title>
+        <title>Packs | Experienced hospitality staff for hire</title>
+        <meta
+          name="title"
+          content="Packs | Experienced hospitality staff for hire"
+        />
+
         <meta
           name="description"
           content="Finding great staff for your hospitality business should be simple, whether you need experienced hospitality staff for hire, experienced manager for hire, experienced utility staff for hire, experienced hostess for hire, experienced hotel security staff for hire, experienced waiter for hire, or experienced accountant for hire."
         />
-        <meta name="google-site-verification" content="CF__90Zfvbb28X_oOxUD5HIzBkNnNtP-SHP3RjPvYOM" />
+
         <meta
-          name="Keywords"
-          content="experienced hospitality staff for hire,
-          experienced accountant for hire,
-          experienced business development manager for hire,
-          experienced hotel security staff for hire,
-          experienced manager for hire,
-          experienced utility staff for hire,
-          experienced hostess for hire,
-          experienced event management staff for hire,
-          experienced waiter for hire,
-          experienced steward for hire,
-          experienced bartender for hire,
-          experienced captain for hire,
-          experienced housekeeper for hire,
-          experienced receptionist for hire,
-          experienced lobby manager for hire,
-          experienced doorman for hire,
-          experienced room attendant for hire,
-          experienced security staff for hire,
-          experienced restaurant manager for hire,
-          experienced residential manager for hire,
-          experienced mixologist for hire,
-          experienced juggler for hire,
-          experienced bartending helper for hire,
-          experienced front office executive for hire,
-          experienced back office executive for hire,
-          experienced front desk agent for hire,
-          experienced sales manager for hire,
-          experienced reservation executive for hire,
-          experienced electrician for hire,
-          experienced F	&#38; B manager for hire"
+          name="keywords"
+          content="experienced hospitality staff for hire, experienced accountant for hire, experienced business development manager for hire, experienced hotel security staff for hire, experienced manager for hire, experienced utility staff for hire, experienced hostess for hire, experienced event management staff for hire, experienced waiter for hire, experienced steward for hire, experienced bartender for hire, experienced captain for hire, experienced housekeeper for hire, experienced receptionist for hire, experienced lobby manager for hire, experienced doorman for hire, experienced room attendant for hire, experienced security staff for hire, experienced restaurant manager for hire, experienced residential manager for hire, experienced mixologist for hire, experienced juggler for hire, experienced bartending helper for hire, experienced front office executive for hire, experienced back office executive for hire, experienced front desk agent for hire, experienced sales manager for hire,"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -119,8 +90,8 @@ function Packs() {
           {data.length > 0 ? (
             <div>
               {accessToken !== "" &&
-                accessToken !== null &&
-                accessToken !== undefined ? (
+              accessToken !== null &&
+              accessToken !== undefined ? (
                 <p className="text-[20px] sm:text-[24px] md:text-[30px] lg:text-[36px] 3xl:text-[40px] px-5 sm:px-10 lg:px-20 3xl:px-28 text-center py-10 leading-7 sm:leading-7 md:leading-10	">
                   We have found {rndInt} verified profiles suitable to your
                   requirements. Please select the desired plan and proceed.
@@ -286,7 +257,6 @@ function Packs() {
       ) : (
         ""
       )}
-      <WhatsAppLogo />
     </div>
   );
 }

@@ -16,7 +16,7 @@ function Testimonials() {
     return (
         <div>
             <div className="bg-[#F8B705] px-10 md:py-10  pb-10">
-                <p className="text-center text-black text-xl 3xl:text-3xl font-semibold">
+            <p className="text-center text-4xl 3xl:text-xl font-bold py-5 md:py-10">
                     Client / Customer Testimonials
                         </p>
                 <Slider {...settings}>

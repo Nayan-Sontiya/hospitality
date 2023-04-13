@@ -5,7 +5,6 @@ import { GetRequest } from "../components/helpers/ApiHelper";
 import Head from "next/head";
 import NewResume from "../components/resume-components/newresume";
 import { useRouter } from "next/router";
-import WhatsAppLogo from "../components/common-components/WhatsApp";
 function resume() {
   const [data, setData] = useState([]);
   const router = useRouter();
@@ -80,7 +79,6 @@ function resume() {
         <NewResume data={data} />
       </div>
       <Footer />
-      <WhatsAppLogo />
     </div>
   );
 }

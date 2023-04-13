@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Footer from "../components/common-components/Footer";
 import Header from "../components/common-components/Header";
 import Style from "../styles/Home.module.css";
-import ReactWhatsapp from 'react-whatsapp';
 
 import {
   GetRequest,
@@ -22,7 +21,6 @@ import "react-phone-input-2/lib/style.css";
 import swal from "sweetalert";
 import { useRouter } from "next/router";
 import Head from "next/head";
-import WhatsAppLogo from "../components/common-components/WhatsApp";
 function MyProfile() {
   let userData = userDataProvider();
   let userStatus = userStatusProvider();
@@ -190,46 +188,22 @@ function MyProfile() {
   return (
     <div>
       <Head>
-        <title>
-          Hospitality Finder | Find the best hospitality management staff
-        </title>
+        <title>My Profile - Find the best hospitality management staff.</title>
+        <meta
+          name="title"
+          content="My Profile - Find the best hospitality management staff."
+        />
         <meta
           name="description"
           content="Welcome to Hospitality Finder, a comprehensive online search service for businesses seeking hospitality professional or staff."
         />
-        <meta name="google-site-verification" content="CF__90Zfvbb28X_oOxUD5HIzBkNnNtP-SHP3RjPvYOM" />
         <meta
-          name="Keywords"
-          content="best hospitality management staff,
-          top accountants list,
-          top business development managers list,
-          top hotel security staff list,
-          talented managers list,
-          top utility staff list,
-          top hostess list,
-          top event management staff list,
-          experienced waiters list,
-          experienced stewards list,
-          top bartenders list,
-          experienced captains list,
-          experienced housekeepers list,
-          experienced receptionists list,
-          top lobby managers list,
-          experienced doormans list,
-          experienced room attendant list,
-          experienced security staff list,
-          experienced restaurant managers list,
-          experienced residential managers list,
-          top mixologists list,
-          top jugglers list,
-          experienced bartending helpers list,
-          experienced front office executives list,
-          experienced back office executives list,
-          experienced front desk agents list,
-          experienced sales managers list,
-          top reservation executives list,
-          top electricians list,
-          experienced F&#38;B managers list"
+          name="keywords"
+          content="best hospitality management staff, top accountants list, top business development managers list, top hotel security staff list, talented managers list, top utility staff list, top hostess list, top event management staff list,"
+        />
+        <meta
+          name="google-site-verification"
+          content="CF__90Zfvbb28X_oOxUD5HIzBkNnNtP-SHP3RjPvYOM"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -251,11 +225,15 @@ function MyProfile() {
                   <div className="w-11/12 sm:w-9/12 md:w-4/12">
                     <div className="grid justify-items-center">
                       {userData.profile_pic !== "" &&
-                        userData.profile_pic !== null &&
-                        userData.profile_pic !== undefined ? (
+                      userData.profile_pic !== null &&
+                      userData.profile_pic !== undefined ? (
                         <div className="">
                           <img
-                            src={userData?.externalAuth ? userData.profile_pic : awsUrl + userData.profile_pic}
+                            src={
+                              userData?.externalAuth
+                                ? userData.profile_pic
+                                : awsUrl + userData.profile_pic
+                            }
                             alt="Looking Chef for my restaurant"
                             className="h-20 w-20 rounded-full object-cover"
                           />
@@ -424,9 +402,9 @@ function MyProfile() {
                           maxLength="10"
                           className={Style.InputStyle}
                           onInput={(e) =>
-                          (e.target.value = e.target.value
-                            .replace(/[^0-9]/g, "")
-                            .replace(/(\..*?)\..*/g, "$1"))
+                            (e.target.value = e.target.value
+                              .replace(/[^0-9]/g, "")
+                              .replace(/(\..*?)\..*/g, "$1"))
                           }
                           onChange={(e) => setZipCode(e.target.value)}
                         />
@@ -454,7 +432,6 @@ function MyProfile() {
       ) : (
         ""
       )}
-      <WhatsAppLogo />
     </div>
   );
 }

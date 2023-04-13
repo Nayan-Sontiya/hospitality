@@ -1,54 +1,31 @@
 import React from "react";
 import Footer from "../components/common-components/Footer";
 import Header from "../components/common-components/Header";
-import Head from "next/head"
-import WhatsAppLogo from "../components/common-components/WhatsApp";
+import Head from "next/head";
 function PrivacyPolicy() {
   return (
     <div>
-        <Head>
-        <title>
-        Hospitality Finder | Best hospitality management website
-        </title>
+      <Head>
+        <title>Privacy Policy | Best hospitality management website.</title>
+        <meta
+          name="title"
+          content="Privacy Policy | Best hospitality management website."
+        />
+
         <meta
           name="description"
-          content=" Whether you’re looking for young talent to hire, or a job place to work in the hospitality industry, Hospitality Finder is the best hospitality management website."
+          content="Whether you’re looking for young talent to hire, or a job place to work in the hospitality industry, Hospitality Finder is the best hospitality management website."
         />
-         <meta name="google-site-verification" content="CF__90Zfvbb28X_oOxUD5HIzBkNnNtP-SHP3RjPvYOM" />
+
         <meta
-          name="Keywords"
-          content="Find hospitality staff near me,
-          best hospitality staff near me,
-          find best hospitality management website,
-          find best hospitality staff near me,
-          captains for hire near me,
-          housekeepers for hire near me,
-          utility staff for hire near me,
-          receptionists for hire near me,
-          lobby managers for hire near me,
-          doorman for hire near me,
-          room attendant for hire near me,
-          security staff for hire near me,
-          waiters for hire near me,
-          stewards for hire near me,
-          managers for hire near me,
-          restaurant managers for hire near me,
-          residential managers for hire near me,
-          bartenders for hire near me,
-          juggler for hire near me,
-          bartending helper for hire near me,
-          front office executive for hire near me,
-          back office executive for hire near me,
-          hostess for hire near me,
-          experienced chefs for hire near me,
-          sales manager for hire near me,
-          event management staff for hire near me,
-          electrician for hire near me,
-          F	&#38; B manager for hire near me,
-          legal manager for hire near me,
-          account manager for hire near me,
-          accountant for hire near me"
+          name="keywords"
+          content="Find hospitality staff near me, best hospitality staff near me, find best hospitality management website, find best hospitality staff near me, captains for hire near me, housekeepers for hire near me, utility staff for hire near me, receptionists for hire near me, lobby managers for hire near me, doorman for hire near me, room attendant for hire near me, security staff for hire near me, waiters for hire near me, stewards for hire near me, managers for hire near me, restaurant managers for hire near me, residential managers for hire near me, bartenders for hire near me, juggler for hire near me, bartending helper for hire near me, front office executive for hire near me, back office executive for hire near me, hostess for hire near me, experienced chefs for hire near me, sales manager for hire near me, event management staff for hire near me, electrician for hire near me, F & B manager for hire near me, legal manager for hire near me,"
         />
+        <meta
+          name="google-site-verification"
+          content="CF__90Zfvbb28X_oOxUD5HIzBkNnNtP-SHP3RjPvYOM"
+        />
+
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {process.browser ? (
@@ -170,7 +147,6 @@ function PrivacyPolicy() {
           </div>
 
           <Footer />
-          <WhatsAppLogo />
         </>
       ) : (
         ""

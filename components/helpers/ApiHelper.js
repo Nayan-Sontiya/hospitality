@@ -1,6 +1,5 @@
 const productionApiUrl = "https://hospitalityfinder.in/api/";
-// const productionApiUrl =
-//   "https://317f-223-236-32-43.in.ngrok.io/api/";
+// const productionApiUrl = "https://a867-27-58-221-183.in.ngrok.io/api/";
 
 const websiteMainUrl = "";
 const awsUrl = "https://hospitality-web.s3.us-east-2.amazonaws.com/";

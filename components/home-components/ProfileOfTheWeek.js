@@ -8,7 +8,7 @@ const settings = {
   infinite: true,
   speed: 300,
   row: 1,
-  autoplay: true,
+  autoplay: false,
   autoplaySpeed: 3000,
   initialSlide: 0,
   slidesToShow: 3,
@@ -53,7 +53,7 @@ function ProfileOfTheWeek() {
   return (
     <div>
       <div className="bg-[#1B1465] px-10 md:py-10 pb-10">
-        <p className="text-center text-white text-xl 3xl:text-3xl font-semibold my-5">
+       <p className="text-center text-white text-4xl 3xl:text-xl font-bold py-5 md:py-10">
           Profile Of The Week
         </p>
         <Slider {...settings}>

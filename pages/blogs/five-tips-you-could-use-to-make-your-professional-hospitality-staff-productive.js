@@ -2,7 +2,6 @@ import React from 'react'
 import Footer from '../../components/common-components/Footer'
 import Header from '../../components/common-components/Header'
 import Head from "next/head"
-import WhatsAppLogo from '../../components/common-components/WhatsApp'
 function BlogTwo() {
     return (
         <>
@@ -84,7 +83,6 @@ function BlogTwo() {
                     Your hotel would be achieving success thanks to the hard-working staff. If you want the <b> best solution to find hospitality staff,</b> you must check us. We have a highly qualified staff waiting for companies to pick them up. All these people are well adept at the jobs they have to work upon. By hiring them through us, you can be assured of superior work at all times. Naturally, then success will follow you soon.                     </p>
             </div>
             <Footer />
-            <WhatsAppLogo />
         </>
     )
 }

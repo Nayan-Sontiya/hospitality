@@ -2,8 +2,6 @@ import React from "react";
 import Footer from "../components/common-components/Footer";
 import Header from "../components/common-components/Header";
 import Head from "next/head";
-import ReactWhatsapp from "react-whatsapp";
-import WhatsAppLogo from "../components/common-components/WhatsApp";
 
 function about() {
   const Profiles = [
@@ -29,47 +27,24 @@ function about() {
   return (
     <div>
       <Head>
-        <title>
-          Hospitality Finder | Looking for qualified and experienced chefs
-        </title>
+        <title>About Us | Looking for qualified and experienced chefs</title>
+        <meta
+          name="title"
+          content="About Us | Looking for qualified and experienced chefs"
+        />
         <meta
           name="description"
-          content="Hospitality Finder | If you are looking for qualified and experienced chefs, finding a personal chef, grill masters, line cooks, prep cooks, baker and so many more, choose us."
+          content="Learn more about Hospitality Finder | If you are looking for qualified and experienced chefs, finding a personal chef, grill masters, line cooks, prep cooks, baker and so many more, choose us."
         />
-        <meta name="google-site-verification" content="CF__90Zfvbb28X_oOxUD5HIzBkNnNtP-SHP3RjPvYOM" />
         <meta
-          name="Keywords"
-          content="best place to hire chefs,
-          Best place to work as a chefs,
-          looking for qualifies and experienced chefs,
-          Find chefs for my restaurant,
-          Hire the best Chef Experts,
-          finding a perosnal chef,
-          Hiring chefs for restaurant,
-          What to look for when hiring a chef,
-          Find best Chefs,
-          Hire Cook,
-          Hire a Chef,
-          How do I pick a Chef,
-          Oriental chefs,
-          How to Hire a Chef,
-          Where to hire Cooks,
-          Best Places to Find Chefs,
-          Cooks near me,
-          Chef Recruiter,
-          Home Chefs,
-          Domestic chefs and cooks,
-          How can I hire a cook for my new restaurant,
-          Best agency for Chefs,
-          Best Home Chefs,
-          Halwai,
-          hiring a professional chef,
-          Domestic cooks,
-          India's Best Chef,
-          Where to find Chefs,
-          Where to find kitchen workers,
-          List of Indian chefs"
+          name="keywords"
+          content="best place to hire chefs, Best place to work as a chefs, looking for qualifies and experienced chefs, Find chefs for my restaurant, Hire the best Chef Experts, finding a perosnal chef, Hiring chefs for restaurant, What to look for when hiring a chef, Find best Chefs, Hire Cook, Hire a Chef, How do I pick a Chef, Oriental chefs, How to Hire a Chef, Where to hire Cooks, Best Places to Find Chefs, Cooks near me, Chef Recruiter, Home Chefs, Domestic chefs and cooks, How can I hire a cook for my new restaurant, Best agency for Chefs, Best HomeBest Home Chefs, Halwai, hiring a professional chef, Domestic cooks, India's Best Chef, Where to find Chefs, Where to find kitchen workers, List of Indian chefs"
         />
+        <meta
+          name="google-site-verification"
+          content="CF__90Zfvbb28X_oOxUD5HIzBkNnNtP-SHP3RjPvYOM"
+        />
+
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {process.browser ? (
@@ -108,7 +83,9 @@ function about() {
                       className="col-span-12 xs:col-span-6 sm:col-span-4 lg:col-span-3 3xl:col-span-2 bg-[#1b1465] px-5 py-3 mx-2 my-3 rounded transition ease-in-out delay-10 hover:-translate-y-1 hover:scale-110 hover:bg-[#5b4bfa] duration-300"
                       key={i}
                     >
-                      <p className="text-[#ffffff] text-center text-xs xs:text-lg 3xl:text-xl">{items}</p>
+                      <p className="text-[#ffffff] text-center text-xs xs:text-lg 3xl:text-xl">
+                        {items}
+                      </p>
                     </div>
                   );
                 })}
@@ -140,10 +117,12 @@ function about() {
                 </div>
               </div>
               <div className="px-5">
-                <p className="text-[32px] 3xl:text-[42px] py-5 text-center">Our features</p>
+                <p className="text-[32px] 3xl:text-[42px] py-5 text-center">
+                  Our features
+                </p>
                 <p className="3xl:text-2xl">
-                  Before we explain to you the process of working with us, have a
-                  look at our features:
+                  Before we explain to you the process of working with us, have
+                  a look at our features:
                 </p>
                 <ul className="pl-5 3xl:text-2xl">
                   <li className="list-disc">
@@ -199,7 +178,6 @@ function about() {
       ) : (
         ""
       )}
-        <WhatsAppLogo />
     </div>
   );
 }

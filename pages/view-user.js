@@ -4,11 +4,14 @@ import { useEffect, useState } from "react";
 import Style from "../styles/Home.module.css";
 import Footer from "../components/common-components/Footer";
 import Header from "../components/common-components/Header";
-import { accessTokenProvider, awsUrl, GetRequest ,userDataProvider} from "../components/helpers/ApiHelper";
+import {
+  accessTokenProvider,
+  awsUrl,
+  GetRequest,
+  userDataProvider,
+} from "../components/helpers/ApiHelper";
 import { multipleMediaIdentifier } from "../components/helpers/HelperFunctions";
 import Loader from "../components/common-components/Loader";
-import ReactWhatsapp from 'react-whatsapp';
-import WhatsAppLogo from "../components/common-components/WhatsApp";
 
 const ViewUser = () => {
   let [searchData, setSearchData] = useState([]);
@@ -17,8 +20,8 @@ const ViewUser = () => {
   let userData = userDataProvider();
   let router = useRouter();
   function getWords(monthCount) {
-    if(monthCount===0){
-      return "Fresher"
+    if (monthCount === 0) {
+      return "Fresher";
     }
     function getPlural(number, word) {
       return (number === 1 && word.one) || word.other;
@@ -33,7 +36,7 @@ const ViewUser = () => {
     return result.join(" , ");
   }
   const { userId } = router.query;
-  
+
   const {
     photo_of_candidate,
     name_of_candidate,
@@ -51,7 +54,7 @@ const ViewUser = () => {
     dish,
   } = searchData || {};
   let accessToken = accessTokenProvider();
- 
+
   // useEffect(() => {
   //   if (
   //     accessToken === "" ||
@@ -62,10 +65,11 @@ const ViewUser = () => {
   //   }
   // }, [accessToken]);
   const getCandidateResume = async (candidateId) => {
+    console.log("userData  => ", userData);
     let resp = await GetRequest(
       "getCandidateResume/" + userData._id + "/" + candidateId
     );
-    if (resp.status === 200) { 
+    if (resp.status === 200) {
       window.open(
         `${window.location.origin}/user-details/?id=${candidateId}`,
         "_targetBlank"
@@ -91,7 +95,7 @@ const ViewUser = () => {
         setButtonLoader(false);
       } else {
         swal("Info", response.message, "info");
-        if(response.message==="Unauthorized access!"){
+        if (response.message === "Unauthorized access!") {
           router.push("/");
         }
         setSearchData({});
@@ -106,33 +110,32 @@ const ViewUser = () => {
   useEffect(() => {
     getUser();
   }, [userId]);
-const redirect=()=>{
-  if(accessToken){
-    getCandidateResume(userId)
-  }
-  router.push(`/user-signup/?callback=/user-details/?id=${userId}`)
-}
+  const redirect = () => {
+    if (accessToken) {
+      getCandidateResume(userId);
+    }
+    router.push(`/user-signup/?callback=/user-details/?id=${userId}`);
+  };
   useEffect(() => {
     setHasCandidateData(searchData && !!Object.values(searchData)?.length);
   }, [searchData]);
   return (
     <div>
       <Head>
-        <title>
-          Hospitality Finder | We provide restaurant staffing solutions
-        </title>
+        <title>View User | We provide restaurant staffing solutions</title>
         <meta
           name="description"
           content="Welcome to Hospitality Finder, a comprehensive online search service for businesses seeking hospitality professional or staff."
         />
-         <meta name="google-site-verification" content="CF__90Zfvbb28X_oOxUD5HIzBkNnNtP-SHP3RjPvYOM" />
+        <meta
+          name="google-site-verification"
+          content="CF__90Zfvbb28X_oOxUD5HIzBkNnNtP-SHP3RjPvYOM"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>
         <Header PageName="home" />
-        <div
-          className="col-span-12 md:col-span-12"
-        >
+        <div className="col-span-12 md:col-span-12">
           {buttonLoader === true ? (
             <Loader />
           ) : (
@@ -159,9 +162,9 @@ const redirect=()=>{
                     </div>
                     <div className="col-span-12 sm:col-span-6 md:col-span-5">
                       <p className="text-xl 3xl:text-3xl pl-5 text-[#000000] uppercase">
-                      {name_of_candidate
-                                  ? name_of_candidate?.split(" ")[0]
-                                  : "-"}
+                        {name_of_candidate
+                          ? name_of_candidate?.split(" ")[0]
+                          : "-"}
                       </p>
 
                       <span className="pl-5 text-[18px] text-[#fbbc07] 3xl:text-3xl flex">
@@ -177,7 +180,7 @@ const redirect=()=>{
                         </label>
                         <p className="text-sm text-[#000000] pt-1 pl-5 break-all">
                           &#8377; {salary_expectation}/month
-                          <br/>
+                          <br />
                           (negotiable)
                         </p>
                       </div>
@@ -344,7 +347,6 @@ const redirect=()=>{
         </div>
       </div>
       <Footer />
-      <WhatsAppLogo />
     </div>
   );
 };

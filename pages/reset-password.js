@@ -3,7 +3,6 @@ import Style from "../styles/Home.module.css";
 import swal from "sweetalert";
 import { useRouter } from "next/router";
 import Head from "next/head";
-import WhatsAppLogo from "../components/common-components/WhatsApp";
 function ResetPassword() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -47,12 +46,16 @@ function ResetPassword() {
                 if (isConfirm) {
                   router.push("/");
                 }
-              })
+              });
             } else {
               swal("Info", returnValue.message, "warning");
             }
           } else {
-            swal("Info", "Password Confirmation does not match ..Try again !", "warning");
+            swal(
+              "Info",
+              "Password Confirmation does not match ..Try again !",
+              "warning"
+            );
           }
         } else {
           swal("Info", "Please enter password", "warning");
@@ -65,7 +68,15 @@ function ResetPassword() {
   return (
     <div className=" w-full bg-[#1B1465] h-screen">
       <Head>
-      <meta name="google-site-verification" content="CF__90Zfvbb28X_oOxUD5HIzBkNnNtP-SHP3RjPvYOM" />
+        <title>Reset Password | Best hospitality management website.</title>
+        <meta
+          name="title"
+          content="Reset Password | Best hospitality management website."
+        />
+        <meta
+          name="google-site-verification"
+          content="CF__90Zfvbb28X_oOxUD5HIzBkNnNtP-SHP3RjPvYOM"
+        />
       </Head>
       {process.browser ? (
         <div className=" grid justify-items-center pt-20  px-5">
@@ -80,7 +91,7 @@ function ResetPassword() {
             </div>
             <p className="text-center text-2xl font-semiBold text-gray-400 mt-3 mb-3">
               Reset Password
-          </p>
+            </p>
 
             <form>
               <div className="form-group mb-3">
@@ -89,7 +100,7 @@ function ResetPassword() {
                   className="form-label inline-block mb-2 text-gray-700"
                 >
                   Password
-              </label>
+                </label>
                 <div className={Style.InputStyle + " flex"}>
                   <input
                     type={passwordShown1 ? "text" : "password"}
@@ -108,13 +119,13 @@ function ResetPassword() {
                         onClick={togglePasswordVisiblity1}
                       />
                     ) : (
-                        <img
-                          src="/images/eye-close-icon.png"
-                          alt="Find &#38; Hire Chefs Near Me"
-                          className={Style.eyecloseIconStyle}
-                          onClick={togglePasswordVisiblity1}
-                        />
-                      )}
+                      <img
+                        src="/images/eye-close-icon.png"
+                        alt="Find &#38; Hire Chefs Near Me"
+                        className={Style.eyecloseIconStyle}
+                        onClick={togglePasswordVisiblity1}
+                      />
+                    )}
                   </div>
                 </div>
               </div>
@@ -124,7 +135,7 @@ function ResetPassword() {
                   className="form-label inline-block mb-2 text-gray-700"
                 >
                   Confirm Password
-              </label>
+                </label>
                 <div className={Style.InputStyle + " flex"}>
                   <input
                     type={passwordShown ? "text" : "password"}
@@ -143,13 +154,13 @@ function ResetPassword() {
                         onClick={togglePasswordVisiblity}
                       />
                     ) : (
-                        <img
-                          src="/images/eye-close-icon.png"
-                          alt="How to Hire the Best Chefs"
-                          className={Style.eyecloseIconStyle}
-                          onClick={togglePasswordVisiblity}
-                        />
-                      )}
+                      <img
+                        src="/images/eye-close-icon.png"
+                        alt="How to Hire the Best Chefs"
+                        className={Style.eyecloseIconStyle}
+                        onClick={togglePasswordVisiblity}
+                      />
+                    )}
                   </div>
                 </div>
               </div>
@@ -161,13 +172,14 @@ function ResetPassword() {
                   type="button"
                 >
                   Reset
-              </button>
+                </button>
               </div>
             </form>
           </div>
         </div>
-      ) : ""}
-      <WhatsAppLogo />
+      ) : (
+        ""
+      )}
     </div>
   );
 }
