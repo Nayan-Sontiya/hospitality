@@ -1,150 +1,295 @@
-import React from 'react'
+import React from "react";
 import Slider from "react-slick";
 
 function TrustedLogos({ settings }) {
-
   const Logos = [
     {
       id: "1",
       img: "",
-      altTag: ""
+      altTag: "",
     },
     {
       id: "2",
       img: "",
-      altTag: ""
+      altTag: "",
     },
     {
       id: "3",
       img: "",
-      altTag: ""
+      altTag: "",
     },
     {
       id: "4",
       img: "",
-      altTag: ""
+      altTag: "",
     },
     {
       id: "5",
       img: "",
-      altTag: ""
+      altTag: "",
     },
     {
       id: "6",
       img: "",
-      altTag: ""
+      altTag: "",
     },
     {
       id: "7",
       img: "",
-      altTag: ""
+      altTag: "",
     },
     {
       id: "8",
       img: "",
-      altTag: ""
+      altTag: "",
     },
     {
       id: "9",
       img: "",
-      altTag: ""
+      altTag: "",
     },
     {
       id: "10",
       img: "",
-      altTag: ""
+      altTag: "",
     },
     {
       id: "11",
       img: "",
-      altTag: ""
+      altTag: "",
     },
     {
       id: "12",
       img: "",
-      altTag: ""
+      altTag: "",
     },
     {
       id: "13",
       img: "",
-      altTag: ""
+      altTag: "",
     },
     {
       id: "14",
       img: "",
-      altTag: ""
+      altTag: "",
     },
-  ]
+  ];
   return (
     <div>
       <Slider {...settings}>
         <div>
-          <div className="grid justify-items-center m-2 p-2 border">
-            <img src="/images/HomePage/radisson.webp" className="h-12 3xl:h-24" alt="Online professional chef" fetchPriority="high" />
+          <div
+            className="grid justify-items-center m-2 p-2 border"
+            style={{
+              boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+            }}
+          >
+            <img
+              src="/images/HomePage/radisson.webp"
+              className="h-36 3xl:h-24"
+              alt="Online professional chef"
+              fetchPriority="high"
+            />
           </div>
         </div>
         <div>
-          <div className="grid justify-items-center m-2 p-2 border">
-            <img src="/images/HomePage/bosch.webp" className="h-12 3xl:h-24" alt="Online professional chef" fetchPriority="high" />
+          <div
+            className="grid justify-items-center m-2 p-2 border"
+            style={{
+              boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+            }}
+          >
+            <img
+              src="/images/HomePage/bosch.webp"
+              className="h-36 3xl:h-24"
+              alt="Online professional chef"
+              fetchPriority="high"
+            />
           </div>
         </div>
         <div>
-          <div className="grid justify-items-center m-2 p-2 border">
-            <img src="/images/HomePage/cadila.webp" className="h-12 3xl:h-24" alt="Online professional chef" fetchPriority="high" />
+          <div
+            className="grid justify-items-center m-2 p-2 border"
+            style={{
+              boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+            }}
+          >
+            <img
+              src="/images/HomePage/cadila.webp"
+              className="h-36 3xl:h-24"
+              alt="Online professional chef"
+              fetchPriority="high"
+            />
           </div>
         </div>
         <div>
-          <div className="grid justify-items-center m-2 p-2 border">
-            <img src="/images/HomePage/liberty.webp" className="h-12 3xl:h-24" alt="Online professional chef" fetchPriority="high" />
+          <div
+            className="grid justify-items-center m-2 p-2 border"
+            style={{
+              boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+            }}
+          >
+            <img
+              src="/images/HomePage/liberty.webp"
+              className="h-36 3xl:h-24"
+              alt="Online professional chef"
+              fetchPriority="high"
+            />
           </div>
         </div>
         <div>
-          <div className="grid justify-items-center m-2 p-2 border">
-            <img src="/images/HomePage/manish.webp" className="h-12 3xl:h-24" alt="Online professional chef" fetchPriority="high" />
+          <div
+            className="grid justify-items-center m-2 p-2 border"
+            style={{
+              boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+            }}
+          >
+            <img
+              src="/images/HomePage/manish.webp"
+              className="h-36 3xl:h-24"
+              alt="Online professional chef"
+              fetchPriority="high"
+            />
           </div>
         </div>
         <div>
-          <div className="grid justify-items-center m-2 p-2 border">
-            <img src="/images/HomePage/siemens.webp" className="h-12 3xl:h-24" alt="Online professional chef" fetchPriority="high" />
+          <div
+            className="grid justify-items-center m-2 p-2 border"
+            style={{
+              boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+            }}
+          >
+            <img
+              src="/images/HomePage/siemens.webp"
+              className="h-36 3xl:h-24"
+              alt="Online professional chef"
+              fetchPriority="high"
+            />
           </div>
         </div>
         <div>
-          <div className="grid justify-items-center m-2 p-2 border">
-            <img src="/images/HomePage/videocon.webp" className="h-12 3xl:h-24" alt="Online professional chef" fetchPriority="high" />
+          <div
+            className="grid justify-items-center m-2 p-2 border"
+            style={{
+              boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+            }}
+          >
+            <img
+              src="/images/HomePage/videocon.webp"
+              className="h-36 3xl:h-24"
+              alt="Online professional chef"
+              fetchPriority="high"
+            />
           </div>
         </div>
         <div>
-          <div className="grid justify-items-center m-2 p-2 border">
-            <img src="/images/HomePage/au.webp" className="h-12 3xl:h-24" alt="Online professional chef" fetchPriority="high" />
+          <div
+            className="grid justify-items-center m-2 p-2 border"
+            style={{
+              boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+            }}
+          >
+            <img
+              src="/images/HomePage/au.webp"
+              className="h-36 3xl:h-24"
+              alt="Online professional chef"
+              fetchPriority="high"
+            />
           </div>
-        </div>   <div>
-          <div className="grid justify-items-center m-2 p-2 border">
-            <img src="/images/HomePage/chai.webp" className="h-12 3xl:h-24" alt="Online professional chef" fetchPriority="high" />
+        </div>{" "}
+        <div>
+          <div
+            className="grid justify-items-center m-2 p-2 border"
+            style={{
+              boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+            }}
+          >
+            <img
+              src="/images/HomePage/chai.webp"
+              className="h-36 3xl:h-24"
+              alt="Online professional chef"
+              fetchPriority="high"
+            />
           </div>
-        </div>   <div>
-          <div className="grid justify-items-center m-2 p-2 border">
-            <img src="/images/HomePage/entertaintment.webp" className="h-12 3xl:h-24" alt="Online professional chef" fetchPriority="high" />
+        </div>{" "}
+        <div>
+          <div
+            className="grid justify-items-center m-2 p-2 border"
+            style={{
+              boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+            }}
+          >
+            <img
+              src="/images/HomePage/entertaintment.webp"
+              className="h-36 3xl:h-24"
+              alt="Online professional chef"
+              fetchPriority="high"
+            />
           </div>
-        </div>   <div>
-          <div className="grid justify-items-center m-2 p-2 border">
-            <img src="/images/HomePage/faases.webp" className="h-12 3xl:h-24" alt="Online professional chef" fetchPriority="high" />
+        </div>{" "}
+        <div>
+          <div
+            className="grid justify-items-center m-2 p-2 border"
+            style={{
+              boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+            }}
+          >
+            <img
+              src="/images/HomePage/faases.webp"
+              className="h-36 3xl:h-24"
+              alt="Online professional chef"
+              fetchPriority="high"
+            />
           </div>
-        </div>   <div>
-          <div className="grid justify-items-center m-2 p-2 border">
-            <img src="/images/HomePage/manikarnika.webp" className="h-12 3xl:h-24" alt="Online professional chef" fetchPriority="high" />
+        </div>{" "}
+        <div>
+          <div
+            className="grid justify-items-center m-2 p-2 border"
+            style={{
+              boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+            }}
+          >
+            <img
+              src="/images/HomePage/manikarnika.webp"
+              className="h-36 3xl:h-24"
+              alt="Online professional chef"
+              fetchPriority="high"
+            />
           </div>
-        </div>   <div>
-          <div className="grid justify-items-center m-2 p-2 border">
-            <img src="/images/HomePage/nyk.webp" className="h-12 3xl:h-24" alt="Online professional chef" fetchPriority="high" />
+        </div>{" "}
+        <div>
+          <div
+            className="grid justify-items-center m-2 p-2 border"
+            style={{
+              boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+            }}
+          >
+            <img
+              src="/images/HomePage/nyk.webp"
+              className="h-36 3xl:h-24"
+              alt="Online professional chef"
+              fetchPriority="high"
+            />
           </div>
-        </div>   <div>
-          <div className="grid justify-items-center m-2 p-2 border">
-            <img src="/images/HomePage/pharmalab.webp" className="h-12 3xl:h-24" alt="Online professional chef" fetchPriority="high" />
+        </div>{" "}
+        <div>
+          <div
+            className="grid justify-items-center m-2 p-2 border"
+            style={{
+              boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+            }}
+          >
+            <img
+              src="/images/HomePage/pharmalab.webp"
+              className="h-36 3xl:h-24"
+              alt="Online professional chef"
+              fetchPriority="high"
+            />
           </div>
         </div>
       </Slider>
     </div>
-  )
+  );
 }
 
-export default TrustedLogos
+export default TrustedLogos;

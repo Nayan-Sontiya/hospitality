@@ -72,7 +72,7 @@ function AllUser() {
   let [categoryId, setCategoryId] = useState("");
   let [subcategoryData, setSubcategoryData] = useState([]);
   let [buttonLoader, setButtonLoader] = useState(false);
-  const [isFilterHidden, setIsFilterHidden] = useState(false);
+  const [isFilterHidden, setIsFilterHidden] = useState(true);
   let userData = userDataProvider();
   let [requirementMessage, setRequirementMessage] = useState("");
   const [page, setPage] = useState(-1);
@@ -1263,201 +1263,200 @@ function AllUser() {
               </div>
             </div>
             <div className="col-span-12 md:col-span-9 pl-4 pr-4">
-              <div className={Style.userDetailsContainerHright} id="container">
-                <p className="text-center text-4xl 3xl:text-xl font-bold py-5 md:py-2">
-                  {profiles.find(
-                    (profile) => profile.category === occupationName
-                  )?.pageTitle ?? "Hospitalityfinder"}
-                </p>
-                <p className="text-justify text-1xl 3xl:text-xl py-2 md:py-10">
-                  {profiles.find(
-                    (profile) => profile.category === occupationName
-                  )?.subTitle ?? "Hospitalityfinder"}
-                </p>
-                <InfiniteScroll
-                  dataLength={searchData?.length}
-                  next={GetSearchDataOnScroll}
-                  hasMore={
-                    searchData?.length ? totalCount > searchData?.length : false
-                  }
-                  loader={<Loader removeHeight />}
-                  height={540}
-                  endMessage={
-                    <>
-                      {searchData.length > 0 ? (
-                        <div className="text-center col-span-12 pt-5 3xl:pt-10">
-                          <p className="text-3xl 3xl:text-5xl text-[#777777]">{`That's all folks!`}</p>
-                        </div>
-                      ) : (
-                        <div className="text-center col-span-12 pt-5 3xl:pt-10">
-                          {/* <Lottie options={defaultOptions} height={350} width={350} />
+              {/* <div className={Style.userDetailsContainerHright} id="container"> */}
+              <InfiniteScroll
+                dataLength={searchData?.length}
+                next={GetSearchDataOnScroll}
+                hasMore={
+                  searchData?.length ? totalCount > searchData?.length : false
+                }
+                loader={<Loader removeHeight />}
+                height={"100vh"}
+                endMessage={
+                  <>
+                    {searchData.length > 0 ? (
+                      <div className="text-center col-span-12 pt-5 3xl:pt-10">
+                        <p className="text-3xl 3xl:text-5xl text-[#777777]">{`That's all folks!`}</p>
+                      </div>
+                    ) : (
+                      <div className="text-center col-span-12 pt-5 3xl:pt-10">
+                        {/* <Lottie options={defaultOptions} height={350} width={350} />
 
                           <p className="text-3xl text-[#777777]">
                             Please use filter for best results!
                           </p> */}
 
-                          <input
-                            placeholder="Tell us your requirement.."
-                            className="h-12 3xl:h-20 border sm:w-80 3xl:w-[500px] 3xl:text-[28px] p-5 md:mt-20"
-                            onChange={(e) =>
-                              setRequirementMessage(e.target.value)
-                            }
-                            value={requirementMessage}
-                          />
-                          <button
-                            className="px-5 py-2 bg-[#1b1465] 3xl:text-[28px] -mt-1 text-white h-12 3xl:h-20"
-                            onClick={AddRequirement}
-                          >
-                            Submit
-                          </button>
+                        <input
+                          placeholder="Tell us your requirement.."
+                          className="h-12 3xl:h-20 border sm:w-80 3xl:w-[500px] 3xl:text-[28px] p-5 md:mt-20"
+                          onChange={(e) =>
+                            setRequirementMessage(e.target.value)
+                          }
+                          value={requirementMessage}
+                        />
+                        <button
+                          className="px-5 py-2 bg-[#1b1465] 3xl:text-[28px] -mt-1 text-white h-12 3xl:h-20"
+                          onClick={AddRequirement}
+                        >
+                          Submit
+                        </button>
+                      </div>
+                    )}
+                    <p className="text-center text-4xl 3xl:text-xl font-bold py-5 md:py-2">
+                      {profiles.find(
+                        (profile) => profile.category === occupationName
+                      )?.pageTitle ?? "Hospitalityfinder"}
+                    </p>
+                    <p className="text-justify text-1xl 3xl:text-xl py-2 md:py-10">
+                      {profiles.find(
+                        (profile) => profile.category === occupationName
+                      )?.subTitle ?? "Hospitalityfinder"}
+                    </p>
+                  </>
+                }
+              >
+                {searchData.map((data, i) => {
+                  return (
+                    <div
+                      className=" p-3 border border-[#7f7f7f] rounded-xl mt-2"
+                      key={i}
+                    >
+                      <div className="grid grid-cols-12">
+                        <div className="col-span-12 sm:col-span-12 pt-1 md:col-span-3 mx-auto my-3">
+                          {data?.photo_of_candidate ? (
+                            <img
+                              src={
+                                awsUrl +
+                                data.photo_of_candidate?.split(/\s*(,)\s*/)[0]
+                              }
+                              className="rounded h-60 md:w-44 object-contain"
+                              alt="Find chefs for my restaurant"
+                            />
+                          ) : (
+                            <div className="h-60 md:w-44 text-center py-28">
+                              Photo Not Available
+                            </div>
+                          )}
                         </div>
-                      )}
-                    </>
-                  }
-                >
-                  {searchData.map((data, i) => {
-                    return (
-                      <div
-                        className=" p-3 border border-[#7f7f7f] rounded-xl mt-2"
-                        key={i}
-                      >
-                        <div className="grid grid-cols-12">
-                          <div className="col-span-12 sm:col-span-12 pt-1 md:col-span-3 mx-auto my-3">
-                            {data?.photo_of_candidate ? (
-                              <img
-                                src={
-                                  awsUrl +
-                                  data.photo_of_candidate?.split(/\s*(,)\s*/)[0]
-                                }
-                                className="rounded h-60 md:w-44 object-contain"
-                                alt="Find chefs for my restaurant"
-                              />
-                            ) : (
-                              <div className="h-60 md:w-44 text-center py-28">
-                                Photo Not Available
-                              </div>
-                            )}
-                          </div>
-                          <div className="col-span-12 sm:col-span-6 md:col-span-5 mb-3">
-                            <p className="text-xl 3xl:text-3xl pl-5 text-[#000000] uppercase">
-                              {data.name_of_candidate
-                                ? data.name_of_candidate?.split(" ")[0]
-                                : "-"}
-                            </p>
+                        <div className="col-span-12 sm:col-span-6 md:col-span-5 mb-3">
+                          <p className="text-xl 3xl:text-3xl pl-5 text-[#000000] uppercase">
+                            {data.name_of_candidate
+                              ? data.name_of_candidate?.split(" ")[0]
+                              : "-"}
+                          </p>
 
-                            <span className="pl-5 text-[18px] text-[#fbbc07] 3xl:text-3xl flex">
-                              &#9733; &#9733; &#9733; &#9733; &#9733;{" "}
-                              <p className="text-black pl-3">{`(${randomIntFromInterval(
-                                100,
-                                200
-                              )})`}</p>
-                            </span>
-                            <div className="">
-                              <label className={Style.userLabelStyle}>
-                                EXPECTED SALARY
-                              </label>
-                              <p className="text-sm text-[#000000] pt-1 pl-5 break-all">
-                                &#8377; {data.salary_expectation}/month
-                                <br />
-                                (negotiable)
-                              </p>
-                            </div>
-                            <div className="pt-2">
-                              <label className={Style.userLabelStyle}>
-                                Gender
-                              </label>
-                              <p className="text-sm text-[#000000] pt-1 pl-5 break-all">
-                                {data.gender}
-                              </p>
-                            </div>
-                            <div className="pt-2">
-                              <label className={Style.userLabelStyle}>
-                                PREFERRED LOCATION
-                              </label>
-                              <div className="flex p-0 m-0 pl-5 ">
-                                {/* <span style={{ fontSize: "12px", marginTop: "5px" }}>
+                          <span className="pl-5 text-[18px] text-[#fbbc07] 3xl:text-3xl flex">
+                            &#9733; &#9733; &#9733; &#9733; &#9733;{" "}
+                            <p className="text-black pl-3">{`(${randomIntFromInterval(
+                              100,
+                              200
+                            )})`}</p>
+                          </span>
+                          <div className="">
+                            <label className={Style.userLabelStyle}>
+                              EXPECTED SALARY
+                            </label>
+                            <p className="text-sm text-[#000000] pt-1 pl-5 break-all">
+                              &#8377; {data.salary_expectation}/month
+                              <br />
+                              (negotiable)
+                            </p>
+                          </div>
+                          <div className="pt-2">
+                            <label className={Style.userLabelStyle}>
+                              Gender
+                            </label>
+                            <p className="text-sm text-[#000000] pt-1 pl-5 break-all">
+                              {data.gender}
+                            </p>
+                          </div>
+                          <div className="pt-2">
+                            <label className={Style.userLabelStyle}>
+                              PREFERRED LOCATION
+                            </label>
+                            <div className="flex p-0 m-0 pl-5 ">
+                              {/* <span style={{ fontSize: "12px", marginTop: "5px" }}>
                             &#9679;
                           </span> */}
-                                <img
-                                  src="/images/userIcon/location.png"
-                                  alt="finding a personal chef"
-                                  className="h-6 w-6"
-                                />
-                                <p className="text-sm text-[#000000] pt-1 pl-1 break-all">
-                                  {data?.location_of_work?.toString()}
-                                </p>
-                              </div>
+                              <img
+                                src="/images/userIcon/location.png"
+                                alt="finding a personal chef"
+                                className="h-6 w-6"
+                              />
+                              <p className="text-sm text-[#000000] pt-1 pl-1 break-all">
+                                {data?.location_of_work?.toString()}
+                              </p>
                             </div>
                           </div>
-                          <div className="col-span-12 sm:col-span-6 md:col-span-4 pt-0 md:pt-8">
+                        </div>
+                        <div className="col-span-12 sm:col-span-6 md:col-span-4 pt-0 md:pt-8">
+                          <label className={Style.userLabelStyle}>
+                            JOB SECTION
+                          </label>
+                          <div className="flex p-0 m-0 pl-5 ">
+                            <span
+                              style={{ fontSize: "12px", marginTop: "5px" }}
+                            >
+                              &#9679;
+                            </span>
+                            <p className="text-sm text-[#000000] pt-1 pl-1 break-all">
+                              {data.category?.length && data.category[0] !== ""
+                                ? data.category.toString()
+                                : ""}
+                            </p>
+                          </div>
+                          <div className="pt-2">
                             <label className={Style.userLabelStyle}>
-                              JOB SECTION
+                              Total Experience
                             </label>
                             <div className="flex p-0 m-0 pl-5 ">
                               <span
-                                style={{ fontSize: "12px", marginTop: "5px" }}
+                                style={{
+                                  fontSize: "12px",
+                                  marginTop: "5px",
+                                }}
                               >
                                 &#9679;
                               </span>
                               <p className="text-sm text-[#000000] pt-1 pl-1 break-all">
-                                {data.category?.length &&
-                                data.category[0] !== ""
-                                  ? data.category.toString()
-                                  : ""}
-                              </p>
-                            </div>
-                            <div className="pt-2">
-                              <label className={Style.userLabelStyle}>
-                                Total Experience
-                              </label>
-                              <div className="flex p-0 m-0 pl-5 ">
-                                <span
-                                  style={{
-                                    fontSize: "12px",
-                                    marginTop: "5px",
-                                  }}
-                                >
-                                  &#9679;
-                                </span>
-                                <p className="text-sm text-[#000000] pt-1 pl-1 break-all">
-                                  {getWords(data.experience_in_month)}
-                                </p>
-                              </div>
-                            </div>
-                            <div className="pt-2">
-                              <label className={Style.userLabelStyle}>
-                                Marital Status
-                              </label>
-                              <p className="text-sm text-[#000000] pt-1 pl-5 break-all">
-                                {data.marital_status}
-                              </p>
-                            </div>
-                            <div className="pt-2">
-                              <label className={Style.userLabelStyle}>
-                                Languages Known
-                              </label>
-
-                              <p className="text-sm text-[#000000] pt-1 pl-5">
-                                {data.languages}
+                                {getWords(data.experience_in_month)}
                               </p>
                             </div>
                           </div>
-                        </div>
-                        <div className="grid justify-items-center">
-                          <button
-                            className="bg-[#F8B705] text-white px-5 py-1 mb-2 mt-8 rounded"
-                            onClick={() => viewCandidateDetails(data._id)}
-                          >
-                            View more
-                          </button>
+                          <div className="pt-2">
+                            <label className={Style.userLabelStyle}>
+                              Marital Status
+                            </label>
+                            <p className="text-sm text-[#000000] pt-1 pl-5 break-all">
+                              {data.marital_status}
+                            </p>
+                          </div>
+                          <div className="pt-2">
+                            <label className={Style.userLabelStyle}>
+                              Languages Known
+                            </label>
+
+                            <p className="text-sm text-[#000000] pt-1 pl-5">
+                              {data.languages}
+                            </p>
+                          </div>
                         </div>
                       </div>
-                    );
-                  })}
-                </InfiniteScroll>
-              </div>
+                      <div className="grid justify-items-center">
+                        <button
+                          className="bg-[#F8B705] text-white px-5 py-1 mb-2 mt-8 rounded"
+                          onClick={() => viewCandidateDetails(data._id)}
+                        >
+                          View more
+                        </button>
+                      </div>
+                    </div>
+                  );
+                })}
+              </InfiniteScroll>
             </div>
           </div>
+          {/* </div> */}
           <Footer />
         </>
       ) : (

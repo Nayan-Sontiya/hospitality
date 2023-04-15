@@ -12,7 +12,6 @@ import {
   awsUrl,
   userStatusProvider,
   GetRequest,
-  loginPostRequestWithFormControl,
 } from "../helpers/ApiHelper";
 import ForgotModal from "./Modal";
 import { useRouter } from "next/router";
@@ -277,15 +276,20 @@ function Header({ PageName }) {
             />
           </Link>
         </div>
-        <div className="col-span-2 sm:col-span-7 md:col-span-7 self-center flex justify-center pt-4 ">
+        <div className="col-span-2 sm:col-span-7 md:col-span-7 self-center flex justify-start pt-4 ">
           <div className={Style.headerResponsive}>
-            <div className="flex">
+            <div
+              className="flex"
+              style={{
+                alignItems: "center",
+              }}
+            >
               <Link href="/" passHref>
                 <p
                   className={
                     PageName === "home"
-                      ? "pl-3 text-[14px] lg:text-[16px] 3xl:text-[22px] text-[#1B1465] cursor-pointer uppercase"
-                      : "pl-3 text-[14px] lg:text-[16px] 3xl:text-[22px] text-[#707070] cursor-pointer uppercase"
+                      ? "pl-3 text-[14px] lg:text-[15px] 3xl:text-[22px] text-[#1B1465] cursor-pointer uppercase"
+                      : "pl-3 text-[14px] lg:text-[15px] 3xl:text-[22px] text-[#707070] cursor-pointer uppercase"
                   }
                 >
                   Home
@@ -295,8 +299,8 @@ function Header({ PageName }) {
                 <p
                   className={
                     PageName === "about"
-                      ? "pl-3 text-[14px] lg:text-[16px] 3xl:text-[22px] text-[#1B1465] cursor-pointer uppercase"
-                      : "pl-3 text-[14px] lg:text-[16px] 3xl:text-[22px] text-[#707070] cursor-pointer uppercase "
+                      ? "pl-3 text-[14px] lg:text-[15px] 3xl:text-[22px] text-[#1B1465] cursor-pointer uppercase"
+                      : "pl-3 text-[14px] lg:text-[15px] 3xl:text-[22px] text-[#707070] cursor-pointer uppercase "
                   }
                 >
                   About Us
@@ -306,8 +310,8 @@ function Header({ PageName }) {
                 <p
                   className={
                     PageName === "howItWorks"
-                      ? "pl-3 text-[14px] lg:text-[16px] 3xl:text-[22px] text-[#1B1465] cursor-pointer uppercase"
-                      : "pl-3 text-[14px] lg:text-[16px] 3xl:text-[22px] text-[#707070] cursor-pointer uppercase "
+                      ? "pl-3 text-[14px] lg:text-[15px] 3xl:text-[22px] text-[#1B1465] cursor-pointer uppercase"
+                      : "pl-3 text-[14px] lg:text-[15px] 3xl:text-[22px] text-[#707070] cursor-pointer uppercase "
                   }
                 >
                   How It Works
@@ -317,8 +321,8 @@ function Header({ PageName }) {
                 <p
                   className={
                     PageName === "whyChooseUs"
-                      ? "pl-3 text-[14px] lg:text-[16px] 3xl:text-[22px] text-[#1B1465] cursor-pointer uppercase"
-                      : "pl-3 text-[14px] lg:text-[16px] 3xl:text-[22px] text-[#707070] cursor-pointer uppercase "
+                      ? "pl-3 text-[14px] lg:text-[15px] 3xl:text-[22px] text-[#1B1465] cursor-pointer uppercase"
+                      : "pl-3 text-[14px] lg:text-[15px] 3xl:text-[22px] text-[#707070] cursor-pointer uppercase "
                   }
                 >
                   Why Choose Us
@@ -328,8 +332,8 @@ function Header({ PageName }) {
                 <p
                   className={
                     PageName === "packs"
-                      ? "pl-3 text-[14px] lg:text-[16px] 3xl:text-[22px] text-[#1B1465] cursor-pointer uppercase"
-                      : "pl-3 text-[14px] lg:text-[16px] 3xl:text-[22px] text-[#707070] cursor-pointer uppercase "
+                      ? "pl-3 text-[14px] lg:text-[15px] 3xl:text-[22px] text-[#1B1465] cursor-pointer uppercase"
+                      : "pl-3 text-[14px] lg:text-[15px] 3xl:text-[22px] text-[#707070] cursor-pointer uppercase "
                   }
                 >
                   Packs
@@ -339,8 +343,8 @@ function Header({ PageName }) {
                 <p
                   className={
                     PageName === "blog"
-                      ? "pl-3 text-[14px] lg:text-[16px] 3xl:text-[22px] text-[#1B1465] cursor-pointer uppercase"
-                      : "pl-3 text-[14px] lg:text-[16px] 3xl:text-[22px] text-[#707070] cursor-pointer uppercase "
+                      ? "pl-3 text-[14px] lg:text-[15px] 3xl:text-[22px] text-[#1B1465] cursor-pointer uppercase"
+                      : "pl-3 text-[14px] lg:text-[15px] 3xl:text-[22px] text-[#707070] cursor-pointer uppercase "
                   }
                 >
                   Blogs
@@ -350,28 +354,41 @@ function Header({ PageName }) {
                 <p
                   className={
                     PageName === "contactUs"
-                      ? "pl-3 text-[14px] lg:text-[16px] 3xl:text-[22px] text-[#1B1465] cursor-pointer uppercase"
-                      : "pl-3 text-[14px] lg:text-[16px] 3xl:text-[22px] text-[#707070] cursor-pointer uppercase "
+                      ? "pl-3 text-[14px] lg:text-[15px] 3xl:text-[22px] text-[#1B1465] cursor-pointer uppercase"
+                      : "pl-3 text-[14px] lg:text-[15px] 3xl:text-[22px] text-[#707070] cursor-pointer uppercase "
                   }
                 >
                   Contact Us
                 </p>
               </Link>
 
-              <p className="pl-5 text-[14px] lg:text-[16px] 3xl:text-[22px] text-[#707070] cursor-pointer uppercase">
+              <p className="ml-5 pl-5 text-[14px] lg:text-[15px] 3xl:text-[22px] text-[#707070] cursor-pointer uppercase">
                 <a
-                  href="tel:+91-9987117188"
+                  href="tel:+91-9981333039"
                   class="transititext-primary text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
-                  data-te-toggle="tooltip"
-                  title="+91-9987117188"
+                  // data-te-toggle="tooltip"
+                  // title="+91-9981333039"
                   style={{
                     display: "flex",
                     gap: "4px",
                     alignItems: "center",
                   }}
                 >
-                  <PhoneIcon />
-                  Call Us
+                  <button
+                    className="w-100 h-8 3xl:h-12 3xl:text-xl border border-[#1B1465] text-[#1B1465] uppercase rounded-md shadow-md transition ease-in-out delay-150 hover:bg-[#ffffff] duration-300 "
+                    // onClick={() => modalOpenShow("loginModal")}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      padding: "4px 12px",
+                    }}
+                  >
+                    <div class="tooltip">
+                      <PhoneIcon />
+                      Call Us
+                      <span class="tooltiptext">+91-9981333039</span>
+                    </div>
+                  </button>
                 </a>
               </p>
             </div>
@@ -655,6 +672,37 @@ function Header({ PageName }) {
                         Contact Us
                       </li>
                     </Link>
+
+                    <p className="text-[14px] lg:text-[15px] 3xl:text-[22px] text-[#707070] cursor-pointer uppercase text-center">
+                      <a
+                        href="tel:+91-9981333039"
+                        class="transititext-primary text-center text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
+                        // data-te-toggle="tooltip"
+                        // title="+91-9981333039"
+                        style={{
+                          display: "flex",
+                          gap: "4px",
+                          alignItems: "center",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <button
+                          className="text-center w-100 h-8 3xl:h-12 3xl:text-xl border border-[#1B1465] text-[#1B1465] uppercase rounded-md shadow-md transition ease-in-out delay-150 hover:bg-[#ffffff] duration-300 "
+                          // onClick={() => modalOpenShow("loginModal")}
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            padding: "4px 12px",
+                          }}
+                        >
+                          <div class="tooltip">
+                            <PhoneIcon />
+                            Call Us
+                            <span class="tooltiptext">+91-9981333039</span>
+                          </div>
+                        </button>
+                      </a>
+                    </p>
                     {accessToken === undefined ||
                     accessToken === null ||
                     accessToken === "" ? (

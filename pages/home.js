@@ -291,15 +291,15 @@ const settings = {
   speed: 300,
   row: 1,
   autoplay: true,
-  autoplaySpeed: 2000,
+  autoplaySpeed: 3000,
   initialSlide: 0,
-  slidesToShow: 7,
+  slidesToShow: 4,
   slidesToScroll: 1,
   responsive: [
     {
       breakpoint: 1024,
       settings: {
-        slidesToShow: 7,
+        slidesToShow: 4,
         slidesToScroll: 1,
         autoplay: true,
         dots: false,
@@ -309,7 +309,7 @@ const settings = {
     {
       breakpoint: 900,
       settings: {
-        slidesToShow: 5,
+        slidesToShow: 4,
         slidesToScroll: 1,
         autoplay: true,
         dots: false,
@@ -319,7 +319,7 @@ const settings = {
     {
       breakpoint: 600,
       settings: {
-        slidesToShow: 3,
+        slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
         dots: false,
@@ -329,7 +329,7 @@ const settings = {
     {
       breakpoint: 480,
       settings: {
-        slidesToShow: 2,
+        slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
         dots: false,
@@ -628,6 +628,7 @@ function Home() {
       {process.browser ? (
         <>
           <Header PageName="home" />
+
           {/* <div className="grid grid-cols-12"> */}
           <div className="col-span-12 sm:col-span-12 lg:col-span-6 py-5">
             {/* {!accessToken ? (
@@ -648,8 +649,9 @@ function Home() {
                 </div>
               </>
             ) : ( */}
+
             <div className="3xl:h-[640px] ">
-              <p className="text-center text-4xl 3xl:text-xl font-bold py-5 md:py-10">
+              <p className="text-center text-3xl 3xl:text-xl font-bold py-5 md:py-10">
                 BROWSE PROFILES OF
               </p>
               <p className="text-center text-2xl 1xl:text-xl font-bold py-3 md:py-5">
@@ -673,6 +675,8 @@ function Home() {
                           style={{
                             width: "50%",
                             borderRadius: "50%",
+                            boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+                            padding: "12px",
                           }}
                         />
                         <p className="font-semibold text-center text-lg 3xl:text-2xl pt-3">
@@ -682,254 +686,268 @@ function Home() {
                     );
                   })}
               </div>
-              <p className="pt-1 mt-5 mb-3 py-5 text-[black] font-medium text-center text-3xl 3xl:text-4xl">
-                Tell us your requirements
+            </div>
+            <div className="px-0 sm:px-0 md:px-0 py-2 sm:py-5 md:py-5">
+              <ProfileOfTheWeek settings={settings} />
+            </div>
+            <div className="px-5 sm:px-5 md:px-10 py-2 sm:py-5 md:py-5">
+              <p className="text-4xl 3xl:text-xl font-bold py-5 md:py-10">
+                Trusted by
               </p>
-              <div class="m-1 overflow-x-auto req-box relative">
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                  <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                    <tr>
-                      <th scope="col" class="py-3 px-6">
-                        No.
-                      </th>
-                      <th scope="col" class="py-3 px-6">
-                        Occupation
-                      </th>
-                      <th scope="col" class="py-3 px-6">
-                        Category
-                      </th>
-                      <th scope="col" class="py-3 px-6">
-                        Grade
-                      </th>
-                      <th scope="col" class="py-3 px-6">
-                        Price
-                      </th>
-                      <th scope="col" class="py-3 px-6">
-                        No. of Candidates
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {requirements.length >= 1 &&
-                      requirements.map((item, index) => (
-                        <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-                          <td class="py-4 px-6">{index + 1}</td>
-                          <th
-                            scope="row"
-                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                          >
-                            {item?.occupation}
-                          </th>
-                          <td class="py-4 px-6">
-                            {item?.category && item?.category?.join(",")}
-                          </td>
-                          <td class="py-4 px-6">
-                            {item?.grade ? item?.grade : "All"}
-                          </td>
-                          <td class="py-4 px-6">{item?.price}</td>
-                          <td class="py-4 px-6">{item?.candidate}</td>
-                        </tr>
-                      ))}
-                  </tbody>
-                </table>
-                {requirements.length <= 0 && (
-                  <div className="bg-white p-5 border-b dark:bg-gray-900 dark:border-gray-700 flex justify-center">
-                    Add Requirement
-                  </div>
-                )}
-              </div>
-              <div
-                className={`mt-2 grid ${
-                  categoryData.length ? "lg:grid-cols-5" : "lg:grid-cols-4"
-                } md:grid-cols-3 grid-cols-1 grid-flow-row pt-5 `}
-              >
-                <div className="w-full mb-2.5 flex lg:justify-around px-2">
-                  <div className="w-full">
-                    <p className="text-md 3xl:text-2xl text-center text-xl mb-5">
+              <TrustedLogos settings={settings} />
+            </div>
+          </div>
+
+          {/* </div> */}
+
+          <div>
+            <p className="pt-1 mt-5 mb-3 py-5 text-[black] text-center text-4xl 3xl:text-xl font-bold py-5 md:py-10">
+              Tell us your requirements
+            </p>
+            <div class="m-1 overflow-x-auto req-box relative">
+              <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                  <tr>
+                    <th scope="col" class="py-3 px-6">
+                      No.
+                    </th>
+                    <th scope="col" class="py-3 px-6">
                       Occupation
-                    </p>
-                    <span className="w-full">
-                      <select
-                        className="focus:outline-none w-full 3xl:w-96 3xl:h-14 text-sm 3xl:text-2xl border border-[#C4C4C4] text-[#000000] py-2 px-2 rounded-lg focus:rounded-lg"
-                        onChange={(e) => {
-                          setOccupationName(
-                            e.target.options[e.target.selectedIndex].text
+                    </th>
+                    <th scope="col" class="py-3 px-6">
+                      Category
+                    </th>
+                    <th scope="col" class="py-3 px-6">
+                      Grade
+                    </th>
+                    <th scope="col" class="py-3 px-6">
+                      Price
+                    </th>
+                    <th scope="col" class="py-3 px-6">
+                      No. of Candidates
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {requirements.length >= 1 &&
+                    requirements.map((item, index) => (
+                      <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                        <td class="py-4 px-6">{index + 1}</td>
+                        <th
+                          scope="row"
+                          class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                        >
+                          {item?.occupation}
+                        </th>
+                        <td class="py-4 px-6">
+                          {item?.category && item?.category?.join(",")}
+                        </td>
+                        <td class="py-4 px-6">
+                          {item?.grade ? item?.grade : "All"}
+                        </td>
+                        <td class="py-4 px-6">{item?.price}</td>
+                        <td class="py-4 px-6">{item?.candidate}</td>
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
+              {requirements.length <= 0 && (
+                <div className="bg-white p-5 border-b dark:bg-gray-900 dark:border-gray-700 flex justify-center">
+                  Add Requirement
+                </div>
+              )}
+            </div>
+            <div
+              className={`mt-2 grid ${
+                categoryData.length ? "lg:grid-cols-5" : "lg:grid-cols-4"
+              } md:grid-cols-3 grid-cols-1 grid-flow-row pt-5 `}
+            >
+              <div className="w-full mb-2.5 flex lg:justify-around px-2">
+                <div className="w-full">
+                  <p className="text-md 3xl:text-2xl text-center text-xl mb-5">
+                    Occupation
+                  </p>
+                  <span className="w-full">
+                    <select
+                      className="focus:outline-none w-full 3xl:w-96 3xl:h-14 text-sm 3xl:text-2xl border border-[#C4C4C4] text-[#000000] py-2 px-2 rounded-lg focus:rounded-lg"
+                      onChange={(e) => {
+                        setOccupationName(
+                          e.target.options[e.target.selectedIndex].text
+                        );
+                        setOccupationId(e.target.value);
+                      }}
+                    >
+                      {occupationData.length !== 0 ? (
+                        <option disabled selected>
+                          Select Occupation
+                        </option>
+                      ) : (
+                        ""
+                      )}
+                      {occupationData.length !== 0 ? (
+                        occupationData.map((categoryVal, i) => {
+                          return (
+                            <option key={i} value={categoryVal._id}>
+                              {categoryVal.type}
+                            </option>
                           );
-                          setOccupationId(e.target.value);
+                        })
+                      ) : (
+                        <option disabled selected>
+                          No Employment Type found
+                        </option>
+                      )}
+                    </select>
+                  </span>
+                </div>
+              </div>
+              {categoryData.length !== 0 ? (
+                <div>
+                  <p className="text-md 3xl:text-2xl text-center text-xl mb-5">
+                    Category
+                  </p>
+                  <div className="grid lg:justify-items-center mb-2.5 req-box mx-2">
+                    <div className="md:w-full bg-white w-full rounded p-1 p-2 max-h-52 overflow-x-hidden">
+                      <div className="flex p-1">
+                        <input
+                          type="checkbox"
+                          value={"All"}
+                          className="3xl:h-8 3xl:w-8"
+                          id="all"
+                          onChange={(e) => {
+                            categoryArray(
+                              categoryData,
+                              "all",
+                              e.target.checked
+                            );
+                          }}
+                        />
+                        <p className="text-[11px] 3xl:text-[18px] pl-1 3xl:pl-3 3xl:pt-1 ">
+                          All
+                        </p>
+                      </div>
+                      {categoryData.map((categoryVal, i) => {
+                        return (
+                          <div>
+                            <div className="flex p-1" key={i}>
+                              <input
+                                type="checkbox"
+                                value={categoryVal.category}
+                                checked={category.find(
+                                  (c) => c === categoryVal.category
+                                )}
+                                className="3xl:h-8 3xl:w-8"
+                                id={categoryVal._id}
+                                onChange={(e) => {
+                                  categoryArray(
+                                    e.target.value,
+                                    "",
+                                    e.target.checked,
+                                    categoryData
+                                  );
+                                }}
+                              />
+                              <p className="text-[11px] 3xl:text-[18px] pl-1 3xl:pl-3 3xl:pt-1 ">
+                                {categoryVal.category}
+                              </p>
+                            </div>
+                            {subcategoryData?.find(
+                              (d, index) => d?.category === categoryVal.category
+                            ) && (
+                              <div
+                                style={{
+                                  display: "flex",
+                                  flexDirection: "column",
+                                  paddingLeft: "16px",
+                                }}
+                              >
+                                {subcategoryData?.map((d, index) => {
+                                  return (
+                                    <div className="flex p-1" key={i}>
+                                      <input
+                                        type="checkbox"
+                                        value={d.subcategory}
+                                        className="3xl:h-8 3xl:w-8"
+                                        id={categoryVal._id}
+                                        onChange={(e) =>
+                                          subCategoryArr(e.target.value)
+                                        }
+                                      />
+                                      <p className="text-[11px] 3xl:text-[18px] pl-1 3xl:pl-3 3xl:pt-1 ">
+                                        {d.subcategory}
+                                      </p>
+                                    </div>
+                                  );
+                                })}
+                              </div>
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                ""
+              )}
+              {grades.length !== 0 ? (
+                <div>
+                  <p className="text-md 3xl:text-2xl text-center text-xl mb-5">
+                    Grade
+                  </p>
+                  <div className="flex mb-2.5 lg:justify-around px-2">
+                    <span className="w-full sm:w-full">
+                      <select
+                        className="w-full focus:outline-none 3xl:w-96 3xl:h-14 text-sm 3xl:text-2xl border border-[#C4C4C4] text-[#000000] py-2 px-2 rounded-lg focus:rounded-lg"
+                        onChange={(e) => {
+                          setGrade(e.target.value);
+                          setMinSalary(e.target.value);
                         }}
                       >
-                        {occupationData.length !== 0 ? (
-                          <option disabled selected>
-                            Select Occupation
+                        <option disabled selected>
+                          Select Grade
+                        </option>
+                        {grades.map((Val, i) => (
+                          <option key={i} value={Val}>
+                            {Val}
                           </option>
-                        ) : (
-                          ""
-                        )}
-                        {occupationData.length !== 0 ? (
-                          occupationData.map((categoryVal, i) => {
-                            return (
-                              <option key={i} value={categoryVal._id}>
-                                {categoryVal.type}
-                              </option>
-                            );
-                          })
-                        ) : (
-                          <option disabled selected>
-                            No Employment Type found
-                          </option>
-                        )}
+                        ))}
                       </select>
                     </span>
                   </div>
                 </div>
-                {categoryData.length !== 0 ? (
-                  <div>
-                    <p className="text-md 3xl:text-2xl text-center text-xl mb-5">
-                      Category
-                    </p>
-                    <div className="grid lg:justify-items-center mb-2.5 req-box mx-2">
-                      <div className="md:w-full bg-white w-full rounded p-1 p-2 max-h-52 overflow-x-hidden">
-                        <div className="flex p-1">
-                          <input
-                            type="checkbox"
-                            value={"All"}
-                            className="3xl:h-8 3xl:w-8"
-                            id="all"
-                            onChange={(e) => {
-                              categoryArray(
-                                categoryData,
-                                "all",
-                                e.target.checked
-                              );
-                            }}
-                          />
-                          <p className="text-[11px] 3xl:text-[18px] pl-1 3xl:pl-3 3xl:pt-1 ">
-                            All
-                          </p>
-                        </div>
-                        {categoryData.map((categoryVal, i) => {
-                          return (
-                            <div>
-                              <div className="flex p-1" key={i}>
-                                <input
-                                  type="checkbox"
-                                  value={categoryVal.category}
-                                  checked={category.find(
-                                    (c) => c === categoryVal.category
-                                  )}
-                                  className="3xl:h-8 3xl:w-8"
-                                  id={categoryVal._id}
-                                  onChange={(e) => {
-                                    categoryArray(
-                                      e.target.value,
-                                      "",
-                                      e.target.checked,
-                                      categoryData
-                                    );
-                                  }}
-                                />
-                                <p className="text-[11px] 3xl:text-[18px] pl-1 3xl:pl-3 3xl:pt-1 ">
-                                  {categoryVal.category}
-                                </p>
-                              </div>
-                              {subcategoryData?.find(
-                                (d, index) =>
-                                  d?.category === categoryVal.category
-                              ) && (
-                                <div
-                                  style={{
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    paddingLeft: "16px",
-                                  }}
-                                >
-                                  {subcategoryData?.map((d, index) => {
-                                    return (
-                                      <div className="flex p-1" key={i}>
-                                        <input
-                                          type="checkbox"
-                                          value={d.subcategory}
-                                          className="3xl:h-8 3xl:w-8"
-                                          id={categoryVal._id}
-                                          onChange={(e) =>
-                                            subCategoryArr(e.target.value)
-                                          }
-                                        />
-                                        <p className="text-[11px] 3xl:text-[18px] pl-1 3xl:pl-3 3xl:pt-1 ">
-                                          {d.subcategory}
-                                        </p>
-                                      </div>
-                                    );
-                                  })}
-                                </div>
-                              )}
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  </div>
-                ) : (
-                  ""
-                )}
-                {grades.length !== 0 ? (
-                  <div>
-                    <p className="text-md 3xl:text-2xl text-center text-xl mb-5">
-                      Grade
-                    </p>
-                    <div className="flex mb-2.5 lg:justify-around px-2">
-                      <span className="w-full sm:w-full">
-                        <select
-                          className="w-full focus:outline-none 3xl:w-96 3xl:h-14 text-sm 3xl:text-2xl border border-[#C4C4C4] text-[#000000] py-2 px-2 rounded-lg focus:rounded-lg"
-                          onChange={(e) => {
-                            setGrade(e.target.value);
-                            setMinSalary(e.target.value);
-                          }}
-                        >
-                          <option disabled selected>
-                            Select Grade
-                          </option>
-                          {grades.map((Val, i) => (
-                            <option key={i} value={Val}>
-                              {Val}
-                            </option>
-                          ))}
-                        </select>
-                      </span>
-                    </div>
-                  </div>
-                ) : (
-                  ""
-                )}
-                <div className="mb-2.5 px-2">
-                  <p className="text-md 3xl:text-2xl text-center text-xl">
-                    Salary Range
-                  </p>
+              ) : (
+                ""
+              )}
+              <div className="mb-2.5 px-2">
+                <p className="text-md 3xl:text-2xl text-center text-xl">
+                  Salary Range
+                </p>
 
-                  <div className="p-1 flex justify-between">
-                    <span>Min</span>
-                    <span>Max</span>
-                  </div>
-                  <div className="p-1 flex justify-between">
-                    <span>{salaryStart}</span>
-                    <span>{salaryEnd}</span>
-                  </div>
-                  <input
-                    id="default-range"
-                    type="range"
-                    min={salaryStart}
-                    value={salaryEnd}
-                    max={"200000"}
-                    step={1500}
-                    onChange={(e) => {
-                      if (salaryStart < e.target.value)
-                        setSalaryEnd(e.target.value);
-                    }}
-                    class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
-                  />
+                <div className="p-1 flex justify-between">
+                  <span>Min</span>
+                  <span>Max</span>
                 </div>
+                <div className="p-1 flex justify-between">
+                  <span>{salaryStart}</span>
+                  <span>{salaryEnd}</span>
+                </div>
+                <input
+                  id="default-range"
+                  type="range"
+                  min={salaryStart}
+                  value={salaryEnd}
+                  max={"200000"}
+                  step={1500}
+                  onChange={(e) => {
+                    if (salaryStart < e.target.value)
+                      setSalaryEnd(e.target.value);
+                  }}
+                  class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
+                />
+              </div>
 
-                {/* <p className="pt-5 text-md 3xl:text-2xl text-[#1B1465]">
+              {/* <p className="pt-5 text-md 3xl:text-2xl text-[#1B1465]">
                   Select Experience Range
                 </p>
 
@@ -1015,83 +1033,71 @@ function Home() {
                     className="focus:outline-none w-60 3xl:w-96 3xl:h-14 3xl:text-2xl text-sm border border-[#C4C4C4] text-[#000000] py-2 px-2 rounded-lg"
                   />
                 </div> */}
-                <div className="px-2">
-                  <p className="text-md 3xl:text-2xl text-center text-xl mb-5">
-                    No of Candidates
-                  </p>
-                  <div className="w-full p-1 flex lg:justify-around">
-                    <select
-                      value={selectedNo}
-                      className="w-full focus:outline-none 3xl:w-44 3xl:h-14 3xl:text-2xl lg:mr-2 3xl:mr-4 text-sm border border-[#C4C4C4] text-[#000000] py-2 px-2 rounded-lg"
-                      onChange={(e) => setSelectedNo(e.target.value)}
-                    >
-                      <option disabled selected>
-                        Select
+              <div className="px-2">
+                <p className="text-md 3xl:text-2xl text-center text-xl mb-5">
+                  No of Candidates
+                </p>
+                <div className="w-full p-1 flex lg:justify-around">
+                  <select
+                    value={selectedNo}
+                    className="w-full focus:outline-none 3xl:w-44 3xl:h-14 3xl:text-2xl lg:mr-2 3xl:mr-4 text-sm border border-[#C4C4C4] text-[#000000] py-2 px-2 rounded-lg"
+                    onChange={(e) => setSelectedNo(e.target.value)}
+                  >
+                    <option disabled selected>
+                      Select
+                    </option>
+                    {[...Array(10).keys()].map((i) => (
+                      <option className="text-[000000]" value={i + 1}>
+                        {i + 1}
                       </option>
-                      {[...Array(10).keys()].map((i) => (
-                        <option className="text-[000000]" value={i + 1}>
-                          {i + 1}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
+                    ))}
+                  </select>
                 </div>
               </div>
+            </div>
+            <div className="p-5 flex justify-center">
+              <button
+                type="button"
+                onClick={addCandidate}
+                className="focus:outline-none w-60 3xl:w-96 3xl:h-14 3xl:text-2xl bg-[#1B1465] text-md text-[#ffffff] py-2 px-2 rounded-lg"
+              >
+                Add
+              </button>
+            </div>
+            {accessToken && !!requirements.length && (
               <div className="p-5 flex justify-center">
                 <button
                   type="button"
-                  onClick={addCandidate}
-                  className="focus:outline-none w-60 3xl:w-96 3xl:h-14 3xl:text-2xl bg-[#1B1465] text-md text-[#ffffff] py-2 px-2 rounded-lg"
+                  disabled={requirements.length == 0}
+                  onClick={saveRequirnments}
+                  className={`focus:outline-none w-60 3xl:w-96 3xl:h-14 3xl:text-2xl bg-[#F8B705] text-md text-[#ffffff] py-2 px-2 rounded-lg`}
                 >
-                  Add
+                  Save Your Requirements
                 </button>
               </div>
-              {accessToken && !!requirements.length && (
-                <div className="p-5 flex justify-center">
-                  <button
-                    type="button"
-                    disabled={requirements.length == 0}
-                    onClick={saveRequirnments}
-                    className={`focus:outline-none w-60 3xl:w-96 3xl:h-14 3xl:text-2xl bg-[#F8B705] text-md text-[#ffffff] py-2 px-2 rounded-lg`}
-                  >
-                    Save Your Requirements
-                  </button>
-                </div>
-              )}
-              {!accessToken && !!requirements.length && (
-                <div className="p-5 flex justify-center">
-                  <button
-                    type="button"
-                    disabled={requirements.length == 0}
-                    onClick={() => modalOpenShow("reportModal")}
-                    className={`focus:outline-none w-60 3xl:w-96 3xl:h-14 3xl:text-2xl bg-[#F8B705] text-md text-[#ffffff] py-2 px-2 rounded-lg`}
-                  >
-                    Save Your Requirements
-                  </button>
-                </div>
-              )}
-              <div className="p-5 flex justify-center lg:justify-end ">
+            )}
+            {!accessToken && !!requirements.length && (
+              <div className="p-5 flex justify-center">
                 <button
                   type="button"
                   disabled={requirements.length == 0}
-                  onClick={GetSearchData}
-                  className={`focus:outline-none w-60 3xl:w-96 3xl:h-14 3xl:text-2xl bg-[#1B1465] text-md text-[#ffffff] py-2 px-2 rounded-lg`}
+                  onClick={() => modalOpenShow("reportModal")}
+                  className={`focus:outline-none w-60 3xl:w-96 3xl:h-14 3xl:text-2xl bg-[#F8B705] text-md text-[#ffffff] py-2 px-2 rounded-lg`}
                 >
-                  Proceed To Search
+                  Save Your Requirements
                 </button>
               </div>
+            )}
+            <div className="p-5 flex justify-center lg:justify-end ">
+              <button
+                type="button"
+                disabled={requirements.length == 0}
+                onClick={GetSearchData}
+                className={`focus:outline-none w-60 3xl:w-96 3xl:h-14 3xl:text-2xl bg-[#1B1465] text-md text-[#ffffff] py-2 px-2 rounded-lg`}
+              >
+                Proceed To Search
+              </button>
             </div>
-          </div>
-
-          {/* </div> */}
-          <div className="px-5 sm:px-5 md:px-10 py-2 sm:py-5 md:py-5">
-            <ProfileOfTheWeek settings={settings} />
-          </div>
-          <div className="px-5 sm:px-5 md:px-10 py-2 sm:py-5 md:py-5">
-            <p className="text-4xl 3xl:text-xl font-bold py-5 md:py-10">
-              Trusted by
-            </p>
-            <TrustedLogos settings={settings} />
           </div>
           <div className="grid grid-cols-12 pt-2 sm:pt-5 md:pt-10 px-5 md:px-10">
             <div className="col-span-12 sm:col-span-12 lg:col-span-6">
@@ -1132,7 +1138,7 @@ function Home() {
             </div>
           </div>
           <div className="px-5 md:px-10 py-5 md:py-10">
-            <p className="text-center text-4xl 3xl:text-xl font-bold py-5 md:py-10">
+            <p className="text-center text-3xl 3xl:text-xl font-bold py-5 md:py-10">
               How to start
             </p>
             <p className="text-center 3xl:text-2xl pt-5">
@@ -1200,7 +1206,7 @@ function Home() {
             </div>
           </div>
           <div className="3xl:h-[640px] ">
-            <p className="text-center text-4xl 3xl:text-xl font-bold py-5 md:py-10">
+            <p className="text-center text-3xl 3xl:text-xl font-bold py-5 md:py-10">
               Candidate's Registration
             </p>
             <p className="text-center font-semibold text-xl pb-5">
@@ -1217,7 +1223,7 @@ function Home() {
               </button>
             </div>
           </div>
-          <div className="p-0 md:p-10">
+          <div className="p-0 md:py-10">
             <Testimonials />
           </div>
 

@@ -4,20 +4,22 @@ import Style from "../../styles/common.module.css";
 
 function Footer() {
   return (
-    <div className=" bg-[#ffffff] ">
+    <div className={" bg-[#ffffff]"}>
       <div className="grid grid-cols-12 pb-5 content-center">
-        <div className="col-span-12 sm:col-span-12 md:col-span-3">
+        <div
+          className={Style.footer + " col-span-12 sm:col-span-12 md:col-span-3"}
+        >
           <div className="grid justify-items-center">
             <Link href="/" passHref>
               <img
                 src="/images/logo.png"
-                className=" h-14 mt-10 3xl:h-20 ml-6"
+                className=" h-14 mt-5 lg:mt-10 3xl:h-20 ml-6"
                 alt="find the best housekeeping staff"
               />
             </Link>
           </div>
         </div>
-        <div className="col-span-6 sm:col-span-4 md:col-span-3 pl-5 sm:pl-0 md:pl-0 mt-10 grid justify-items-center">
+        <div className="col-span-6 sm:col-span-4 md:col-span-3 pl-5 sm:pl-0 md:pl-0 mt-5 lg:mt-10 grid justify-items-center">
           <div>
             <p
               className={
@@ -72,7 +74,7 @@ function Footer() {
             </Link>
           </div>
         </div>
-        <div className="col-span-6 sm:col-span-4 md:col-span-3 mt-10 pl-5 sm:pl-0 md:pl-0 grid justify-items-center">
+        <div className="col-span-6 sm:col-span-4 md:col-span-3 mt-5 lg:mt-10 pl-5 sm:pl-0 md:pl-0 grid justify-items-center">
           <div>
             <p
               className={
@@ -128,7 +130,12 @@ function Footer() {
             </Link>
           </div>
         </div>
-        <div className="col-span-6 sm:col-span-4 md:col-span-3 mt-10 pl-5 sm:pl-0 md:pl-0 grid justify-items-center">
+        <div
+          className={
+            Style.footer +
+            " col-span-6 sm:col-span-4 md:col-span-3 mt-5 lg:mt-10 pl-5 sm:pl-0 md:pl-0 grid justify-items-center"
+          }
+        >
           <div>
             <p
               className={

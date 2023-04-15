@@ -98,7 +98,9 @@
 .headerResponsive {
   display: block;
 }
-
+.footer{
+  display: block;
+}
 .headerMobileResponsive {
   display: none;
 }
@@ -108,6 +110,11 @@
   }
   .headerMobileResponsive {
     display: block;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .footer{
+    display: none;
   }
 }
 
