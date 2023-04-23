@@ -22,7 +22,12 @@ import Testimonials from "../components/home-components/Testimonials";
 import ProfileOfTheWeek from "../components/home-components/ProfileOfTheWeek";
 
 import Head from "next/head";
+import {
+  closeModalProfile,
+  modalOpenShow,
+} from "../components/helpers/HelperFunctions";
 import WhatsAppLogo from "../components/common-components/WhatsApp";
+import NewUserModal from "../components/home-components/NewUserModal";
 const Payment = {
   loop: true,
   autoplay: true,
@@ -180,6 +185,9 @@ const settings = {
   ],
 };
 function Home() {
+
+  const newUserPopUpId = "popUpToNewUser"
+  let [showFirstTimePopUp, setshowFirstTimePopUp] = useState(true)
   let [occupationData, setOccupationData] = useState([]);
   let [occupationName, setOccupationName] = useState("");
   let [salaryStart, setSalaryStart] = useState("5000");
@@ -196,9 +204,16 @@ function Home() {
   let router = useRouter();
   let userData = userDataProvider();
   let accessToken = accessTokenProvider();
+
   useEffect(() => {
     GetOccupation();
   }, []);
+
+  useEffect(() => {
+    setTimeout(() => {
+      modalOpenShow(newUserPopUpId)
+    }, 2000)
+  }, [])
 
   useEffect(() => {
     const tempGrades = GradesWithCategory?.filter(
@@ -422,6 +437,8 @@ function Home() {
 
   return (
     <div>
+      <NewUserModal newUserPopUpId={newUserPopUpId}/>
+
       <Head>
         <meta
           name="google-site-verification"
@@ -509,9 +526,8 @@ function Home() {
                 )}
               </div>
               <div
-                className={`mt-2 grid ${
-                  categoryData.length ? "lg:grid-cols-5" : "lg:grid-cols-4"
-                } md:grid-cols-3 grid-cols-1 grid-flow-row pt-5 `}
+                className={`mt-2 grid ${categoryData.length ? "lg:grid-cols-5" : "lg:grid-cols-4"
+                  } md:grid-cols-3 grid-cols-1 grid-flow-row pt-5 `}
               >
                 <div className="w-full mb-2.5 flex lg:justify-around px-2">
                   <div className="w-full">
@@ -606,33 +622,33 @@ function Home() {
                                 (d, index) =>
                                   d?.category === categoryVal.category
                               ) && (
-                                <div
-                                  style={{
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    paddingLeft: "16px",
-                                  }}
-                                >
-                                  {subcategoryData?.map((d, index) => {
-                                    return (
-                                      <div className="flex p-1" key={i}>
-                                        <input
-                                          type="checkbox"
-                                          value={d.subcategory}
-                                          className="3xl:h-8 3xl:w-8"
-                                          id={categoryVal._id}
-                                          onChange={(e) =>
-                                            subCategoryArr(e.target.value)
-                                          }
-                                        />
-                                        <p className="text-[11px] 3xl:text-[18px] pl-1 3xl:pl-3 3xl:pt-1 ">
-                                          {d.subcategory}
-                                        </p>
-                                      </div>
-                                    );
-                                  })}
-                                </div>
-                              )}
+                                  <div
+                                    style={{
+                                      display: "flex",
+                                      flexDirection: "column",
+                                      paddingLeft: "16px",
+                                    }}
+                                  >
+                                    {subcategoryData?.map((d, index) => {
+                                      return (
+                                        <div className="flex p-1" key={i}>
+                                          <input
+                                            type="checkbox"
+                                            value={d.subcategory}
+                                            className="3xl:h-8 3xl:w-8"
+                                            id={categoryVal._id}
+                                            onChange={(e) =>
+                                              subCategoryArr(e.target.value)
+                                            }
+                                          />
+                                          <p className="text-[11px] 3xl:text-[18px] pl-1 3xl:pl-3 3xl:pt-1 ">
+                                            {d.subcategory}
+                                          </p>
+                                        </div>
+                                      );
+                                    })}
+                                  </div>
+                                )}
                             </div>
                           );
                         })}
@@ -1039,7 +1055,7 @@ function Home() {
       ) : (
         ""
       )}
-     <WhatsAppLogo />
+      <WhatsAppLogo />
     </div>
   );
 }
