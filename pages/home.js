@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Header from "../components/common-components/Header";
 import Footer from "../components/common-components/Footer";
 import Style from "../styles/Home.module.css";
+
 import {
   GetRequest,
   accessTokenProvider,
@@ -1101,7 +1102,6 @@ function Home() {
           </div>
           <div className="grid grid-cols-12 pt-2 sm:pt-5 md:pt-10 px-5 md:px-10">
             <div className="col-span-12 sm:col-span-12 lg:col-span-6">
-              {" "}
               <img
                 src="/images/HomePage/hotel-img.webp"
                 className="w-full rounded-xl object-cover"
@@ -1144,8 +1144,7 @@ function Home() {
             <p className="text-center 3xl:text-2xl pt-5">
               It is simple to avail the services we offer:
             </p>
-
-            <div className="grid grid-cols-12 ">
+            <div className="grid grid-cols-12">
               <div className="col-span-12 sm:col-span-6 lg:col-span-4 mt-5 mx-2">
                 <Lottie options={Payment} height={300} width={300} />
                 <h3 className="text-center text-[#000000] text-lg 3xl:text-3xl font-bold ">
@@ -1205,24 +1204,48 @@ function Home() {
               <div className="col-span-12 lg:col-span-2 mt-5 mx-2"></div>
             </div>
           </div>
-          <div className="3xl:h-[640px] ">
-            <p className="text-center text-3xl 3xl:text-xl font-bold py-5 md:py-10">
-              Candidate's Registration
-            </p>
-            <p className="text-center font-semibold text-xl pb-5">
-              {" "}
-              If you are looking out for good opportunities
-            </p>
-            <div className="text-center pt-10">
-              <button
-                className="w-28 h-8 rounded text-white 3xl:text-2xl 3xl:h-12 3xl:w-40 bg-[#1b1465] mb-5"
-                type="button"
-                onClick={() => router.push("candidate-registration")}
-              >
-                Click Here
-              </button>
+          <div className="bg-[#1B1465] grid grid-cols-1 lg:grid-cols-2 py-2 sm:py-5 md:py-10 px-5 md:px-10">
+            <div className="">
+              <div className="3xl:h-[640px] text-white">
+                <p className="text-center text-3xl 3xl:text-xl font-bold py-5 md:py-10">
+                  Tell us your requirements
+                </p>
+                <p className="text-center font-semibold text-xl pb-5">
+                  If you are looking out for good opportunities
+                </p>
+                <div className="text-center pt-10">
+                  <button
+                    className="w-28 h-8 rounded text-white 3xl:text-2xl 3xl:h-12 3xl:w-40 mb-5 border"
+                    type="button"
+                    onClick={() => router.push("candidate-registration")}
+                  >
+                    Click Here
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div className="">
+              <div className="3xl:h-[640px] text-white">
+                <p className="text-center text-3xl 3xl:text-xl font-bold py-5 md:py-10">
+                  Candidate's Registration
+                </p>
+                <p className="text-center font-semibold text-xl pb-5">
+                  {" "}
+                  If you are looking out for good opportunities
+                </p>
+                <div className="text-center pt-10">
+                  <button
+                    className="w-28 h-8 rounded text-white 3xl:text-2xl 3xl:h-12 3xl:w-40 bg-[#1b1465] mb-5 border"
+                    type="button"
+                    onClick={() => router.push("candidate-registration")}
+                  >
+                    Click Here
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
+
           <div className="p-0 md:py-10">
             <Testimonials />
           </div>

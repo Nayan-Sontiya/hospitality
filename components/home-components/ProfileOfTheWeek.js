@@ -53,14 +53,20 @@ function ProfileOfTheWeek() {
   return (
     <div>
       <div className="bg-[#1B1465] px-10 md:py-10 pb-10">
-       <p className="text-center text-white text-4xl 3xl:text-xl font-bold py-5 md:py-10">
+        <p className="text-center text-white text-4xl 3xl:text-xl font-bold py-5 md:py-10">
           Profile Of The Week
         </p>
-        <Slider {...settings}>
-          {data.map((d, index) => (
-            <Profile data={d} key={index} />
-          ))}
-        </Slider>
+        <div
+          style={{
+            position: "relative",
+          }}
+        >
+          <Slider {...settings}>
+            {data.map((d, index) => (
+              <Profile data={d} key={index} />
+            ))}
+          </Slider>
+        </div>
       </div>
     </div>
   );

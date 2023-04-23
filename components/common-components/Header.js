@@ -339,7 +339,7 @@ function Header({ PageName }) {
                   Packs
                 </p>
               </Link>
-              <Link href="/blogs" passHref>
+              {/* <Link href="/blogs" passHref>
                 <p
                   className={
                     PageName === "blog"
@@ -349,7 +349,7 @@ function Header({ PageName }) {
                 >
                   Blogs
                 </p>
-              </Link>
+              </Link> */}
               <Link href="/contact-us" passHref>
                 <p
                   className={
@@ -381,6 +381,9 @@ function Header({ PageName }) {
                       display: "flex",
                       alignItems: "center",
                       padding: "4px 12px",
+                      backgroundColor: "rgb(16, 26, 114)",
+                      color: "#fff",
+                      fontWeight: "bold",
                     }}
                   >
                     <div class="tooltip">
@@ -396,7 +399,7 @@ function Header({ PageName }) {
         </div>
         <div className="col-span-4 sm:col-span-3 md:col-span-3 self-center pt-4">
           <div className={Style.headerResponsive}>
-            <div className=" text-center">
+            <div className="text-center">
               {accessToken === undefined ||
               accessToken === null ||
               accessToken === "" ? (
@@ -502,6 +505,44 @@ function Header({ PageName }) {
             </div>
           </div>
           <div className={Style.headerMobileResponsive}>
+            <p
+              className="mr-2 mb-2 text-[14px] lg:text-[15px] 3xl:text-[22px] text-[#707070] cursor-pointer uppercase text-center"
+              style={{
+                maxWidth: "120px",
+              }}
+            >
+              <a
+                href="tel:+91-9981333039"
+                class="transititext-primary text-center text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
+                // data-te-toggle="tooltip"
+                // title="+91-9981333039"
+                style={{
+                  display: "flex",
+                  gap: "4px",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <button
+                  className="text-center w-100 h-8 3xl:h-12 3xl:text-xl border border-[#1B1465] text-[#1B1465] uppercase rounded-md shadow-md transition ease-in-out delay-150 hover:bg-[#ffffff] duration-300 "
+                  // onClick={() => modalOpenShow("loginModal")}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    padding: "4px 12px",
+                    backgroundColor: "rgb(16, 26, 114)",
+                    color: "#fff",
+                    fontWeight: "bold",
+                  }}
+                >
+                  <div class="tooltip">
+                    <PhoneIcon />
+                    Call Us
+                    <span class="tooltiptext">+91-9981333039</span>
+                  </div>
+                </button>
+              </a>
+            </p>
             <div className="float-right flex">
               {accessToken === undefined ||
               accessToken === null ||
@@ -673,36 +714,6 @@ function Header({ PageName }) {
                       </li>
                     </Link>
 
-                    <p className="text-[14px] lg:text-[15px] 3xl:text-[22px] text-[#707070] cursor-pointer uppercase text-center">
-                      <a
-                        href="tel:+91-9981333039"
-                        class="transititext-primary text-center text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
-                        // data-te-toggle="tooltip"
-                        // title="+91-9981333039"
-                        style={{
-                          display: "flex",
-                          gap: "4px",
-                          alignItems: "center",
-                          justifyContent: "center",
-                        }}
-                      >
-                        <button
-                          className="text-center w-100 h-8 3xl:h-12 3xl:text-xl border border-[#1B1465] text-[#1B1465] uppercase rounded-md shadow-md transition ease-in-out delay-150 hover:bg-[#ffffff] duration-300 "
-                          // onClick={() => modalOpenShow("loginModal")}
-                          style={{
-                            display: "flex",
-                            alignItems: "center",
-                            padding: "4px 12px",
-                          }}
-                        >
-                          <div class="tooltip">
-                            <PhoneIcon />
-                            Call Us
-                            <span class="tooltiptext">+91-9981333039</span>
-                          </div>
-                        </button>
-                      </a>
-                    </p>
                     {accessToken === undefined ||
                     accessToken === null ||
                     accessToken === "" ? (

@@ -326,7 +326,14 @@ const NewResume = ({ data }) => {
               <span>{data?.contactno1}</span>
             </h1>
             <button
-              className="cursor-pointer border rounded p-1"
+              className="py-2 3xl:py-3 px-5 text-[#ffffff] text-xl 3xl:text-3xl rounded-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300"
+              onClick={createPDF}
+              type="button"
+            >
+              Download
+            </button>
+            <button
+              className={`${styles["report-btn"]} cursor-pointer border rounded py-2 px-3 text-[#ffffff]`}
               onClick={() => {
                 clearCheck();
                 setReportReason("");
@@ -335,7 +342,7 @@ const NewResume = ({ data }) => {
               }}
             >
               <i class="fa fa-info-circle" style={{ fontSize: "20px" }}></i>{" "}
-              WRONG CONTACT DETAILS ? REPORT HERE
+              INCORRECT PHONE NUMBER? REPORT HERE
             </button>
           </div>
 

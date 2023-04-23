@@ -13,33 +13,11 @@ import {
 import "rc-slider/assets/index.css";
 import swal from "sweetalert";
 import Loader from "../components/common-components/Loader";
-import animationData from "../public/images/lottiesFile/search-lottie.json";
-import imageDAta from "../public/images/lottiesFile/image-placeholder.json";
 import { GradesWithCategory, profiles } from "./home";
 import Head from "next/head";
 import InfiniteScroll from "react-infinite-scroll-component";
+import SearchLocationInput from "../components/common-components/SearchLocationInput";
 
-const defaultOptions = {
-  loop: true,
-  autoplay: true,
-  animationData: animationData,
-  rendererSettings: {
-    preserveAspectRatio: "xMidYMid slice",
-  },
-};
-const ImageLottie = {
-  loop: true,
-  autoplay: true,
-  animationData: imageDAta,
-  rendererSettings: {
-    preserveAspectRatio: "xMidYMid slice",
-  },
-};
-
-// experienceStart,
-// experienceEnd,
-// category,
-// sub_category,
 function AllUser() {
   const router = useRouter();
   const salaryStart = router.query.salaryStart;
@@ -1273,46 +1251,54 @@ function AllUser() {
                 loader={<Loader removeHeight />}
                 height={"100vh"}
                 endMessage={
-                  <>
-                    {searchData.length > 0 ? (
-                      <div className="text-center col-span-12 pt-5 3xl:pt-10">
-                        <p className="text-3xl 3xl:text-5xl text-[#777777]">{`That's all folks!`}</p>
-                      </div>
-                    ) : (
-                      <div className="text-center col-span-12 pt-5 3xl:pt-10">
-                        {/* <Lottie options={defaultOptions} height={350} width={350} />
+                  !buttonLoader ? (
+                    <>
+                      {searchData.length > 0 ? (
+                        <div className="text-center col-span-12 pt-5 3xl:pt-10">
+                          <p className="text-3xl 3xl:text-5xl text-[#777777]">{`That's all folks!`}</p>
+                        </div>
+                      ) : (
+                        <div className="text-center col-span-12 pt-5 3xl:pt-10">
+                          {/* <Lottie options={defaultOptions} height={350} width={350} />
 
                           <p className="text-3xl text-[#777777]">
                             Please use filter for best results!
                           </p> */}
 
-                        <input
-                          placeholder="Tell us your requirement.."
-                          className="h-12 3xl:h-20 border sm:w-80 3xl:w-[500px] 3xl:text-[28px] p-5 md:mt-20"
-                          onChange={(e) =>
-                            setRequirementMessage(e.target.value)
-                          }
-                          value={requirementMessage}
-                        />
-                        <button
-                          className="px-5 py-2 bg-[#1b1465] 3xl:text-[28px] -mt-1 text-white h-12 3xl:h-20"
-                          onClick={AddRequirement}
-                        >
-                          Submit
-                        </button>
-                      </div>
-                    )}
-                    <p className="text-center text-4xl 3xl:text-xl font-bold py-5 md:py-2">
-                      {profiles.find(
-                        (profile) => profile.category === occupationName
-                      )?.pageTitle ?? "Hospitalityfinder"}
-                    </p>
-                    <p className="text-justify text-1xl 3xl:text-xl py-2 md:py-10">
-                      {profiles.find(
-                        (profile) => profile.category === occupationName
-                      )?.subTitle ?? "Hospitalityfinder"}
-                    </p>
-                  </>
+                          <input
+                            placeholder="Tell us your requirement.."
+                            className="h-12 3xl:h-20 border sm:w-80 3xl:w-[500px] 3xl:text-[28px] p-5 md:mt-20"
+                            onChange={(e) =>
+                              setRequirementMessage(e.target.value)
+                            }
+                            value={requirementMessage}
+                          />
+                          <button
+                            className="px-5 py-2 bg-[#1b1465] 3xl:text-[28px] -mt-1 text-white h-12 3xl:h-20"
+                            onClick={AddRequirement}
+                          >
+                            Submit
+                          </button>
+                        </div>
+                      )}
+                      {!buttonLoader && searchData.length && (
+                        <>
+                          <p className="text-center text-4xl 3xl:text-xl font-bold py-5 md:py-2">
+                            {profiles.find(
+                              (profile) => profile.category === occupationName
+                            )?.pageTitle ?? "Hospitalityfinder"}
+                          </p>
+                          <p className="text-justify text-1xl 3xl:text-xl py-2 md:py-10">
+                            {profiles.find(
+                              (profile) => profile.category === occupationName
+                            )?.subTitle ?? "Hospitalityfinder"}
+                          </p>
+                        </>
+                      )}
+                    </>
+                  ) : (
+                    <Loader removeHeight />
+                  )
                 }
               >
                 {searchData.map((data, i) => {

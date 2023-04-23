@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { awsUrl } from "../helpers/ApiHelper";
+import style from "../../styles/Profile.module.css";
 
 const Profile = ({ data }) => {
   const getWords = (monthCount) => {
@@ -26,49 +27,53 @@ const Profile = ({ data }) => {
 
   return (
     <Link href={`/view-user?userId=${_id}`}>
-      <div
-        className="bg-[#FFFFFF] mx-2 p-3 rounded cursor-pointer"
-        style={{
-          maxHeight: "360px",
-          minHeight: "360px",
-        }}
-      >
-        <div className="grid justify-items-center py-5">
-          {photo ? (
-            <img
-              fetchPriority="high"
-              src={awsUrl + photo?.split(",")[0]}
-              className="h-16 w-16 3xl:h-24 3xl:w-24 rounded-full border"
-            />
-          ) : (
-            <img
-              fetchPriority="high"
-              className="h-16 w-16 3xl:h-24 3xl:w-24 rounded-full border"
-              src={
-                "https://st.depositphotos.com/2101611/3925/v/600/depositphotos_39258143-stock-illustration-businessman-avatar-profile-picture.jpg"
-              }
-            />
-          )}
+      <div className={style["card"]}>
+        <div class={`${style.face} ${style.face1}`}>
+          <div className={style["content"]}>
+            <div>
+              {photo ? (
+                <img
+                  fetchPriority="high"
+                  src={awsUrl + photo?.split(",")[0]}
+                  width={"100%"}
+                  height={"100%"}
+                />
+              ) : (
+                <img
+                  fetchPriority="high"
+                  width={"100%"}
+                  height={"100%"}
+                  src={
+                    "https://st.depositphotos.com/2101611/3925/v/600/depositphotos_39258143-stock-illustration-businessman-avatar-profile-picture.jpg"
+                  }
+                />
+              )}
+            </div>
+          </div>
         </div>
-        <p
-          className="text-center text-black text-lg 3xl:text-3xl mb-2"
-          style={{ fontWeight: "bold" }}
-        >
-          {name}
-        </p>
-        <div>
-        <p className="text-center text-black text-md text-sm mb-5">
-          {category && category?.length ? category.join(",") : "-"}
-        </p>
+        <div class={`${style.face} ${style.face2}`}>
+          <div className={style["content"]}>
+            <p
+              className="text-center text-black text-lg 3xl:text-3xl mb-2"
+              style={{ fontWeight: "bold" }}
+            >
+              {name}
+            </p>
+            <div>
+              <p className="text-center text-black text-md text-sm mb-5">
+                {category && category?.length ? category.join(",") : "-"}
+              </p>
+            </div>
+            <p className="text-center text-black text-lg 3xl:text-3xl mb-2">
+              <b> Experience: </b>
+              {getWords(experience_in_month)}
+            </p>
+            <p className="text-center text-black text-lg 3xl:text-3xl mb-2">
+              <b> Salary: </b> {salary_expectation}
+              <p>(Negotiable)</p>
+            </p>
+          </div>
         </div>
-        <p className="text-center text-black text-lg 3xl:text-3xl mb-2">
-          <b> Experience: </b>
-          {getWords(experience_in_month)}
-        </p>
-        <p className="text-center text-black text-lg 3xl:text-3xl mb-2">
-          <b> Salary: </b> {salary_expectation}
-          <p>(Negotiable)</p>
-        </p>
       </div>
     </Link>
   );

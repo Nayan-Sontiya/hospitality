@@ -65,7 +65,6 @@ const ViewUser = () => {
   //   }
   // }, [accessToken]);
   const getCandidateResume = async (candidateId) => {
-    console.log("userData  => ", userData);
     let resp = await GetRequest(
       "getCandidateResume/" + userData._id + "/" + candidateId
     );
